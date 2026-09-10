@@ -1,15 +1,7 @@
 # Hardware status
 
-**Architecture study only. No schematic, PCB, Gerbers, pick-and-place files, or purchase-ready BOM.**
+The newest design is [bench revision A](bench-rev-a/README.md): a full pin-level circuit draft with sensing, isolation, reporting USB, STM32F072, SWD/UART/GPIO, force terminals and selectable sensor power. It is intended for firmware work and connector experiments on one accessible board.
 
-Start with the [architecture](../docs/architecture.md), [open decisions](../docs/decisions.md), [manufacturer-current rule](../docs/manufacturer-modes.md), and [validation gates](../docs/validation-plan.md).
+The package includes a root KiCad schematic, five child sheets, readable connection-sheet previews, a component schedule and machine-readable connections. Native KiCad loading/ERC and footprints still need review; no PCB, Gerbers, purchase-ready BOM, tested assembly or qualified USB-C cable is available.
 
-Suggested schematic sheets after the gates close:
-
-1. Inline connectors, CC/VCONN/data routing, power path and fault handling.
-2. Kelvin shunt, sensor, local regulator and isolated I²C side 2.
-3. Reporting USB-C, MCU, local regulator, isolated I²C side 1 and PC-side debug.
-
-Use a reproducible native KiCad project when circuit capture begins. Review symbols and footprints against manufacturer drawings; do not trust library pin numbers for USB-C plugs, mirrored views, or current-sense resistors without checking. Treat the pigtail as an electrical assembly with its own drawing and test specification.
-
-Keep the present 1 W shunt as a **9 A analysis candidate only**. Larger current envelopes may require a different resistor package, new TCR/noise budgeting, and a larger thermal floorplan. No generic USB-C connector has been qualified for the revised rating.
+The design target is 28 V / 9 A continuous with 10.8 A margin. Captive male is the bench baseline; the final product topology remains open. See the [connector map](../docs/connector-routing.md), [architecture](../docs/architecture.md), [open decisions](../docs/decisions.md) and [validation gates](../docs/validation-plan.md).

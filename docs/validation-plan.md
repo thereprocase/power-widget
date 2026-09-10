@@ -6,17 +6,17 @@ No physical tests have been run. Keep every result tied to board revision, firmw
 
 | Gate | Work | Evidence to close |
 |---|---|---|
-| G0.1 | Establish the applicable OEM current ceiling and apply +0.5 A, then ×1.20 | Primary mode/label roster; distinguish USB-C current from adapter total wattage |
+| G0.1 | Numeric laptop target closed: 8.5 + 0.5 = 9 A; ×1.20 = 10.8 A | Primary roster documented; actual unit labels and physical capacity still require checks |
 | G0.2 | Compare captive male and two-receptacle topology | Pin/contact map, orientation table, marker/VCONN analysis, purchasable assembly |
 | G0.3 | Define overvoltage, overcurrent, and hot-connector response | Concrete protection/survival architecture and component coordination |
 | G0.4 | Fix accuracy plane, ambient range, and timing | Clear calibration and acceptance limits; cable loss explicitly assigned |
 | G0.5 | Establish minimum VBUS and programmable charging coverage | Regulator/sensor operation and accuracy at the required low-voltage endpoint |
 
-## Stage 1 — Charging-transparency coupon
+## Stage 1 — Integrated bench board and transparent path
 
-Build a mechanically sound continuity fixture before combining everything into a small PCB. Begin with current-limited low-voltage tests. Use all accessible contacts; do not start with an inexpensive power-only breakout that silently removes signals. Validate the pigtail or receptacle wiring with power absent.
+Use the [full bench A circuit](../hardware/bench-rev-a/README.md), including MCU, isolated sensor, force terminals and debug headers. Review native schematic/footprints/ERC before PCB release. Develop firmware with floating sensor power and current-limited force wiring while connector sourcing proceeds. Verify all contact wiring with power absent, then use qualified assemblies for USB/OEM tests.
 
-Capture a direct charger/cable/device baseline, then insert the coupon. An external PD analyzer must be rated for the voltage/current under test; older reference analyzers are not automatically suitable. Do not add a trigger board that negotiates in place of the device.
+Capture a direct charger/cable/device baseline, then insert the bench monitor. An external PD analyzer must be rated for the voltage/current under test; older reference analyzers are not automatically suitable. Do not add a trigger board that negotiates in place of the device.
 
 | Test family | Cases | Acceptance |
 |---|---|---|
@@ -34,7 +34,7 @@ For a C-to-C source cable plus captive plug there can be three independently rev
 
 ## Stage 2 — Sensing core and calibration
 
-Evaluate the shunt/sensor/isolation circuit on a separate current-limited bench setup while connector work proceeds. Use Kelvin references at the declared B-side plane. Select reference equipment with a combined uncertainty small enough to resolve the target; aim for ≤0.2% reference power uncertainty for the 1% acceptance region. Record actual equipment specifications and ranges.
+Evaluate the same board through J2/J3 current-limited force connections while connector work proceeds; keep USB power paths disconnected during independent injection. Use Kelvin references at the declared B-side plane. Select reference equipment with a combined uncertainty small enough to resolve the target; aim for ≤0.2% reference power uncertainty for the 1% acceptance region. Record actual equipment specifications and ranges.
 
 1. Inspect soldering and sense routing; verify no reporting-to-inline conductive path. Check the main return is continuous and the PC port cannot backfeed VBUS.
 2. Verify regulator startup, no-input state, sensor ID, I²C levels, and PC enumeration. Test each domain powered alone; “input unavailable” must not be reported as a valid zero-watt reading.
@@ -44,7 +44,7 @@ Evaluate the shunt/sensor/isolation circuit on a separate current-limited bench 
 6. Verify 0.5 W, 1 W, just below 5 W, exactly 5 W, intermediate load, and rated current at 5/9/15/20/28 V. Do not demand rated power at a lower voltage if it exceeds rated current.
 7. Repeat at proposed ambient extremes and after high-current warm-up. Record shunt, sensor, regulator, contact, and enclosure temperatures independently; sensor die temperature is not contact temperature.
 
-Acceptance uses absolute error relative to the reference: ≤1% at ≥5 W; ≤5% from 0.5 W to below 5 W, for settled precision-mode records within the qualified envelope. Guardband for reference uncertainty. Characterize a population of units before turning a design allocation into a guaranteed specification.
+Acceptance uses absolute error relative to the reference: ≤1% at ≥5 W; ≤5% from 0.5 W to below 5 W, for settled one-second logging records within the qualified envelope. Guardband for reference uncertainty. Characterize a population of units before turning a design allocation into a guaranteed specification.
 
 ## Stage 3 — Current, thermal, and fault qualification
 
@@ -58,8 +58,13 @@ The 20% current point is a **design-capacity qualification gate**, with duration
 
 - Check barrier continuity with every shield, enclosure fastener, debug lead, and PC connector installed. Set working/withstand tests after the final insulation geometry and parts are chosen.
 - Test USB suspend, reconnect, dropped records, application exit, sensor NACK, and MCU reset. No backfeed or silent energy accumulation across missing intervals.
-- Compare steady-load energy over a known interval against a calibrated reference. Separately test load steps and voltage transitions; characterize sequential-sampling error.
-- Keep firmware elapsed time independent of host scheduling. Confirm the timebase and timestamp uncertainty. Energy accuracy is not yet a separate user-approved numerical specification.
+- Compare steady and pulsed-load energy against a calibrated reference over matched intervals. Test boundary crossings and voltage transitions; characterize sequential-sampling and internal-averaging error.
+- Verify approximately 58 fresh pairs/s, one-second time-weighted V/I/P reports, mean-of-products power, fractional Wh integration, complete/partial coverage and signed reversals.
+- Measure JP3 self-consumption over voltage/activity/temperature. Use full reporting-port current for PC-domain accounting and suspend validation; JP2 alone excludes front-end loads.
+- Verify any downstream cable correction with actual cold/hot assembly resistance and a terminal-level reference. Include the wall plug's energy quantization, sampling behavior and timestamp uncertainty.
+- Keep firmware elapsed time independent of host scheduling. Confirm the timebase and timestamp uncertainty. Wh logging and matched-interval comparison are required; no separate numerical dynamic-energy guarantee is yet established.
+
+Follow the [energy accounting and uncertainty method](energy-comparison.md); no subtraction result is conclusive unless it exceeds the combined uncertainty.
 
 ## Release conditions
 

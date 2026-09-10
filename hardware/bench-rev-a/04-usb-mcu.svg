@@ -1,0 +1,487 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1782" height="1260" viewBox="0 0 594 420">
+<rect width="594" height="420" fill="#fff"/>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#182532}.pin{font-size:2.5px}.net{font-size:2.6px}.ref{font-size:3.8px;font-weight:bold}.value{font-size:3px}</style>
+<text x="12" y="14" font-size="6">Reporting USB and MCU / A-DRAFT</text>
+<text x="12" y="22" font-size="3.5" fill="#af3d20">Connection-sheet preview — not a KiCad render; ERC and footprints pending</text>
+<rect x="57.22" y="49.96999999999999" width="35.56" height="40.64" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="75" y="43.96999999999999" text-anchor="middle">J8</text>
+<text class="value" x="75" y="47.46999999999999" text-anchor="middle">PC reporting USB-C; MPN open</text>
+<line x1="57.22" y1="55.04999999999999" x2="49.41" y2="55.04999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="55.84999999999999" text-anchor="start">A1</text>
+<text font-size="1.9" x="53.41" y="54.34999999999999" text-anchor="middle">A1</text>
+<text class="net" x="48.41" y="55.84999999999999" text-anchor="end">GND_PC</text>
+<line x1="57.22" y1="57.58999999999999" x2="49.41" y2="57.58999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="58.389999999999986" text-anchor="start">A2</text>
+<text font-size="1.9" x="53.41" y="56.889999999999986" text-anchor="middle">A2</text>
+<text class="net" x="48.41" y="58.389999999999986" text-anchor="end">NC</text>
+<line x1="57.22" y1="60.129999999999995" x2="49.41" y2="60.129999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="60.92999999999999" text-anchor="start">A3</text>
+<text font-size="1.9" x="53.41" y="59.42999999999999" text-anchor="middle">A3</text>
+<text class="net" x="48.41" y="60.92999999999999" text-anchor="end">NC</text>
+<line x1="57.22" y1="62.669999999999995" x2="49.41" y2="62.669999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="63.46999999999999" text-anchor="start">A4</text>
+<text font-size="1.9" x="53.41" y="61.96999999999999" text-anchor="middle">A4</text>
+<text class="net" x="48.41" y="63.46999999999999" text-anchor="end">VBUS_PC</text>
+<line x1="57.22" y1="65.21" x2="49.41" y2="65.21" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="66.00999999999999" text-anchor="start">A5</text>
+<text font-size="1.9" x="53.41" y="64.50999999999999" text-anchor="middle">A5</text>
+<text class="net" x="48.41" y="66.00999999999999" text-anchor="end">PC_CC1</text>
+<line x1="57.22" y1="67.74999999999999" x2="49.41" y2="67.74999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="68.54999999999998" text-anchor="start">A6</text>
+<text font-size="1.9" x="53.41" y="67.04999999999998" text-anchor="middle">A6</text>
+<text class="net" x="48.41" y="68.54999999999998" text-anchor="end">PC_DP_CONN</text>
+<line x1="57.22" y1="70.28999999999999" x2="49.41" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="71.08999999999999" text-anchor="start">A7</text>
+<text font-size="1.9" x="53.41" y="69.58999999999999" text-anchor="middle">A7</text>
+<text class="net" x="48.41" y="71.08999999999999" text-anchor="end">PC_DM_CONN</text>
+<line x1="57.22" y1="72.83" x2="49.41" y2="72.83" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="73.63" text-anchor="start">A8</text>
+<text font-size="1.9" x="53.41" y="72.13" text-anchor="middle">A8</text>
+<text class="net" x="48.41" y="73.63" text-anchor="end">NC</text>
+<line x1="57.22" y1="75.36999999999999" x2="49.41" y2="75.36999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="76.16999999999999" text-anchor="start">A9</text>
+<text font-size="1.9" x="53.41" y="74.66999999999999" text-anchor="middle">A9</text>
+<text class="net" x="48.41" y="76.16999999999999" text-anchor="end">VBUS_PC</text>
+<line x1="57.22" y1="77.91" x2="49.41" y2="77.91" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="78.71" text-anchor="start">A10</text>
+<text font-size="1.9" x="53.41" y="77.21" text-anchor="middle">A10</text>
+<text class="net" x="48.41" y="78.71" text-anchor="end">NC</text>
+<line x1="57.22" y1="80.44999999999999" x2="49.41" y2="80.44999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="81.24999999999999" text-anchor="start">A11</text>
+<text font-size="1.9" x="53.41" y="79.74999999999999" text-anchor="middle">A11</text>
+<text class="net" x="48.41" y="81.24999999999999" text-anchor="end">NC</text>
+<line x1="57.22" y1="82.99" x2="49.41" y2="82.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="83.78999999999999" text-anchor="start">A12</text>
+<text font-size="1.9" x="53.41" y="82.28999999999999" text-anchor="middle">A12</text>
+<text class="net" x="48.41" y="83.78999999999999" text-anchor="end">GND_PC</text>
+<line x1="57.22" y1="85.52999999999999" x2="49.41" y2="85.52999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.22" y="86.32999999999998" text-anchor="start">B1</text>
+<text font-size="1.9" x="53.41" y="84.82999999999998" text-anchor="middle">B1</text>
+<text class="net" x="48.41" y="86.32999999999998" text-anchor="end">GND_PC</text>
+<line x1="92.78" y1="55.04999999999999" x2="100.59" y2="55.04999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="55.84999999999999" text-anchor="end">B2</text>
+<text font-size="1.9" x="96.59" y="54.34999999999999" text-anchor="middle">B2</text>
+<text class="net" x="101.59" y="55.84999999999999" text-anchor="start">NC</text>
+<line x1="92.78" y1="57.58999999999999" x2="100.59" y2="57.58999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="58.389999999999986" text-anchor="end">B3</text>
+<text font-size="1.9" x="96.59" y="56.889999999999986" text-anchor="middle">B3</text>
+<text class="net" x="101.59" y="58.389999999999986" text-anchor="start">NC</text>
+<line x1="92.78" y1="60.129999999999995" x2="100.59" y2="60.129999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="60.92999999999999" text-anchor="end">B4</text>
+<text font-size="1.9" x="96.59" y="59.42999999999999" text-anchor="middle">B4</text>
+<text class="net" x="101.59" y="60.92999999999999" text-anchor="start">VBUS_PC</text>
+<line x1="92.78" y1="62.669999999999995" x2="100.59" y2="62.669999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="63.46999999999999" text-anchor="end">B5</text>
+<text font-size="1.9" x="96.59" y="61.96999999999999" text-anchor="middle">B5</text>
+<text class="net" x="101.59" y="63.46999999999999" text-anchor="start">PC_CC2</text>
+<line x1="92.78" y1="65.21" x2="100.59" y2="65.21" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="66.00999999999999" text-anchor="end">B6</text>
+<text font-size="1.9" x="96.59" y="64.50999999999999" text-anchor="middle">B6</text>
+<text class="net" x="101.59" y="66.00999999999999" text-anchor="start">PC_DP_CONN</text>
+<line x1="92.78" y1="67.74999999999999" x2="100.59" y2="67.74999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="68.54999999999998" text-anchor="end">B7</text>
+<text font-size="1.9" x="96.59" y="67.04999999999998" text-anchor="middle">B7</text>
+<text class="net" x="101.59" y="68.54999999999998" text-anchor="start">PC_DM_CONN</text>
+<line x1="92.78" y1="70.28999999999999" x2="100.59" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="71.08999999999999" text-anchor="end">B8</text>
+<text font-size="1.9" x="96.59" y="69.58999999999999" text-anchor="middle">B8</text>
+<text class="net" x="101.59" y="71.08999999999999" text-anchor="start">NC</text>
+<line x1="92.78" y1="72.83" x2="100.59" y2="72.83" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="73.63" text-anchor="end">B9</text>
+<text font-size="1.9" x="96.59" y="72.13" text-anchor="middle">B9</text>
+<text class="net" x="101.59" y="73.63" text-anchor="start">VBUS_PC</text>
+<line x1="92.78" y1="75.36999999999999" x2="100.59" y2="75.36999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="76.16999999999999" text-anchor="end">B10</text>
+<text font-size="1.9" x="96.59" y="74.66999999999999" text-anchor="middle">B10</text>
+<text class="net" x="101.59" y="76.16999999999999" text-anchor="start">NC</text>
+<line x1="92.78" y1="77.91" x2="100.59" y2="77.91" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="78.71" text-anchor="end">B11</text>
+<text font-size="1.9" x="96.59" y="77.21" text-anchor="middle">B11</text>
+<text class="net" x="101.59" y="78.71" text-anchor="start">NC</text>
+<line x1="92.78" y1="80.44999999999999" x2="100.59" y2="80.44999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="81.24999999999999" text-anchor="end">B12</text>
+<text font-size="1.9" x="96.59" y="79.74999999999999" text-anchor="middle">B12</text>
+<text class="net" x="101.59" y="81.24999999999999" text-anchor="start">GND_PC</text>
+<line x1="92.78" y1="82.99" x2="100.59" y2="82.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.78" y="83.78999999999999" text-anchor="end">SHIELD</text>
+<text font-size="1.9" x="96.59" y="82.28999999999999" text-anchor="middle">S</text>
+<text class="net" x="101.59" y="83.78999999999999" text-anchor="start">SHIELD_PC</text>
+<rect x="202.22" y="35.99999999999999" width="35.56" height="68.58" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="220" y="29.999999999999993" text-anchor="middle">U3</text>
+<text class="value" x="220" y="33.49999999999999" text-anchor="middle">STM32F072CBT6 / 128K flash</text>
+<line x1="202.22" y1="41.07999999999999" x2="194.41" y2="41.07999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="41.87999999999999" text-anchor="start">VBAT</text>
+<text font-size="1.9" x="198.41" y="40.37999999999999" text-anchor="middle">1</text>
+<text class="net" x="193.41" y="41.87999999999999" text-anchor="end">3V3_PC</text>
+<line x1="202.22" y1="43.61999999999999" x2="194.41" y2="43.61999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="44.41999999999999" text-anchor="start">PC13</text>
+<text font-size="1.9" x="198.41" y="42.91999999999999" text-anchor="middle">2</text>
+<text class="net" x="193.41" y="44.41999999999999" text-anchor="end">NC</text>
+<line x1="202.22" y1="46.15999999999999" x2="194.41" y2="46.15999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="46.95999999999999" text-anchor="start">PC14</text>
+<text font-size="1.9" x="198.41" y="45.45999999999999" text-anchor="middle">3</text>
+<text class="net" x="193.41" y="46.95999999999999" text-anchor="end">NC</text>
+<line x1="202.22" y1="48.69999999999999" x2="194.41" y2="48.69999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="49.499999999999986" text-anchor="start">PC15</text>
+<text font-size="1.9" x="198.41" y="47.999999999999986" text-anchor="middle">4</text>
+<text class="net" x="193.41" y="49.499999999999986" text-anchor="end">NC</text>
+<line x1="202.22" y1="51.239999999999995" x2="194.41" y2="51.239999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="52.03999999999999" text-anchor="start">PF0</text>
+<text font-size="1.9" x="198.41" y="50.53999999999999" text-anchor="middle">5</text>
+<text class="net" x="193.41" y="52.03999999999999" text-anchor="end">NC</text>
+<line x1="202.22" y1="53.77999999999999" x2="194.41" y2="53.77999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="54.579999999999984" text-anchor="start">PF1</text>
+<text font-size="1.9" x="198.41" y="53.079999999999984" text-anchor="middle">6</text>
+<text class="net" x="193.41" y="54.579999999999984" text-anchor="end">NC</text>
+<line x1="202.22" y1="56.31999999999999" x2="194.41" y2="56.31999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="57.11999999999999" text-anchor="start">NRST</text>
+<text font-size="1.9" x="198.41" y="55.61999999999999" text-anchor="middle">7</text>
+<text class="net" x="193.41" y="57.11999999999999" text-anchor="end">NRST_PC</text>
+<line x1="202.22" y1="58.85999999999999" x2="194.41" y2="58.85999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="59.65999999999999" text-anchor="start">VSSA</text>
+<text font-size="1.9" x="198.41" y="58.15999999999999" text-anchor="middle">8</text>
+<text class="net" x="193.41" y="59.65999999999999" text-anchor="end">GND_PC</text>
+<line x1="202.22" y1="61.39999999999999" x2="194.41" y2="61.39999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="62.19999999999999" text-anchor="start">VDDA</text>
+<text font-size="1.9" x="198.41" y="60.69999999999999" text-anchor="middle">9</text>
+<text class="net" x="193.41" y="62.19999999999999" text-anchor="end">VDDA_PC</text>
+<line x1="202.22" y1="63.93999999999999" x2="194.41" y2="63.93999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="64.74" text-anchor="start">PA0</text>
+<text font-size="1.9" x="198.41" y="63.23999999999999" text-anchor="middle">10</text>
+<text class="net" x="193.41" y="64.74" text-anchor="end">PC_VBUS_DETECT</text>
+<line x1="202.22" y1="66.47999999999999" x2="194.41" y2="66.47999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="67.27999999999999" text-anchor="start">PA1</text>
+<text font-size="1.9" x="198.41" y="65.77999999999999" text-anchor="middle">11</text>
+<text class="net" x="193.41" y="67.27999999999999" text-anchor="end">ISO_EN_PC</text>
+<line x1="202.22" y1="69.02" x2="194.41" y2="69.02" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="69.82" text-anchor="start">PA2</text>
+<text font-size="1.9" x="198.41" y="68.32" text-anchor="middle">12</text>
+<text class="net" x="193.41" y="69.82" text-anchor="end">UART_TX_PC</text>
+<line x1="202.22" y1="71.55999999999999" x2="194.41" y2="71.55999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="72.35999999999999" text-anchor="start">PA3</text>
+<text font-size="1.9" x="198.41" y="70.85999999999999" text-anchor="middle">13</text>
+<text class="net" x="193.41" y="72.35999999999999" text-anchor="end">UART_RX_PC</text>
+<line x1="202.22" y1="74.1" x2="194.41" y2="74.1" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="74.89999999999999" text-anchor="start">PA4</text>
+<text font-size="1.9" x="198.41" y="73.39999999999999" text-anchor="middle">14</text>
+<text class="net" x="193.41" y="74.89999999999999" text-anchor="end">GPIO_PA4</text>
+<line x1="202.22" y1="76.63999999999999" x2="194.41" y2="76.63999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="77.43999999999998" text-anchor="start">PA5</text>
+<text font-size="1.9" x="198.41" y="75.93999999999998" text-anchor="middle">15</text>
+<text class="net" x="193.41" y="77.43999999999998" text-anchor="end">GPIO_PA5</text>
+<line x1="202.22" y1="79.17999999999999" x2="194.41" y2="79.17999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="79.97999999999999" text-anchor="start">PA6</text>
+<text font-size="1.9" x="198.41" y="78.47999999999999" text-anchor="middle">16</text>
+<text class="net" x="193.41" y="79.97999999999999" text-anchor="end">GPIO_PA6</text>
+<line x1="202.22" y1="81.72" x2="194.41" y2="81.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="82.52" text-anchor="start">PA7</text>
+<text font-size="1.9" x="198.41" y="81.02" text-anchor="middle">17</text>
+<text class="net" x="193.41" y="82.52" text-anchor="end">GPIO_PA7</text>
+<line x1="202.22" y1="84.25999999999999" x2="194.41" y2="84.25999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="85.05999999999999" text-anchor="start">PB0</text>
+<text font-size="1.9" x="198.41" y="83.55999999999999" text-anchor="middle">18</text>
+<text class="net" x="193.41" y="85.05999999999999" text-anchor="end">BUTTON_PC</text>
+<line x1="202.22" y1="86.79999999999998" x2="194.41" y2="86.79999999999998" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="87.59999999999998" text-anchor="start">PB1</text>
+<text font-size="1.9" x="198.41" y="86.09999999999998" text-anchor="middle">19</text>
+<text class="net" x="193.41" y="87.59999999999998" text-anchor="end">LED_PC</text>
+<line x1="202.22" y1="89.33999999999999" x2="194.41" y2="89.33999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="90.13999999999999" text-anchor="start">PB2</text>
+<text font-size="1.9" x="198.41" y="88.63999999999999" text-anchor="middle">20</text>
+<text class="net" x="193.41" y="90.13999999999999" text-anchor="end">NC</text>
+<line x1="202.22" y1="91.88" x2="194.41" y2="91.88" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="92.67999999999999" text-anchor="start">PB10</text>
+<text font-size="1.9" x="198.41" y="91.17999999999999" text-anchor="middle">21</text>
+<text class="net" x="193.41" y="92.67999999999999" text-anchor="end">GPIO_PB10</text>
+<line x1="202.22" y1="94.41999999999999" x2="194.41" y2="94.41999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="95.21999999999998" text-anchor="start">PB11</text>
+<text font-size="1.9" x="198.41" y="93.71999999999998" text-anchor="middle">22</text>
+<text class="net" x="193.41" y="95.21999999999998" text-anchor="end">GPIO_PB11</text>
+<line x1="202.22" y1="96.96" x2="194.41" y2="96.96" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="97.75999999999999" text-anchor="start">VSS</text>
+<text font-size="1.9" x="198.41" y="96.25999999999999" text-anchor="middle">23</text>
+<text class="net" x="193.41" y="97.75999999999999" text-anchor="end">GND_PC</text>
+<line x1="202.22" y1="99.5" x2="194.41" y2="99.5" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="203.22" y="100.3" text-anchor="start">VDD</text>
+<text font-size="1.9" x="198.41" y="98.8" text-anchor="middle">24</text>
+<text class="net" x="193.41" y="100.3" text-anchor="end">3V3_PC</text>
+<line x1="237.78" y1="41.07999999999999" x2="245.59" y2="41.07999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="41.87999999999999" text-anchor="end">PB12</text>
+<text font-size="1.9" x="241.59" y="40.37999999999999" text-anchor="middle">25</text>
+<text class="net" x="246.59" y="41.87999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="43.61999999999999" x2="245.59" y2="43.61999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="44.41999999999999" text-anchor="end">PB13</text>
+<text font-size="1.9" x="241.59" y="42.91999999999999" text-anchor="middle">26</text>
+<text class="net" x="246.59" y="44.41999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="46.15999999999999" x2="245.59" y2="46.15999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="46.95999999999999" text-anchor="end">PB14</text>
+<text font-size="1.9" x="241.59" y="45.45999999999999" text-anchor="middle">27</text>
+<text class="net" x="246.59" y="46.95999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="48.69999999999999" x2="245.59" y2="48.69999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="49.499999999999986" text-anchor="end">PB15</text>
+<text font-size="1.9" x="241.59" y="47.999999999999986" text-anchor="middle">28</text>
+<text class="net" x="246.59" y="49.499999999999986" text-anchor="start">NC</text>
+<line x1="237.78" y1="51.239999999999995" x2="245.59" y2="51.239999999999995" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="52.03999999999999" text-anchor="end">PA8</text>
+<text font-size="1.9" x="241.59" y="50.53999999999999" text-anchor="middle">29</text>
+<text class="net" x="246.59" y="52.03999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="53.77999999999999" x2="245.59" y2="53.77999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="54.579999999999984" text-anchor="end">PA9</text>
+<text font-size="1.9" x="241.59" y="53.079999999999984" text-anchor="middle">30</text>
+<text class="net" x="246.59" y="54.579999999999984" text-anchor="start">NC</text>
+<line x1="237.78" y1="56.31999999999999" x2="245.59" y2="56.31999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="57.11999999999999" text-anchor="end">PA10</text>
+<text font-size="1.9" x="241.59" y="55.61999999999999" text-anchor="middle">31</text>
+<text class="net" x="246.59" y="57.11999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="58.85999999999999" x2="245.59" y2="58.85999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="59.65999999999999" text-anchor="end">PA11</text>
+<text font-size="1.9" x="241.59" y="58.15999999999999" text-anchor="middle">32</text>
+<text class="net" x="246.59" y="59.65999999999999" text-anchor="start">USB_DM_MCU</text>
+<line x1="237.78" y1="61.39999999999999" x2="245.59" y2="61.39999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="62.19999999999999" text-anchor="end">PA12</text>
+<text font-size="1.9" x="241.59" y="60.69999999999999" text-anchor="middle">33</text>
+<text class="net" x="246.59" y="62.19999999999999" text-anchor="start">USB_DP_MCU</text>
+<line x1="237.78" y1="63.93999999999999" x2="245.59" y2="63.93999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="64.74" text-anchor="end">PA13</text>
+<text font-size="1.9" x="241.59" y="63.23999999999999" text-anchor="middle">34</text>
+<text class="net" x="246.59" y="64.74" text-anchor="start">SWDIO_PC</text>
+<line x1="237.78" y1="66.47999999999999" x2="245.59" y2="66.47999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="67.27999999999999" text-anchor="end">VSS</text>
+<text font-size="1.9" x="241.59" y="65.77999999999999" text-anchor="middle">35</text>
+<text class="net" x="246.59" y="67.27999999999999" text-anchor="start">GND_PC</text>
+<line x1="237.78" y1="69.02" x2="245.59" y2="69.02" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="69.82" text-anchor="end">VDDIO2</text>
+<text font-size="1.9" x="241.59" y="68.32" text-anchor="middle">36</text>
+<text class="net" x="246.59" y="69.82" text-anchor="start">3V3_PC</text>
+<line x1="237.78" y1="71.55999999999999" x2="245.59" y2="71.55999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="72.35999999999999" text-anchor="end">PA14</text>
+<text font-size="1.9" x="241.59" y="70.85999999999999" text-anchor="middle">37</text>
+<text class="net" x="246.59" y="72.35999999999999" text-anchor="start">SWCLK_PC</text>
+<line x1="237.78" y1="74.1" x2="245.59" y2="74.1" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="74.89999999999999" text-anchor="end">PA15</text>
+<text font-size="1.9" x="241.59" y="73.39999999999999" text-anchor="middle">38</text>
+<text class="net" x="246.59" y="74.89999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="76.63999999999999" x2="245.59" y2="76.63999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="77.43999999999998" text-anchor="end">PB3</text>
+<text font-size="1.9" x="241.59" y="75.93999999999998" text-anchor="middle">39</text>
+<text class="net" x="246.59" y="77.43999999999998" text-anchor="start">NC</text>
+<line x1="237.78" y1="79.17999999999999" x2="245.59" y2="79.17999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="79.97999999999999" text-anchor="end">PB4</text>
+<text font-size="1.9" x="241.59" y="78.47999999999999" text-anchor="middle">40</text>
+<text class="net" x="246.59" y="79.97999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="81.72" x2="245.59" y2="81.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="82.52" text-anchor="end">PB5</text>
+<text font-size="1.9" x="241.59" y="81.02" text-anchor="middle">41</text>
+<text class="net" x="246.59" y="82.52" text-anchor="start">NC</text>
+<line x1="237.78" y1="84.25999999999999" x2="245.59" y2="84.25999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="85.05999999999999" text-anchor="end">PB6</text>
+<text font-size="1.9" x="241.59" y="83.55999999999999" text-anchor="middle">42</text>
+<text class="net" x="246.59" y="85.05999999999999" text-anchor="start">SCL_PC</text>
+<line x1="237.78" y1="86.79999999999998" x2="245.59" y2="86.79999999999998" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="87.59999999999998" text-anchor="end">PB7</text>
+<text font-size="1.9" x="241.59" y="86.09999999999998" text-anchor="middle">43</text>
+<text class="net" x="246.59" y="87.59999999999998" text-anchor="start">SDA_PC</text>
+<line x1="237.78" y1="89.33999999999999" x2="245.59" y2="89.33999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="90.13999999999999" text-anchor="end">BOOT0</text>
+<text font-size="1.9" x="241.59" y="88.63999999999999" text-anchor="middle">44</text>
+<text class="net" x="246.59" y="90.13999999999999" text-anchor="start">BOOT0_PC</text>
+<line x1="237.78" y1="91.88" x2="245.59" y2="91.88" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="92.67999999999999" text-anchor="end">PB8</text>
+<text font-size="1.9" x="241.59" y="91.17999999999999" text-anchor="middle">45</text>
+<text class="net" x="246.59" y="92.67999999999999" text-anchor="start">NC</text>
+<line x1="237.78" y1="94.41999999999999" x2="245.59" y2="94.41999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="95.21999999999998" text-anchor="end">PB9</text>
+<text font-size="1.9" x="241.59" y="93.71999999999998" text-anchor="middle">46</text>
+<text class="net" x="246.59" y="95.21999999999998" text-anchor="start">NC</text>
+<line x1="237.78" y1="96.96" x2="245.59" y2="96.96" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="97.75999999999999" text-anchor="end">VSS</text>
+<text font-size="1.9" x="241.59" y="96.25999999999999" text-anchor="middle">47</text>
+<text class="net" x="246.59" y="97.75999999999999" text-anchor="start">GND_PC</text>
+<line x1="237.78" y1="99.5" x2="245.59" y2="99.5" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="236.78" y="100.3" text-anchor="end">VDD</text>
+<text font-size="1.9" x="241.59" y="98.8" text-anchor="middle">48</text>
+<text class="net" x="246.59" y="100.3" text-anchor="start">3V3_PC</text>
+<rect x="352.3" y="62.669999999999995" width="25.4" height="15.24" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="365" y="56.669999999999995" text-anchor="middle">U6</text>
+<text class="value" x="365" y="60.169999999999995" text-anchor="middle">USBLC6-2SC6</text>
+<line x1="352.3" y1="67.74999999999999" x2="344.49" y2="67.74999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="353.3" y="68.54999999999998" text-anchor="start">IO1</text>
+<text font-size="1.9" x="348.49" y="67.04999999999998" text-anchor="middle">1</text>
+<text class="net" x="343.49" y="68.54999999999998" text-anchor="end">PC_DP_CONN</text>
+<line x1="352.3" y1="70.28999999999999" x2="344.49" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="353.3" y="71.08999999999999" text-anchor="start">GND</text>
+<text font-size="1.9" x="348.49" y="69.58999999999999" text-anchor="middle">2</text>
+<text class="net" x="343.49" y="71.08999999999999" text-anchor="end">GND_PC</text>
+<line x1="352.3" y1="72.83" x2="344.49" y2="72.83" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="353.3" y="73.63" text-anchor="start">IO2</text>
+<text font-size="1.9" x="348.49" y="72.13" text-anchor="middle">3</text>
+<text class="net" x="343.49" y="73.63" text-anchor="end">PC_DM_CONN</text>
+<line x1="377.7" y1="67.74999999999999" x2="385.51" y2="67.74999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.7" y="68.54999999999998" text-anchor="end">IO2</text>
+<text font-size="1.9" x="381.51" y="67.04999999999998" text-anchor="middle">4</text>
+<text class="net" x="386.51" y="68.54999999999998" text-anchor="start">PC_DM_CONN</text>
+<line x1="377.7" y1="70.28999999999999" x2="385.51" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.7" y="71.08999999999999" text-anchor="end">VBUS</text>
+<text font-size="1.9" x="381.51" y="69.58999999999999" text-anchor="middle">5</text>
+<text class="net" x="386.51" y="71.08999999999999" text-anchor="start">VBUS_PC</text>
+<line x1="377.7" y1="72.83" x2="385.51" y2="72.83" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.7" y="73.63" text-anchor="end">IO1</text>
+<text font-size="1.9" x="381.51" y="72.13" text-anchor="middle">6</text>
+<text class="net" x="386.51" y="73.63" text-anchor="start">PC_DP_CONN</text>
+<rect x="504.92" y="65.21" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510" y="59.209999999999994" text-anchor="middle">R13</text>
+<text class="value" x="510" y="62.709999999999994" text-anchor="middle">5k1 1% Rd</text>
+<line x1="504.92" y1="70.28999999999999" x2="497.11" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="505.92" y="71.08999999999999" text-anchor="start">1</text>
+<text font-size="1.9" x="501.11" y="69.58999999999999" text-anchor="middle">1</text>
+<text class="net" x="496.11" y="71.08999999999999" text-anchor="end">PC_CC1</text>
+<line x1="515.08" y1="70.28999999999999" x2="522.89" y2="70.28999999999999" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.08" y="71.08999999999999" text-anchor="end">2</text>
+<text font-size="1.9" x="518.89" y="69.58999999999999" text-anchor="middle">2</text>
+<text class="net" x="523.89" y="71.08999999999999" text-anchor="start">GND_PC</text>
+<rect x="69.92" y="132.57999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="75" y="126.57999999999998" text-anchor="middle">R14</text>
+<text class="value" x="75" y="130.07999999999998" text-anchor="middle">5k1 1% Rd</text>
+<line x1="69.92" y1="137.66" x2="62.11" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.92" y="138.46" text-anchor="start">1</text>
+<text font-size="1.9" x="66.11" y="136.96" text-anchor="middle">1</text>
+<text class="net" x="61.11" y="138.46" text-anchor="end">PC_CC2</text>
+<line x1="80.08" y1="137.66" x2="87.89" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.08" y="138.46" text-anchor="end">2</text>
+<text font-size="1.9" x="83.89" y="136.96" text-anchor="middle">2</text>
+<text class="net" x="88.89" y="138.46" text-anchor="start">GND_PC</text>
+<rect x="214.92" y="132.57999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="220" y="126.57999999999998" text-anchor="middle">R15</text>
+<text class="value" x="220" y="130.07999999999998" text-anchor="middle">0R tuning footprint</text>
+<line x1="214.92" y1="137.66" x2="207.11" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="215.92" y="138.46" text-anchor="start">1</text>
+<text font-size="1.9" x="211.11" y="136.96" text-anchor="middle">1</text>
+<text class="net" x="206.11" y="138.46" text-anchor="end">PC_DP_CONN</text>
+<line x1="225.08" y1="137.66" x2="232.89" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="224.08" y="138.46" text-anchor="end">2</text>
+<text font-size="1.9" x="228.89" y="136.96" text-anchor="middle">2</text>
+<text class="net" x="233.89" y="138.46" text-anchor="start">USB_DP_MCU</text>
+<rect x="359.92" y="132.57999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="365" y="126.57999999999998" text-anchor="middle">R16</text>
+<text class="value" x="365" y="130.07999999999998" text-anchor="middle">0R tuning footprint</text>
+<line x1="359.92" y1="137.66" x2="352.11" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="360.92" y="138.46" text-anchor="start">1</text>
+<text font-size="1.9" x="356.11" y="136.96" text-anchor="middle">1</text>
+<text class="net" x="351.11" y="138.46" text-anchor="end">PC_DM_CONN</text>
+<line x1="370.08" y1="137.66" x2="377.89" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="369.08" y="138.46" text-anchor="end">2</text>
+<text font-size="1.9" x="373.89" y="136.96" text-anchor="middle">2</text>
+<text class="net" x="378.89" y="138.46" text-anchor="start">USB_DM_MCU</text>
+<rect x="504.92" y="132.57999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510" y="126.57999999999998" text-anchor="middle">C11</text>
+<text class="value" x="510" y="130.07999999999998" text-anchor="middle">100nF 10V at U3.24</text>
+<line x1="504.92" y1="137.66" x2="497.11" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="505.92" y="138.46" text-anchor="start">1</text>
+<text font-size="1.9" x="501.11" y="136.96" text-anchor="middle">1</text>
+<text class="net" x="496.11" y="138.46" text-anchor="end">3V3_PC</text>
+<line x1="515.08" y1="137.66" x2="522.89" y2="137.66" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.08" y="138.46" text-anchor="end">2</text>
+<text font-size="1.9" x="518.89" y="136.96" text-anchor="middle">2</text>
+<text class="net" x="523.89" y="138.46" text-anchor="start">GND_PC</text>
+<rect x="69.92" y="170.73999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="75" y="164.73999999999998" text-anchor="middle">C12</text>
+<text class="value" x="75" y="168.23999999999998" text-anchor="middle">100nF 10V at U3.48</text>
+<line x1="69.92" y1="175.82" x2="62.11" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.92" y="176.62" text-anchor="start">1</text>
+<text font-size="1.9" x="66.11" y="175.12" text-anchor="middle">1</text>
+<text class="net" x="61.11" y="176.62" text-anchor="end">3V3_PC</text>
+<line x1="80.08" y1="175.82" x2="87.89" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.08" y="176.62" text-anchor="end">2</text>
+<text font-size="1.9" x="83.89" y="175.12" text-anchor="middle">2</text>
+<text class="net" x="88.89" y="176.62" text-anchor="start">GND_PC</text>
+<rect x="214.92" y="170.73999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="220" y="164.73999999999998" text-anchor="middle">C13</text>
+<text class="value" x="220" y="168.23999999999998" text-anchor="middle">100nF 10V at U3.36</text>
+<line x1="214.92" y1="175.82" x2="207.11" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="215.92" y="176.62" text-anchor="start">1</text>
+<text font-size="1.9" x="211.11" y="175.12" text-anchor="middle">1</text>
+<text class="net" x="206.11" y="176.62" text-anchor="end">3V3_PC</text>
+<line x1="225.08" y1="175.82" x2="232.89" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="224.08" y="176.62" text-anchor="end">2</text>
+<text font-size="1.9" x="228.89" y="175.12" text-anchor="middle">2</text>
+<text class="net" x="233.89" y="176.62" text-anchor="start">GND_PC</text>
+<rect x="359.92" y="170.73999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="365" y="164.73999999999998" text-anchor="middle">C14</text>
+<text class="value" x="365" y="168.23999999999998" text-anchor="middle">100nF 10V at U3.1</text>
+<line x1="359.92" y1="175.82" x2="352.11" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="360.92" y="176.62" text-anchor="start">1</text>
+<text font-size="1.9" x="356.11" y="175.12" text-anchor="middle">1</text>
+<text class="net" x="351.11" y="176.62" text-anchor="end">3V3_PC</text>
+<line x1="370.08" y1="175.82" x2="377.89" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="369.08" y="176.62" text-anchor="end">2</text>
+<text font-size="1.9" x="373.89" y="175.12" text-anchor="middle">2</text>
+<text class="net" x="378.89" y="176.62" text-anchor="start">GND_PC</text>
+<rect x="504.92" y="170.73999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510" y="164.73999999999998" text-anchor="middle">R17</text>
+<text class="value" x="510" y="168.23999999999998" text-anchor="middle">10R VDDA filter</text>
+<line x1="504.92" y1="175.82" x2="497.11" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="505.92" y="176.62" text-anchor="start">1</text>
+<text font-size="1.9" x="501.11" y="175.12" text-anchor="middle">1</text>
+<text class="net" x="496.11" y="176.62" text-anchor="end">3V3_PC</text>
+<line x1="515.08" y1="175.82" x2="522.89" y2="175.82" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.08" y="176.62" text-anchor="end">2</text>
+<text font-size="1.9" x="518.89" y="175.12" text-anchor="middle">2</text>
+<text class="net" x="523.89" y="176.62" text-anchor="start">VDDA_PC</text>
+<rect x="69.92" y="208.89999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="75" y="202.89999999999998" text-anchor="middle">C15</text>
+<text class="value" x="75" y="206.39999999999998" text-anchor="middle">100nF 10V at U3.9</text>
+<line x1="69.92" y1="213.98" x2="62.11" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.92" y="214.78" text-anchor="start">1</text>
+<text font-size="1.9" x="66.11" y="213.28" text-anchor="middle">1</text>
+<text class="net" x="61.11" y="214.78" text-anchor="end">VDDA_PC</text>
+<line x1="80.08" y1="213.98" x2="87.89" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.08" y="214.78" text-anchor="end">2</text>
+<text font-size="1.9" x="83.89" y="213.28" text-anchor="middle">2</text>
+<text class="net" x="88.89" y="214.78" text-anchor="start">GND_PC</text>
+<rect x="214.92" y="208.89999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="220" y="202.89999999999998" text-anchor="middle">C16</text>
+<text class="value" x="220" y="206.39999999999998" text-anchor="middle">1uF 10V</text>
+<line x1="214.92" y1="213.98" x2="207.11" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="215.92" y="214.78" text-anchor="start">1</text>
+<text font-size="1.9" x="211.11" y="213.28" text-anchor="middle">1</text>
+<text class="net" x="206.11" y="214.78" text-anchor="end">VDDA_PC</text>
+<line x1="225.08" y1="213.98" x2="232.89" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="224.08" y="214.78" text-anchor="end">2</text>
+<text font-size="1.9" x="228.89" y="213.28" text-anchor="middle">2</text>
+<text class="net" x="233.89" y="214.78" text-anchor="start">GND_PC</text>
+<rect x="359.92" y="208.89999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="365" y="202.89999999999998" text-anchor="middle">R18</text>
+<text class="value" x="365" y="206.39999999999998" text-anchor="middle">100k 1%</text>
+<line x1="359.92" y1="213.98" x2="352.11" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="360.92" y="214.78" text-anchor="start">1</text>
+<text font-size="1.9" x="356.11" y="213.28" text-anchor="middle">1</text>
+<text class="net" x="351.11" y="214.78" text-anchor="end">VBUS_PC</text>
+<line x1="370.08" y1="213.98" x2="377.89" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="369.08" y="214.78" text-anchor="end">2</text>
+<text font-size="1.9" x="373.89" y="213.28" text-anchor="middle">2</text>
+<text class="net" x="378.89" y="214.78" text-anchor="start">PC_VBUS_DETECT</text>
+<rect x="504.92" y="208.89999999999998" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510" y="202.89999999999998" text-anchor="middle">R19</text>
+<text class="value" x="510" y="206.39999999999998" text-anchor="middle">100k 1%</text>
+<line x1="504.92" y1="213.98" x2="497.11" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="505.92" y="214.78" text-anchor="start">1</text>
+<text font-size="1.9" x="501.11" y="213.28" text-anchor="middle">1</text>
+<text class="net" x="496.11" y="214.78" text-anchor="end">PC_VBUS_DETECT</text>
+<line x1="515.08" y1="213.98" x2="522.89" y2="213.98" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.08" y="214.78" text-anchor="end">2</text>
+<text font-size="1.9" x="518.89" y="213.28" text-anchor="middle">2</text>
+<text class="net" x="523.89" y="214.78" text-anchor="start">GND_PC</text>
+<rect x="69.92" y="247.05999999999997" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="75" y="241.05999999999997" text-anchor="middle">R20</text>
+<text class="value" x="75" y="244.55999999999997" text-anchor="middle">0R PC shell bond</text>
+<line x1="69.92" y1="252.14" x2="62.11" y2="252.14" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.92" y="252.94" text-anchor="start">1</text>
+<text font-size="1.9" x="66.11" y="251.44" text-anchor="middle">1</text>
+<text class="net" x="61.11" y="252.94" text-anchor="end">SHIELD_PC</text>
+<line x1="80.08" y1="252.14" x2="87.89" y2="252.14" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.08" y="252.94" text-anchor="end">2</text>
+<text font-size="1.9" x="83.89" y="251.44" text-anchor="middle">2</text>
+<text class="net" x="88.89" y="252.94" text-anchor="start">GND_PC</text>
+<text x="12" y="397" font-size="3">All circuits here are PC domain. No inline USB or CC signal reaches U3. USB port footprint remains open.</text>
+<text x="12" y="409" font-size="3">Same net names connect across sheets. INLINE = amber; PC = blue; isolation component = purple.</text>
+</svg>

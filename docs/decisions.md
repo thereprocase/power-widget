@@ -31,7 +31,7 @@ Evaluate an independent analog disconnect for overvoltage/overcurrent/overtemper
 
 ## D04 — Measurement: PROVISIONAL
 
-INA228 with one 5 mΩ four-terminal shunt on VBUS. Use the **±163.84 mV ADC range** after the current-rule change; the narrower range clips at about 8.2 A and does not cover the larger design scenarios. Direct raw conversion and per-unit calibration retain useful low-current margin without autoranging. The shunt package must be requalified against the final current; the 1 W WSK2512 candidate is only retained for the 9 A study. INA238 remains a cost-down comparison conditional on a new error budget. No low-side shunt: keep inline ground continuous.
+INA228 with one 5 mΩ four-terminal shunt on VBUS. Use the **±163.84 mV ADC range** after the current-rule change; the narrower range clips at about 8.2 A and does not cover the larger design scenarios. Direct raw conversion and per-unit calibration retain useful low-current margin without autoranging. The 1 W WSK2512 candidate must be thermally qualified at 9 A and the 10.8 A margin point. INA238 remains a cost-down comparison conditional on a new error budget. No low-side shunt: keep inline ground continuous.
 
 ## D05 — Isolation and supply: PROVISIONAL
 
@@ -39,11 +39,11 @@ PC-powered USB MCU; inline-powered sensor; isolate I²C between them with ISO164
 
 ## D06 — Accuracy and bandwidth: PROVISIONAL
 
-Qualify a settled precision mode first, with approximately 0.54 s acquisition windows. Offer a faster trend mode only with its own noise limits. The low-power accuracy requirement is not an oscilloscope specification. Confirm the proposed ambient range and accuracy plane before release.
+Use nominal 17.28 ms fresh acquisitions and one-second software averages for normal logging, as requested. Allocate ±1 µV shunt noise at the final one-second DC result; demonstrate this on hardware without assuming correlated errors average away. The 0.54 s mode remains a calibration/diagnostic option. Validate pulsed-load energy separately because voltage and current are sequentially sampled. Confirm ambient range and the PCB_B reference plane before release.
 
 ## D07 — Product scope: PROVISIONAL
 
-No built-in PD decoder or trigger. A separate suitably rated analyzer is a development instrument for compatibility validation. Preserve low-frequency/DC charging signatures as well as digital messages; do not attach the MCU to inline D+/D−. SBU and unused high-speed contacts remain part of the early routing investigation, not presumed unused vendor signals. Include USB-C-to-other-connector OEM cables in the survey: a captive USB-C output cannot physically mate with a MagSafe end, so some assemblies may require placing the monitor at the charger side. Recheck reference-plane and self-consumption accounting in that placement.
+No built-in PD decoder or trigger. A separate suitably rated analyzer is a development instrument for compatibility validation. Preserve low-frequency/DC charging signatures as well as digital messages; do not attach the MCU to inline D+/D−. The bench retains SBU and each high-speed contact's continuity without claiming USB 3/video performance. Include USB-C-to-other-connector OEM cables in the survey: a captive USB-C output cannot physically mate with a MagSafe end, so some assemblies may require placing the monitor at the charger side. Recheck reference-plane and self-consumption accounting in that placement.
 
 ## D08 — Minimum VBUS / low-voltage programmable modes: OPEN
 
@@ -51,4 +51,8 @@ The 5–28 V accuracy study is an engineering assumption, not a user-imposed 5 V
 
 ## D09 — Full bench prototype: SELECTED
 
-Replace the standalone continuity coupon with an accessible board containing the passive inline path, INA228, isolated I²C, PC reporting USB, an onboard USB MCU, SWD/UART/I²C access, force terminals, Kelvin probe points, and a selectable floating sensor supply. Firmware can start with a current-limited supply/load before high-current USB assemblies are qualified. Production size and enclosure constraints do not apply to this board. See the bench hardware package as it is captured.
+Replace the standalone continuity coupon with an accessible board containing the passive inline path, INA228, isolated I²C, PC reporting USB, an onboard USB MCU, SWD/UART/I²C access, force terminals, Kelvin probe points, and a selectable floating sensor supply. Firmware can start with a current-limited supply/load before high-current USB assemblies are qualified. Production size and enclosure constraints do not apply to this board. See the [captured bench circuit and bring-up sequence](../hardware/bench-rev-a/README.md).
+
+## D10 — Energy diagnostic and transport: SELECTED baseline
+
+Report measured V/I, calculated W and Wh using frequent samples and one-second time-weighted reports over USB serial. The PC may bridge to MQTT or HTTP. Preserve boot identity, time mapping, gaps and calibration provenance. Compare wall and laptop-input energy over matching intervals, accounting for downstream cable loss, board consumption and wall-plug uncertainty. PCB_B energy must not be mislabeled laptop-terminal energy. See [energy-comparison.md](energy-comparison.md).

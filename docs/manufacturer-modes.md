@@ -21,7 +21,7 @@ This is a dated, bounded design roster, not an exhaustive guarantee for every pr
 
 ## Scope interpretation
 
-- The researched 12 A phone mode no longer drives this design. The 12.5 A / 15 A calculation remains only historical sensitivity analysis.
+- The researched 12 A phone mode no longer drives this design. The excluded phone-current calculations remain in git history.
 - Exclude demonstrations, battery-side currents, total multiport wattage, and ordinary barrel/slim-tip adapters whose path contains no USB-C connection.
 - Include standards-based laptop PD and the documented Dell/Lenovo modes above. Add exact charger/cable/device entries before extending coverage.
 - A USB-C-to-Slim cable still carries its input current through the USB-C source connector. This differs from a fixed slim-tip adapter with no USB-C connection.

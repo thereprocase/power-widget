@@ -28,7 +28,7 @@ Architecture checkpoint: `3a62ac91781fd497afed0c893fcbd64117126e75`.
 - Numerical verification: 19,635 points in the provisional 9 A study; worst allocated precision errors 0.874% at 5 W and 4.539% at 0.5 W, both at 28 V. Deterministic outputs reproduce; local document links resolve; no whitespace errors found.
 - A lower-than-5 V measurement range remains an explicit supply/qualification question; the initial sweep does not claim to cover every programmable charger voltage.
 
-## Immediate next steps after this package
+## Historical handoff after checkpoint 3 (superseded below)
 
 1. Obtain current-mode evidence for exact target OEM combinations and close the numeric rating; no global maximum has been claimed.
 2. Build the connector feasibility fixture and verify CC/VCONN/e-marker behavior across orientations. Prefer captive male if it passes; retain two receptacles as an allowed outcome.
@@ -40,3 +40,17 @@ Architecture checkpoint: `3a62ac91781fd497afed0c893fcbd64117126e75`.
 2026-09-10: user requested a full firmware-capable bench prototype in place of the tiny test coupon, then explicitly excluded extreme proprietary phone charging. Verified Dell 165 W output modes, Lenovo 140 W embedded output specification, and Lenovo C170's official 8.5 A maximum. Selected 28 V / 9 A continuous target with 10.8 A design margin for the laptop roster. Apple still needs an actual unit label/trace; no universal compatibility is claimed.
 
 Added the captive contact map and reproducible four-case CC topology model. Fixed two-receptacle wiring fails two local orientations. Captive is the bench baseline; procurement, cable-discovery traces, current qualification, and final topology remain open. Next: capture the full bench sensing/MCU/debug circuit and bring-up plan.
+
+## Checkpoint 5 — Full bench draft and interval energy measurement
+
+2026-09-10: captured the complete bench circuit with 82 components and 65 named nets across five child sheets. Added native KiCad draft files, independently generated SVG connection sheets, component schedule, machine-readable connectivity and a reproducible generator. No native KiCad/ERC, PCB layout, physical build or hardware test is claimed.
+
+The board now specifies STM32F072CBT6, SWD/UART/GPIO, reset/boot/user controls, isolated INA228 sensing, force/Kelvin access and floating external sensor power. Separate current links support board-consumption characterization. Added TPS22919 switching of the PC isolator supply after its idle-current maximum exposed a USB suspend problem; total suspend behavior remains a bench gate.
+
+The user added frequent sampling, one-second averages, timestamped serial/MQTT/HTTP output and a matched wall-versus-laptop energy diagnostic. Normal logging now uses nominal 17.28 ms sensor windows and one-second software reports. The ±1 µV final-average noise allocation is provisional; no automatic averaging improvement or dynamic energy accuracy is claimed. Serial is the board baseline; MQTT/HTTP are optional host bridges.
+
+Added a firmware pin/register contract and raw signed decoding, plus time-weighted power/Wh, coverage, clock mapping, board self-consumption and downstream cable-correction rules. Native firmware/USB drivers and the PC logger are still to be implemented. The current numerical envelope stays 28 V / 9 A with 10.8 A margin; removed excluded phone scenarios from active calculation outputs.
+
+Verification: all three generators reproduce their outputs; 19,635 DC budget points retain 0.874% / 4.539% worst allocations. Circuit domain/CC assertions pass, all five SVG previews were visually inspected, local document links resolve, and JSON parses. The C header compiles with strict host-GCC warnings and passes signed decoding endpoint vectors. These are design-file/software checks, not KiCad ERC or physical validation.
+
+Next physical-design work: review native schematic/footprints/ERC, source the captive and force assemblies, resolve inline overrange/ESD behavior and route the accessible PCB. Begin firmware on the documented interfaces, then validate DC/noise/energy through force connections before qualifying OEM cables and orientations.

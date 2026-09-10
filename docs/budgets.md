@@ -2,7 +2,7 @@
 
 The [generated results](../analysis/results.md) and [input assumptions](../analysis/assumptions.json) are the numerical design record. Run `python tools/budgets.py` to reproduce them; `--check` verifies that committed outputs match the inputs. Python's standard library is sufficient.
 
-The manufacturer-current maximum remains unverified. The principal sweep uses a **9 A scenario**, with the revised rule applied to additional scenarios. This does not freeze the required rating.
+The documented laptop-roster maximum is 8.5 A, setting a **9 A continuous design target / 10.8 A margin**. The sweep checks that target. A physical assembly rating and vendor compatibility remain unqualified.
 
 ## Low-power accuracy
 
@@ -21,7 +21,7 @@ The model uses a conservative arithmetic sum of terms, followed by the multiplic
 | Shunt TCR | Finished-part 35 ppm/°C for the provisional WSK2512 value |
 | Gain drift, offset drift, common-mode and supply effects | Explicit terms from the sensor data; test endpoints do not eliminate these terms |
 | Quantization | Half-LSB bounds using the revised wider ADC range |
-| Noise | ±1 µV shunt allocation in precision mode, plus a bus-voltage noise allocation |
+| Noise | ±1 µV shunt allocation after one-second software averaging, plus a bus-voltage noise allocation |
 | Thermal EMF / offset from layout | ±0.5 µV allocation, not a measured value |
 | Residual layout gain | 0.05% current and 0.02% voltage allocations |
 | Loading and leakage | Full bus-input load plus an additional 10 µA output-leakage allocation; pre-shunt electronics supply excluded in forward use |
@@ -32,11 +32,11 @@ See [TI INA228](https://www.ti.com/lit/ds/symlink/ina228.pdf), particularly its 
 
 ## Timing
 
-Precision candidate: 1052 µs per channel, two channels, 256 averages, giving a nominal 538.624 ms acquisition window. Trend candidate: 540 µs, two channels, 16 averages, giving 17.280 ms. These counts assume bus/shunt conversion only. Adding temperature conversions changes cadence.
+Normal logging: 540 µs per channel, two channels, 16 averages, giving nominal 17.280 ms sensor windows and about 57.87 fresh pairs/s. Software forms time-weighted one-second reports. The ±1 µV shunt-noise allocation applies to the final one-second result, not each pair. Correlated noise, drift and offsets do not automatically average away. Diagnostic precision remains 1052 µs per channel with 256 averages, or 538.624 ms. Adding temperature conversions changes cadence.
 
 Bus voltage and current are converted sequentially. The budget covers settled DC, not instantaneous multiplication during a load edge or PD voltage transition. Changes within or between windows require characterization. Mark transition-contaminated records where detectable; simple settled endpoint agreement cannot rule out every in-window event. Do not claim guaranteed transient power accuracy from this sensor arrangement.
 
-Reporting more often does not create new independent measurements. Every record needs its actual sample window, sequence number, and validity status. The faster mode has a separately modeled noise allowance and does not meet the low-power precision target.
+Reporting more often does not create new independent measurements. Every record needs its actual sample window, sequence number, and validity status. The raw trend stream uses a separately modeled ±3 µV noise allowance and does not meet the low-power precision target; the one-second aggregation allocation remains a hardware validation gate. See [energy-comparison.md](energy-comparison.md) for integration and timestamp rules.
 
 ## Loss and temperature
 
@@ -50,7 +50,7 @@ The two-receptacle topology requires a new resistance model using the actual sec
 
 ## What the calculations do not establish
 
-- The OEM maximum current, charging transparency, connector rating, EPR cable identity, or 28 V overrange behavior.
+- Physical current capacity, charging transparency, cable identity or 28 V overrange behavior. The numeric current target comes from the separate OEM roster.
 - Actual noise tails, thermoelectric offsets, assembly variation, long-term drift, contact wear, and temperature-rise limits.
 - Transient current fidelity, AC power accuracy, or dynamic energy accuracy with sequential voltage/current sampling.
 - Fault clearing, TVS coordination, EMI/ESD performance, or USB signal integrity.
