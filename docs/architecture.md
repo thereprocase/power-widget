@@ -9,7 +9,7 @@ flowchart TD
   A["Inline port A"] -->|VBUS| R["5 mΩ Kelvin shunt"]
   R --> B["Inline port B"]
   A <-->|"CC contacts / USB 2.0 / other contacts"| B
-  A --> L["60 V regulator"]
+  A --> L["85 V regulator"]
   L --> S["INA228 sensor"]
   R -. "Kelvin voltage" .-> S
   B -. "Output voltage" .-> S
@@ -44,7 +44,7 @@ Favor a short custom pigtail with explicitly documented contact continuity. Do n
 | R1 | Vishay WSK2512, 5 mΩ, 0.5% grade; candidate code WSK25125L000DEA | 9 A / 10.8 A target; thermal and footprint qualification pending |
 | U2 | TI ISO1641BD, SOIC-8 | Bidirectional SDA, PC-to-sensor SCL |
 | U3 | ST STM32F072CBT6, LQFP48 | USB device, I²C master, calibration, timing, reporting |
-| U4 | TI TPS7A1601, adjustable 3.3 V | Inline-side low-current supply |
+| U4 | TI TPS7A4333DGQR, fixed 3.3 V | Inline-side low-current supply |
 | U5 | TI TLV75533PDBVR | MCU and isolator PC side |
 | U6 | ST USBLC6-2SC6 | Reporting USB ESD network |
 | U7 | TI TPS22919DCKR | Switch PC isolator supply and pull-ups for suspend |
@@ -75,7 +75,7 @@ Use raw shunt voltage and bus voltage for signed calculations: current = calibra
 
 [ISO1641](https://www.ti.com/lit/ds/symlink/iso1641.pdf) is the provisional barrier. Side 1 faces the PC MCU; side 2 faces U1. Both sides use their own 3.3 V rail and 2.2 kΩ pull-ups. The side-1 output-low maximum of 0.710 V fits the selected MCU's conservative 0.3 × VDD input-low limit at 3.3 V; verify actual levels and timing. Start at 100 kHz. Validate hot-plug and unpowered states. U7 and PA1 switch side 1 plus its pull-ups off during USB suspend; PB6/PB7 must first become high impedance. The isolator's 3.2 mA maximum idle PC-side current motivates this switch; total USB-port suspend draw still needs testing.
 
-Power U1 and isolator side 2 from an **A-side tap before the shunt** through the [TPS7A16 regulator](https://www.ti.com/lit/ds/symlink/tps7a16.pdf). PC VBUS powers U3, U5, and isolator side 1. Independent local supplies provide supply isolation without a transformer. Budget 8 mA inline draw initially, or 224 mW at 28 V. This is a planning allocation including bus activity, not a measured or guaranteed worst-case consumption figure. Heat and source perturbation remain validation items.
+Power U1 and isolator side 2 from an **A-side tap before the shunt** through the [TPS7A43 regulator](https://www.ti.com/lit/ds/symlink/tps7a43.pdf). PC VBUS powers U3, U5, and isolator side 1. Independent local supplies provide supply isolation without a transformer. Budget 8 mA inline draw initially, or 224 mW at 28 V. This is a planning allocation including bus activity, not a measured or guaranteed worst-case consumption figure. Heat and source perturbation remain validation items.
 
 In the normal A-to-B direction, the A-side supply tap is excluded from the shunt reading. Output-voltage sensing and output-side leakage still contribute a small measured burden and are included in the low-power error model. With reverse current, the meter supply becomes part of what the B-side source delivers toward A. Report signed power at the fixed B measurement plane; do not relabel it as pure external-load power in both directions. If symmetric external-load accounting becomes mandatory, reconsider isolated PC-fed sensing or separately measure self-consumption.
 
@@ -91,7 +91,7 @@ Allocate approximately 100 × 80 mm for this accessible bench board, four layers
 
 ## Remaining circuit gates
 
-A numbered bench circuit and logical connector map now exist. Native KiCad loading/ERC, footprint mapping, actual connector/pigtail sourcing, inline ESD/overrange protection and PCB layout remain open. The same board's force and floating-supply connections support core testing while connector qualification proceeds. Resolve these gates before fabrication release.
+A numbered bench circuit, logical connector map and native KiCad board now exist. KiCad 9 ERC passes with zero violations. See the current bench review for PCB DRC and the remaining connector, protection and qualification gates. The same board's force and floating-supply connections support core testing while connector qualification proceeds. Resolve these gates before fabrication release.
 
 ## Sampling and firmware
 

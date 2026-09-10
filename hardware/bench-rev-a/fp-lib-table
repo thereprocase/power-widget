@@ -1,0 +1,1 @@
+(fp_lib_table (lib (name "PowerWidget") (type "KiCad") (uri "${KIPRJMOD}/PowerWidget.pretty") (options "") (descr "Reviewed bench footprint snapshot")))

@@ -1,0 +1,8 @@
+{
+  "kicad_version": "9.0.9",
+  "circuit_footprints": 82,
+  "named_nets": 65,
+  "tracks_and_vias": 894,
+  "pin_net_map_matches_circuit_json": true,
+  "status": "native ERC and DRC reports determine rule-check status; hardware unqualified"
+}

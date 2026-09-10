@@ -23,7 +23,7 @@ SHEETS = {
  '01-inline': ('Inline path', 'INLINE', '9 A target / 10.8 A margin. Connector assemblies UNQUALIFIED. Force terminals parallel the USB ports.'),
  '02-sensing': ('Sensing and isolation', 'MIXED', 'PC and INLINE grounds stay separate. U2 is the only signal crossing. Kelvin routing is a PCB requirement.'),
  '03-supplies': ('Local supplies', 'MIXED', 'JP1: 1-2 normal; 2-3 floating external 3.3 V. Fit ONE shunt. No isolated power converter is fitted.'),
- '04-usb-mcu': ('Reporting USB and MCU', 'PC', 'All circuits here are PC domain. No inline USB or CC signal reaches U3. USB port footprint remains open.'),
+ '04-usb-mcu': ('Reporting USB and MCU', 'PC', 'All circuits here are PC domain. No inline USB or CC signal reaches U3. Reporting connector is GCT USB4105.'),
  '05-debug': ('Firmware debug access', 'PC', 'SWD VTref is a reference, not a power input. Headers use PC ground. Never jumper them to inline ground.')
 }
 C = []
@@ -58,13 +58,16 @@ def usb_pins(bus, reporting=False, plug=False):
             r.append((k,k,net))
     r.append(('S','SHIELD','SHIELD_PC' if reporting else 'SHIELD_INLINE'))
     return r
-add('J1','Inline USB-C receptacle; MPN open','01-inline',usb_pins('VBUS_A'),I,
-    note='All 24 contacts exposed; current rating not established. Do not substitute a power-only connector.')
-add('P1','Custom captive USB-C plug','01-inline',usb_pins('VBUS_B',plug=True),I,
-    note='Two independent CC-contact conductors; no e-marker or Rp/Rd/Ra. Pin-to-pad drawing required.')
+add('J1','USB4115-03-C / USB path 5A MAX','01-inline',usb_pins('VBUS_A'),I,
+    footprint='Connector_USB:USB_C_Receptacle_GCT_USB4115-03-C',
+    note='24 contacts, 48 V / 5 A manufacturer rating. This bench population is limited to 5 A via USB; a 9 A assembly remains a procurement gate.')
+add('P1','Captive harness solder termination','01-inline',usb_pins('VBUS_B',plug=True),I,
+    footprint='PowerWidget:Captive_Termination',
+    note='Board-side termination, not a USB mating footprint. Candidate USB4155-03-C plug is 48 V / 5 A only; custom harness drawing/qualification remains open.')
 add('R1','WSK25125L000DEA / 5mR 1W','01-inline',[
  ('1','I1','VBUS_A'),('2','I2','VBUS_B'),('3','E1','SHUNT_SA'),('4','E2','SHUNT_SB')],I,
- note='Symbol uses project numbering 1=I1, 2=I2, 3=E1, 4=E2. Footprint mapping MUST be checked against Vishay drawing.')
+ footprint='PowerWidget:WSK2512_5mR',
+ note='Project pad numbering 1=I1, 2=I2, 3=E1, 4=E2. 5 mOhm uses T=1.19 mm termination variant; current pads and Kelvin pads mapped from Vishay drawing.')
 header('J2','Force A: source / input','01-inline',['VBUS_A','GND_INLINE'],I,
        'Select terminal/bolted connection rated for at least 10.8 A continuous; no breadboard wiring.')
 header('J3','Force B: load / output','01-inline',['VBUS_B','GND_INLINE'],I,
@@ -104,18 +107,20 @@ header('J6','INLINE I2C debug','02-sensing',['GND_INLINE','3V3_INLINE','SCL_INLI
 add('TP10','ALERT: floating scope only','02-sensing',[('1','', 'ALERT_INLINE')],I,'tp',
     note='No pull-up fitted; open drain requires a local pull-up if probing logic. Firmware polls status.')
 
-add('U4','TPS7A1601DGNR','03-supplies',[
- ('1','OUT','3V3_INLINE_LDO','power_out'),('2','FB','INLINE_FB','input'),('3','PG',None,'open_collector'),
- ('4','GND','GND_INLINE','power_in'),('5','EN','INLINE_LDO_IN','input'),('6','NC',None),
- ('7','DELAY',None),('8','IN','INLINE_LDO_IN','power_in'),('9','EP','GND_INLINE','power_in')],I,
- note='60 V component rating is not a system overvoltage cutoff. EP numbering to be checked with footprint.')
+add('U4','TPS7A4333DGQR','03-supplies',[
+ ('1','OUT','3V3_INLINE_LDO','power_out'),('2','NC',None),('3','PG',None,'open_collector'),
+ ('4','MVSEL1','GND_INLINE','input'),('5','GND','GND_INLINE','power_in'),('6','EN',None,'input'),
+ ('7','MVSEL2','GND_INLINE','input'),('8','MID_OUT','INLINE_MID','power_out'),('9','NC',None),
+ ('10','IN','INLINE_LDO_IN','power_in'),('11','EP','GND_INLINE','power_in')],I,
+ footprint='PowerWidget:HVSSOP10_DGQ',
+ note='85 V fixed 3.3 V regulator. EN intentionally floating per internal pull-up; never tie EN to high VBUS. MID selected 15 V, with capacitors sized >=3x total OUT capacitance.')
 header('JP3','INLINE self-current link','03-supplies',['VBUS_A','INLINE_FEED'],I,
        'Fit shunt normally; insert a floating ammeter to characterize sensor-side self-consumption. Not a main-current connection.')
-two('R10','47R 0.25W branch feed','03-supplies','INLINE_FEED','INLINE_LDO_IN',I)
-two('C6','1uF 63V effective >=0.1uF','03-supplies','INLINE_LDO_IN','GND_INLINE',I,'C')
-two('R11','178k 0.1%','03-supplies','3V3_INLINE_LDO','INLINE_FB',I)
-two('R12','100k 0.1%','03-supplies','INLINE_FB','GND_INLINE',I)
-two('C7','4u7 10V effective >=2u2','03-supplies','3V3_INLINE_LDO','GND_INLINE',I,'C')
+two('R10','10R 0.25W branch feed','03-supplies','INLINE_FEED','INLINE_LDO_IN',I)
+two('C6','1uF 100V X7R','03-supplies','INLINE_LDO_IN','GND_INLINE',I,'C')
+two('C7','2u2 10V X7R','03-supplies','3V3_INLINE_LDO','GND_INLINE',I,'C')
+two('C20','22uF 50V X7R MID','03-supplies','INLINE_MID','GND_INLINE',I,'C')
+two('C21','22uF 50V X7R MID','03-supplies','INLINE_MID','GND_INLINE',I,'C')
 header('JP1','SENSOR SUPPLY: one shunt only','03-supplies',['3V3_INLINE_LDO','3V3_INLINE','EXT_3V3_INLINE'],I,
        'Normal 1-2; floating external 3.3 V 2-3. Do not install two shunts.')
 header('J7','Floating external 3.3V','03-supplies',['EXT_3V3_INLINE','GND_INLINE'],I,
@@ -192,6 +197,42 @@ two('SW3','USER pushbutton','05-debug','BUTTON_PC','GND_PC',P,'SW')
 two('R24','1k LED limiter','05-debug','LED_PC','LED_ANODE_PC',P)
 add('D1','Activity LED','05-debug',[('1','K','GND_PC'),('2','A','LED_ANODE_PC')],P,'LED')
 
+# Power flags describe supplied rails after passive links/filters, not extra supplies.
+for i,(net,dom,sh) in enumerate([
+ ('3V3_INLINE',I,'02-sensing'),('GND_INLINE',I,'02-sensing'),('GND_PC',P,'02-sensing'),
+ ('INLINE_LDO_IN',I,'03-supplies'),('PC_5V_LDO',P,'03-supplies'),('VDDA_PC',P,'04-usb-mcu')],1):
+    add('#FLG'+str(i),'PWR_FLAG',sh,[('1','',net,'power_out')],dom,'flag',
+        note='ERC supply declaration at a passive feed; no physical component.')
+
+for c in C:
+    if c['ref']=='C1':c['value']='100nF 100V differential'
+    if c['ref']=='C2':c['value']='10nF 100V X7R'
+    if c['ref']=='J8':
+        c['value']='USB4105-GF-A-120 / reporting'
+        c['footprint']='Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal'
+        c['pins']=[p for p in c['pins'] if p['number'] not in {'A2','A3','A10','A11','B2','B3','B10','B11'}]
+    if c['ref'] in {'J2','J3'}:
+        c['value']='691137710002 / force terminal'
+        c['footprint']='PowerWidget:Force_5mm_2pin'
+        c['note']='Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.'
+
+# All board footprints are snapshotted in the project library by footprint_bench.py.
+for c in C:
+    if c['kind']=='flag': continue
+    if not c['footprint']:
+        k=c['kind']; n=len(c['pins'])
+        if k=='R': c['footprint']='Resistor_SMD:R_0805_2012Metric'
+        elif k=='C': c['footprint']='Capacitor_SMD:C_0805_2012Metric'
+        elif k=='LED': c['footprint']='LED_SMD:LED_0805_2012Metric'
+        elif k=='SW': c['footprint']='Button_Switch_SMD:SW_SPST_TL3342'
+        elif k=='tp': c['footprint']='TestPoint:TestPoint_Pad_D2.0mm'
+        elif c['ref']=='J9': c['footprint']='Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical'
+        elif k=='header': c['footprint']=f'Connector_PinHeader_2.54mm:PinHeader_1x{n:02}_P2.54mm_Vertical'
+        else: raise ValueError(c['ref'])
+    if c['ref'] in {'C6','C20','C21'}: c['footprint']='Capacitor_SMD:C_1210_3225Metric'
+    c['source_footprint']=c['footprint']
+    c['footprint']='PowerWidget:'+c['footprint'].split(':')[1]
+
 # Basic connectivity review, independent of the visual placement.
 assert len({c['ref'] for c in C}) == len(C)
 byref={c['ref']:c for c in C}
@@ -224,7 +265,8 @@ def geometry(c):
 
 def lib(c):
     name='C_'+c['ref']; bw,h,pp=geometry(c)
-    lines=[f'(symbol "Bench:{name}" (pin_names (offset 0.6)) (in_bom yes) (on_board yes)',
+    physical='no' if c['kind']=='flag' else 'yes'
+    lines=[f'(symbol "Bench:{name}" (pin_names (offset 0.6)) (in_bom {physical}) (on_board {physical})',
       f'(property "Reference" {q(c["ref"].rstrip("0123456789"))} (at 0 {fx(h/2+2)} 0) {effect()})',
       f'(property "Value" {q(c["value"])} (at 0 {fx(-h/2-2)} 0) {effect()})',
       f'(symbol "{name}_0_1" (rectangle (start {fx(-bw/2)} {fx(h/2)}) (end {fx(bw/2)} {fx(-h/2)}) (stroke (width 0.254) (type default)) (fill (type background))))',
@@ -237,7 +279,7 @@ def positions(cs):
     out=[]; y=36
     for start in range(0,len(cs),4):
         group=cs[start:start+4]; hh=max(geometry(c)[1] for c in group)
-        for col,c in enumerate(group):out.append((c,75+145*col,y+hh/2))
+        for col,c in enumerate(group):out.append((c,round((75+145*col)/1.27)*1.27,round((y+hh/2)/1.27)*1.27))
         y+=hh+28
     assert y<386, ('Sheet too tall', y)
     return out
@@ -248,17 +290,18 @@ for sk,(title,domain,note) in SHEETS.items():
     cs=[c for c in C if c['sheet']==sk]; sid=uid('sheet:'+sk)
     placed=positions(cs)
     head=[f'(kicad_sch (version 20231120) (generator "power_widget") (uuid {q(uid("file:"+sk))}) (paper "A2")',
-      f'(title_block (title {q(title)}) (date "2026-09-10") (rev "A-DRAFT") (company "Power Widget") (comment 1 "NOT FOR FABRICATION - ERC AND FOOTPRINT REVIEW PENDING"))',
+      f'(title_block (title {q(title)}) (date "2026-09-10") (rev "A-DRAFT") (company "Power Widget") (comment 1 "NOT FOR FABRICATION - SEE NATIVE REVIEW REPORTS"))',
       '(lib_symbols', '\n'.join(lib(c) for c in cs), ')']
     body=[]
     svg=[f'<svg xmlns="http://www.w3.org/2000/svg" width="1782" height="1260" viewBox="0 0 594 420">',
       '<rect width="594" height="420" fill="#fff"/>',
       '<style>text{font-family:DejaVu Sans,sans-serif;fill:#182532}.pin{font-size:2.5px}.net{font-size:2.6px}.ref{font-size:3.8px;font-weight:bold}.value{font-size:3px}</style>',
       f'<text x="12" y="14" font-size="6">{html.escape(title)} / A-DRAFT</text>',
-      '<text x="12" y="22" font-size="3.5" fill="#af3d20">Connection-sheet preview — not a KiCad render; ERC and footprints pending</text>']
+      '<text x="12" y="22" font-size="3.5" fill="#af3d20">Connection-sheet preview — native ERC results are recorded separately</text>']
     for c,cx,cy in placed:
         bw,h,pp=geometry(c); ref=c['ref']; path=f'/{rootid}/{sid}'
-        body += [f'(symbol (lib_id "Bench:C_{ref}") (at {cx} {fx(cy)} 0) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid {q(uid(ref))})',
+        physical='no' if c['kind']=='flag' else 'yes'
+        body += [f'(symbol (lib_id "Bench:C_{ref}") (at {fx(cx)} {fx(cy)} 0) (unit 1) (in_bom {physical}) (on_board {physical}) (dnp no) (uuid {q(uid(ref))})',
           f'(property "Reference" {q(ref)} (at {cx} {fx(cy-h/2-6)} 0) {effect(1.27)})',
           f'(property "Value" {q(c["value"])} (at {cx} {fx(cy-h/2-2.5)} 0) {effect(1.0)})',
           f'(property "Footprint" {q(c["footprint"])} (at {cx} {fx(cy)} 0) {effect(1.0,"hide")})']
@@ -270,7 +313,7 @@ for sk,(title,domain,note) in SHEETS.items():
             f'<text class="value" x="{cx}" y="{cy-h/2-2.5}" text-anchor="middle">{html.escape(c["value"])}</text>']
         for p,lx,ly,a in pp:
             px=cx+lx; py=cy-ly; sign=-1 if a==0 else 1
-            end=px+sign*4; inside=cx+sign*(bw/2-1)
+            end=px+sign*3.81; inside=cx+sign*(bw/2-1)
             svg.append(f'<line x1="{cx+sign*bw/2}" y1="{py}" x2="{end}" y2="{py}" stroke="#354b5d" stroke-width=".25"/>')
             svg.append(f'<text class="pin" x="{inside}" y="{py+.8}" text-anchor="{"start" if sign==-1 else "end"}">{html.escape(p["name"] or p["number"])}</text>')
             svg.append(f'<text font-size="1.9" x="{px}" y="{py-.7}" text-anchor="middle">{p["number"]}</text>')
@@ -279,9 +322,10 @@ for sk,(title,domain,note) in SHEETS.items():
                 svg.append(f'<text class="net" x="{end+sign}" y="{py+.8}" text-anchor="{"end" if sign==-1 else "start"}">NC</text>')
             else:
                 body.append(f'(wire (pts (xy {fx(px)} {fx(py)}) (xy {fx(end)} {fx(py)})) (stroke (width 0) (type default)) (uuid {q(uid(ref+":"+p["number"]+":wire"))}))')
-                angle=0 if sign==-1 else 180
+                angle=180 if sign==-1 else 0
+                label_justify="(justify right)" if sign==-1 else "(justify left)"
                 # Global labels join the same named nets across all child sheets.
-                body.append(f'(global_label {q(p["net"])} (shape bidirectional) (at {fx(end)} {fx(py)} {angle}) {effect(0.9,"(justify left)")} (uuid {q(uid(ref+":"+p["number"]+":label"))}) (property "Intersheetrefs" "${{INTERSHEET_REFS}}" (at {fx(end)} {fx(py)} {angle}) {effect(0.9,"hide")}))')
+                body.append(f'(global_label {q(p["net"])} (shape bidirectional) (at {fx(end)} {fx(py)} {angle}) {effect(0.9,label_justify)} (uuid {q(uid(ref+":"+p["number"]+":label"))}) (property "Intersheetrefs" "${{INTERSHEET_REFS}}" (at {fx(end)} {fx(py)} {angle}) {effect(0.9,"hide")}))')
                 svg.append(f'<text class="net" x="{end+sign}" y="{py+.8}" text-anchor="{"end" if sign==-1 else "start"}">{html.escape(p["net"])}</text>')
     body += [f'(text {q(note)} (at 12 397 0) {effect(1.1,"(justify left)")} (uuid {q(uid(sk+":note"))}))',')']
     svg += [f'<text x="12" y="397" font-size="3">{html.escape(note)}</text>',
@@ -294,10 +338,13 @@ root=[f'(kicad_sch (version 20231120) (generator "power_widget") (uuid {q(rootid
 for i,(sk,(title,_,_)) in enumerate(SHEETS.items()):
     x=25+(i%2)*195; y=42+(i//2)*67
     root.append(f'(sheet (at {x} {y}) (size 155 36) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid {q(uid("sheet:"+sk))}) (property "Sheetname" {q(title)} (at {x} {y-2} 0) {effect(1.27,"(justify left)")}) (property "Sheetfile" {q(sk+".kicad_sch")} (at {x} {y+38} 0) {effect(1.0,"(justify left)")}) (instances (project {q(project)} (path {q("/"+rootid)} (page {q(i+2)})))))')
-root += [f'(text "28 V / 9 A target; 10.8 A margin. Laptop charging roster.\nCaptive contact extension; isolated reporting USB; STM32F072 firmware bench.\nNo PCB layout or qualified connector assembly. Review all footprints and run KiCad ERC before fabrication." (at 25 258 0) {effect(1.1,"(justify left)")} (uuid {q(uid("rootnote"))}))',
+rootnote='28 V / 9 A core target; 10.8 A margin. Populated USB connector path: 5 A MAX.\nCaptive harness; isolated reporting USB; STM32F072 firmware bench.\nHigh-current USB assembly procurement and physical qualification remain open.'
+root += [f'(text {q(rootnote)} (at 25 258 0) {effect(1.1,"(justify left)")} (uuid {q(uid("rootnote"))}))',
  '(sheet_instances (path "/" (page "1")))',')']
 outputs[OUT/(project+'.kicad_sch')]='\n'.join(root)+'\n'
-outputs[OUT/'circuit.json']=json.dumps({'revision':'A-DRAFT','status':'pin-level draft; no PCB or KiCad ERC',
+outputs[OUT/'Bench.kicad_sym']='(kicad_symbol_lib (version 20231120) (generator "power_widget")\n'+'\n'.join(lib(c).replace('"Bench:C_','"C_',1) for c in C)+'\n)\n'
+outputs[OUT/'sym-lib-table']='(sym_lib_table (lib (name "Bench") (type "KiCad") (uri "${KIPRJMOD}/Bench.kicad_sym") (options "") (descr "Project circuit symbols")))\n'
+outputs[OUT/'circuit.json']=json.dumps({'revision':'A-DRAFT','status':'engineering draft; see review reports for native ERC/DRC and release gates',
     'sheets':SHEETS,'components':C},indent=2)+'\n'
 netlist={}
 for c in C:
@@ -329,4 +376,4 @@ for p,s in outputs.items():
         if not p.exists() or p.read_text()!=s:raise SystemExit(f'Stale generated file: {p}')
     else:
         p.parent.mkdir(parents=True,exist_ok=True);p.write_text(s)
-print(f'{"Checked" if args.check else "Wrote"} {len(outputs)} files; {len(C)} components; {len(netlist)} nets; domain and CC checks pass. KiCad ERC NOT run.')
+print(f'{"Checked" if args.check else "Wrote"} {len(outputs)} files; {len(C)} components; {len(netlist)} nets; domain and CC checks pass. Run native KiCad ERC separately.')

@@ -2,203 +2,203 @@
 <rect width="594" height="420" fill="#fff"/>
 <style>text{font-family:DejaVu Sans,sans-serif;fill:#182532}.pin{font-size:2.5px}.net{font-size:2.6px}.ref{font-size:3.8px;font-weight:bold}.value{font-size:3px}</style>
 <text x="12" y="14" font-size="6">Firmware debug access / A-DRAFT</text>
-<text x="12" y="22" font-size="3.5" fill="#af3d20">Connection-sheet preview — not a KiCad render; ERC and footprints pending</text>
-<rect x="57.22" y="36.0" width="35.56" height="20.32" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="75" y="30.0" text-anchor="middle">J9</text>
-<text class="value" x="75" y="33.5" text-anchor="middle">Cortex SWD 2x5 1.27mm</text>
-<line x1="57.22" y1="41.08" x2="49.41" y2="41.08" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="58.22" y="41.879999999999995" text-anchor="start">VTref</text>
-<text font-size="1.9" x="53.41" y="40.379999999999995" text-anchor="middle">1</text>
-<text class="net" x="48.41" y="41.879999999999995" text-anchor="end">3V3_PC</text>
-<line x1="57.22" y1="43.62" x2="49.41" y2="43.62" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="58.22" y="44.419999999999995" text-anchor="start">SWDIO</text>
-<text font-size="1.9" x="53.41" y="42.919999999999995" text-anchor="middle">2</text>
-<text class="net" x="48.41" y="44.419999999999995" text-anchor="end">SWDIO_PC</text>
-<line x1="57.22" y1="46.16" x2="49.41" y2="46.16" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="58.22" y="46.959999999999994" text-anchor="start">GND</text>
-<text font-size="1.9" x="53.41" y="45.459999999999994" text-anchor="middle">3</text>
-<text class="net" x="48.41" y="46.959999999999994" text-anchor="end">GND_PC</text>
-<line x1="57.22" y1="48.699999999999996" x2="49.41" y2="48.699999999999996" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="58.22" y="49.49999999999999" text-anchor="start">SWCLK</text>
-<text font-size="1.9" x="53.41" y="47.99999999999999" text-anchor="middle">4</text>
-<text class="net" x="48.41" y="49.49999999999999" text-anchor="end">SWCLK_PC</text>
-<line x1="57.22" y1="51.239999999999995" x2="49.41" y2="51.239999999999995" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="58.22" y="52.03999999999999" text-anchor="start">GND</text>
-<text font-size="1.9" x="53.41" y="50.53999999999999" text-anchor="middle">5</text>
-<text class="net" x="48.41" y="52.03999999999999" text-anchor="end">GND_PC</text>
-<line x1="92.78" y1="41.08" x2="100.59" y2="41.08" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="91.78" y="41.879999999999995" text-anchor="end">SWO-NC</text>
-<text font-size="1.9" x="96.59" y="40.379999999999995" text-anchor="middle">6</text>
-<text class="net" x="101.59" y="41.879999999999995" text-anchor="start">NC</text>
-<line x1="92.78" y1="43.62" x2="100.59" y2="43.62" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="91.78" y="44.419999999999995" text-anchor="end">KEY</text>
-<text font-size="1.9" x="96.59" y="42.919999999999995" text-anchor="middle">7</text>
-<text class="net" x="101.59" y="44.419999999999995" text-anchor="start">NC</text>
-<line x1="92.78" y1="46.16" x2="100.59" y2="46.16" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="91.78" y="46.959999999999994" text-anchor="end">NC</text>
-<text font-size="1.9" x="96.59" y="45.459999999999994" text-anchor="middle">8</text>
-<text class="net" x="101.59" y="46.959999999999994" text-anchor="start">NC</text>
-<line x1="92.78" y1="48.699999999999996" x2="100.59" y2="48.699999999999996" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="91.78" y="49.49999999999999" text-anchor="end">GNDDetect</text>
-<text font-size="1.9" x="96.59" y="47.99999999999999" text-anchor="middle">9</text>
-<text class="net" x="101.59" y="49.49999999999999" text-anchor="start">GND_PC</text>
-<line x1="92.78" y1="51.239999999999995" x2="100.59" y2="51.239999999999995" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="91.78" y="52.03999999999999" text-anchor="end">nRESET</text>
-<text font-size="1.9" x="96.59" y="50.53999999999999" text-anchor="middle">10</text>
-<text class="net" x="101.59" y="52.03999999999999" text-anchor="start">NRST_PC</text>
-<rect x="207.3" y="39.809999999999995" width="25.4" height="12.7" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="220" y="33.809999999999995" text-anchor="middle">J10</text>
-<text class="value" x="220" y="37.309999999999995" text-anchor="middle">UART 3.3V logic</text>
-<line x1="207.3" y1="44.88999999999999" x2="199.49" y2="44.88999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="208.3" y="45.68999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="203.49" y="44.18999999999999" text-anchor="middle">1</text>
-<text class="net" x="198.49" y="45.68999999999999" text-anchor="end">GND_PC</text>
-<line x1="207.3" y1="47.43" x2="199.49" y2="47.43" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="208.3" y="48.23" text-anchor="start">2</text>
-<text font-size="1.9" x="203.49" y="46.73" text-anchor="middle">2</text>
-<text class="net" x="198.49" y="48.23" text-anchor="end">UART_TX_PC</text>
-<line x1="232.7" y1="44.88999999999999" x2="240.51" y2="44.88999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="231.7" y="45.68999999999999" text-anchor="end">3</text>
-<text font-size="1.9" x="236.51" y="44.18999999999999" text-anchor="middle">3</text>
-<text class="net" x="241.51" y="45.68999999999999" text-anchor="start">UART_RX_PC</text>
-<line x1="232.7" y1="47.43" x2="240.51" y2="47.43" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="231.7" y="48.23" text-anchor="end">4</text>
-<text font-size="1.9" x="236.51" y="46.73" text-anchor="middle">4</text>
-<text class="net" x="241.51" y="48.23" text-anchor="start">3V3_PC</text>
-<rect x="352.3" y="37.269999999999996" width="25.4" height="17.78" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="365" y="31.269999999999996" text-anchor="middle">J11</text>
-<text class="value" x="365" y="34.769999999999996" text-anchor="middle">Spare GPIO / SPI</text>
-<line x1="352.3" y1="42.349999999999994" x2="344.49" y2="42.349999999999994" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="353.3" y="43.14999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="348.49" y="41.64999999999999" text-anchor="middle">1</text>
-<text class="net" x="343.49" y="43.14999999999999" text-anchor="end">GND_PC</text>
-<line x1="352.3" y1="44.88999999999999" x2="344.49" y2="44.88999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="353.3" y="45.68999999999999" text-anchor="start">2</text>
-<text font-size="1.9" x="348.49" y="44.18999999999999" text-anchor="middle">2</text>
-<text class="net" x="343.49" y="45.68999999999999" text-anchor="end">3V3_PC</text>
-<line x1="352.3" y1="47.43" x2="344.49" y2="47.43" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="353.3" y="48.23" text-anchor="start">3</text>
-<text font-size="1.9" x="348.49" y="46.73" text-anchor="middle">3</text>
-<text class="net" x="343.49" y="48.23" text-anchor="end">GPIO_PA4</text>
-<line x1="352.3" y1="49.97" x2="344.49" y2="49.97" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="353.3" y="50.769999999999996" text-anchor="start">4</text>
-<text font-size="1.9" x="348.49" y="49.269999999999996" text-anchor="middle">4</text>
-<text class="net" x="343.49" y="50.769999999999996" text-anchor="end">GPIO_PA5</text>
-<line x1="377.7" y1="42.349999999999994" x2="385.51" y2="42.349999999999994" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="376.7" y="43.14999999999999" text-anchor="end">5</text>
-<text font-size="1.9" x="381.51" y="41.64999999999999" text-anchor="middle">5</text>
-<text class="net" x="386.51" y="43.14999999999999" text-anchor="start">GPIO_PA6</text>
-<line x1="377.7" y1="44.88999999999999" x2="385.51" y2="44.88999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="376.7" y="45.68999999999999" text-anchor="end">6</text>
-<text font-size="1.9" x="381.51" y="44.18999999999999" text-anchor="middle">6</text>
-<text class="net" x="386.51" y="45.68999999999999" text-anchor="start">GPIO_PA7</text>
-<line x1="377.7" y1="47.43" x2="385.51" y2="47.43" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="376.7" y="48.23" text-anchor="end">7</text>
-<text font-size="1.9" x="381.51" y="46.73" text-anchor="middle">7</text>
-<text class="net" x="386.51" y="48.23" text-anchor="start">GPIO_PB10</text>
-<line x1="377.7" y1="49.97" x2="385.51" y2="49.97" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="376.7" y="50.769999999999996" text-anchor="end">8</text>
-<text font-size="1.9" x="381.51" y="49.269999999999996" text-anchor="middle">8</text>
-<text class="net" x="386.51" y="50.769999999999996" text-anchor="start">GPIO_PB11</text>
-<rect x="504.92" y="41.08" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="510" y="35.08" text-anchor="middle">R21</text>
-<text class="value" x="510" y="38.58" text-anchor="middle">10k reset pull-up</text>
-<line x1="504.92" y1="46.16" x2="497.11" y2="46.16" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="505.92" y="46.959999999999994" text-anchor="start">1</text>
-<text font-size="1.9" x="501.11" y="45.459999999999994" text-anchor="middle">1</text>
-<text class="net" x="496.11" y="46.959999999999994" text-anchor="end">3V3_PC</text>
-<line x1="515.08" y1="46.16" x2="522.89" y2="46.16" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="514.08" y="46.959999999999994" text-anchor="end">2</text>
-<text font-size="1.9" x="518.89" y="45.459999999999994" text-anchor="middle">2</text>
-<text class="net" x="523.89" y="46.959999999999994" text-anchor="start">NRST_PC</text>
-<rect x="69.92" y="84.32" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="75" y="78.32" text-anchor="middle">C17</text>
-<text class="value" x="75" y="81.82" text-anchor="middle">100nF reset</text>
-<line x1="69.92" y1="89.39999999999999" x2="62.11" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="70.92" y="90.19999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="66.11" y="88.69999999999999" text-anchor="middle">1</text>
-<text class="net" x="61.11" y="90.19999999999999" text-anchor="end">NRST_PC</text>
-<line x1="80.08" y1="89.39999999999999" x2="87.89" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="79.08" y="90.19999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="83.89" y="88.69999999999999" text-anchor="middle">2</text>
-<text class="net" x="88.89" y="90.19999999999999" text-anchor="start">GND_PC</text>
-<rect x="214.92" y="84.32" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="220" y="78.32" text-anchor="middle">SW1</text>
-<text class="value" x="220" y="81.82" text-anchor="middle">RESET pushbutton</text>
-<line x1="214.92" y1="89.39999999999999" x2="207.11" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="215.92" y="90.19999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="211.11" y="88.69999999999999" text-anchor="middle">1</text>
-<text class="net" x="206.11" y="90.19999999999999" text-anchor="end">NRST_PC</text>
-<line x1="225.08" y1="89.39999999999999" x2="232.89" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="224.08" y="90.19999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="228.89" y="88.69999999999999" text-anchor="middle">2</text>
-<text class="net" x="233.89" y="90.19999999999999" text-anchor="start">GND_PC</text>
-<rect x="359.92" y="84.32" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="365" y="78.32" text-anchor="middle">R22</text>
-<text class="value" x="365" y="81.82" text-anchor="middle">10k boot pull-down</text>
-<line x1="359.92" y1="89.39999999999999" x2="352.11" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="360.92" y="90.19999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="356.11" y="88.69999999999999" text-anchor="middle">1</text>
-<text class="net" x="351.11" y="90.19999999999999" text-anchor="end">BOOT0_PC</text>
-<line x1="370.08" y1="89.39999999999999" x2="377.89" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="369.08" y="90.19999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="373.89" y="88.69999999999999" text-anchor="middle">2</text>
-<text class="net" x="378.89" y="90.19999999999999" text-anchor="start">GND_PC</text>
-<rect x="504.92" y="84.32" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="510" y="78.32" text-anchor="middle">SW2</text>
-<text class="value" x="510" y="81.82" text-anchor="middle">BOOT pushbutton</text>
-<line x1="504.92" y1="89.39999999999999" x2="497.11" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="505.92" y="90.19999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="501.11" y="88.69999999999999" text-anchor="middle">1</text>
-<text class="net" x="496.11" y="90.19999999999999" text-anchor="end">BOOT0_PC</text>
-<line x1="515.08" y1="89.39999999999999" x2="522.89" y2="89.39999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="514.08" y="90.19999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="518.89" y="88.69999999999999" text-anchor="middle">2</text>
-<text class="net" x="523.89" y="90.19999999999999" text-anchor="start">3V3_PC</text>
-<rect x="69.92" y="122.47999999999999" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="75" y="116.47999999999999" text-anchor="middle">R23</text>
-<text class="value" x="75" y="119.97999999999999" text-anchor="middle">10k button pull-up</text>
-<line x1="69.92" y1="127.55999999999999" x2="62.11" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="70.92" y="128.35999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="66.11" y="126.85999999999999" text-anchor="middle">1</text>
-<text class="net" x="61.11" y="128.35999999999999" text-anchor="end">3V3_PC</text>
-<line x1="80.08" y1="127.55999999999999" x2="87.89" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="79.08" y="128.35999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="83.89" y="126.85999999999999" text-anchor="middle">2</text>
-<text class="net" x="88.89" y="128.35999999999999" text-anchor="start">BUTTON_PC</text>
-<rect x="214.92" y="122.47999999999999" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="220" y="116.47999999999999" text-anchor="middle">SW3</text>
-<text class="value" x="220" y="119.97999999999999" text-anchor="middle">USER pushbutton</text>
-<line x1="214.92" y1="127.55999999999999" x2="207.11" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="215.92" y="128.35999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="211.11" y="126.85999999999999" text-anchor="middle">1</text>
-<text class="net" x="206.11" y="128.35999999999999" text-anchor="end">BUTTON_PC</text>
-<line x1="225.08" y1="127.55999999999999" x2="232.89" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="224.08" y="128.35999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="228.89" y="126.85999999999999" text-anchor="middle">2</text>
-<text class="net" x="233.89" y="128.35999999999999" text-anchor="start">GND_PC</text>
-<rect x="359.92" y="122.47999999999999" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="365" y="116.47999999999999" text-anchor="middle">R24</text>
-<text class="value" x="365" y="119.97999999999999" text-anchor="middle">1k LED limiter</text>
-<line x1="359.92" y1="127.55999999999999" x2="352.11" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="360.92" y="128.35999999999999" text-anchor="start">1</text>
-<text font-size="1.9" x="356.11" y="126.85999999999999" text-anchor="middle">1</text>
-<text class="net" x="351.11" y="128.35999999999999" text-anchor="end">LED_PC</text>
-<line x1="370.08" y1="127.55999999999999" x2="377.89" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="369.08" y="128.35999999999999" text-anchor="end">2</text>
-<text font-size="1.9" x="373.89" y="126.85999999999999" text-anchor="middle">2</text>
-<text class="net" x="378.89" y="128.35999999999999" text-anchor="start">LED_ANODE_PC</text>
-<rect x="504.92" y="122.47999999999999" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
-<text class="ref" x="510" y="116.47999999999999" text-anchor="middle">D1</text>
-<text class="value" x="510" y="119.97999999999999" text-anchor="middle">Activity LED</text>
-<line x1="504.92" y1="127.55999999999999" x2="497.11" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="505.92" y="128.35999999999999" text-anchor="start">K</text>
-<text font-size="1.9" x="501.11" y="126.85999999999999" text-anchor="middle">1</text>
-<text class="net" x="496.11" y="128.35999999999999" text-anchor="end">GND_PC</text>
-<line x1="515.08" y1="127.55999999999999" x2="522.89" y2="127.55999999999999" stroke="#354b5d" stroke-width=".25"/>
-<text class="pin" x="514.08" y="128.35999999999999" text-anchor="end">A</text>
-<text font-size="1.9" x="518.89" y="126.85999999999999" text-anchor="middle">2</text>
-<text class="net" x="523.89" y="128.35999999999999" text-anchor="start">LED_ANODE_PC</text>
+<text x="12" y="22" font-size="3.5" fill="#af3d20">Connection-sheet preview — native ERC results are recorded separately</text>
+<rect x="57.150000000000006" y="35.56" width="35.56" height="20.32" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="74.93" y="29.560000000000002" text-anchor="middle">J9</text>
+<text class="value" x="74.93" y="33.06" text-anchor="middle">Cortex SWD 2x5 1.27mm</text>
+<line x1="57.150000000000006" y1="40.64" x2="49.53" y2="40.64" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.150000000000006" y="41.44" text-anchor="start">VTref</text>
+<text font-size="1.9" x="53.34" y="39.94" text-anchor="middle">1</text>
+<text class="net" x="48.53" y="41.44" text-anchor="end">3V3_PC</text>
+<line x1="57.150000000000006" y1="43.18" x2="49.53" y2="43.18" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.150000000000006" y="43.98" text-anchor="start">SWDIO</text>
+<text font-size="1.9" x="53.34" y="42.48" text-anchor="middle">2</text>
+<text class="net" x="48.53" y="43.98" text-anchor="end">SWDIO_PC</text>
+<line x1="57.150000000000006" y1="45.72" x2="49.53" y2="45.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.150000000000006" y="46.519999999999996" text-anchor="start">GND</text>
+<text font-size="1.9" x="53.34" y="45.019999999999996" text-anchor="middle">3</text>
+<text class="net" x="48.53" y="46.519999999999996" text-anchor="end">GND_PC</text>
+<line x1="57.150000000000006" y1="48.26" x2="49.53" y2="48.26" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.150000000000006" y="49.059999999999995" text-anchor="start">SWCLK</text>
+<text font-size="1.9" x="53.34" y="47.559999999999995" text-anchor="middle">4</text>
+<text class="net" x="48.53" y="49.059999999999995" text-anchor="end">SWCLK_PC</text>
+<line x1="57.150000000000006" y1="50.8" x2="49.53" y2="50.8" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="58.150000000000006" y="51.599999999999994" text-anchor="start">GND</text>
+<text font-size="1.9" x="53.34" y="50.099999999999994" text-anchor="middle">5</text>
+<text class="net" x="48.53" y="51.599999999999994" text-anchor="end">GND_PC</text>
+<line x1="92.71000000000001" y1="40.64" x2="100.33000000000001" y2="40.64" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.71000000000001" y="41.44" text-anchor="end">SWO-NC</text>
+<text font-size="1.9" x="96.52000000000001" y="39.94" text-anchor="middle">6</text>
+<text class="net" x="101.33000000000001" y="41.44" text-anchor="start">NC</text>
+<line x1="92.71000000000001" y1="43.18" x2="100.33000000000001" y2="43.18" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.71000000000001" y="43.98" text-anchor="end">KEY</text>
+<text font-size="1.9" x="96.52000000000001" y="42.48" text-anchor="middle">7</text>
+<text class="net" x="101.33000000000001" y="43.98" text-anchor="start">NC</text>
+<line x1="92.71000000000001" y1="45.72" x2="100.33000000000001" y2="45.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.71000000000001" y="46.519999999999996" text-anchor="end">NC</text>
+<text font-size="1.9" x="96.52000000000001" y="45.019999999999996" text-anchor="middle">8</text>
+<text class="net" x="101.33000000000001" y="46.519999999999996" text-anchor="start">NC</text>
+<line x1="92.71000000000001" y1="48.26" x2="100.33000000000001" y2="48.26" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.71000000000001" y="49.059999999999995" text-anchor="end">GNDDetect</text>
+<text font-size="1.9" x="96.52000000000001" y="47.559999999999995" text-anchor="middle">9</text>
+<text class="net" x="101.33000000000001" y="49.059999999999995" text-anchor="start">GND_PC</text>
+<line x1="92.71000000000001" y1="50.8" x2="100.33000000000001" y2="50.8" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="91.71000000000001" y="51.599999999999994" text-anchor="end">nRESET</text>
+<text font-size="1.9" x="96.52000000000001" y="50.099999999999994" text-anchor="middle">10</text>
+<text class="net" x="101.33000000000001" y="51.599999999999994" text-anchor="start">NRST_PC</text>
+<rect x="207.01000000000002" y="39.37" width="25.4" height="12.7" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="219.71" y="33.37" text-anchor="middle">J10</text>
+<text class="value" x="219.71" y="36.87" text-anchor="middle">UART 3.3V logic</text>
+<line x1="207.01000000000002" y1="44.449999999999996" x2="199.39000000000001" y2="44.449999999999996" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="208.01000000000002" y="45.24999999999999" text-anchor="start">1</text>
+<text font-size="1.9" x="203.20000000000002" y="43.74999999999999" text-anchor="middle">1</text>
+<text class="net" x="198.39000000000001" y="45.24999999999999" text-anchor="end">GND_PC</text>
+<line x1="207.01000000000002" y1="46.99" x2="199.39000000000001" y2="46.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="208.01000000000002" y="47.79" text-anchor="start">2</text>
+<text font-size="1.9" x="203.20000000000002" y="46.29" text-anchor="middle">2</text>
+<text class="net" x="198.39000000000001" y="47.79" text-anchor="end">UART_TX_PC</text>
+<line x1="232.41" y1="44.449999999999996" x2="240.03" y2="44.449999999999996" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="231.41" y="45.24999999999999" text-anchor="end">3</text>
+<text font-size="1.9" x="236.22" y="43.74999999999999" text-anchor="middle">3</text>
+<text class="net" x="241.03" y="45.24999999999999" text-anchor="start">UART_RX_PC</text>
+<line x1="232.41" y1="46.99" x2="240.03" y2="46.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="231.41" y="47.79" text-anchor="end">4</text>
+<text font-size="1.9" x="236.22" y="46.29" text-anchor="middle">4</text>
+<text class="net" x="241.03" y="47.79" text-anchor="start">3V3_PC</text>
+<rect x="351.79" y="36.83" width="25.4" height="17.78" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="364.49" y="30.83" text-anchor="middle">J11</text>
+<text class="value" x="364.49" y="34.33" text-anchor="middle">Spare GPIO / SPI</text>
+<line x1="351.79" y1="41.91" x2="344.17" y2="41.91" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="352.79" y="42.709999999999994" text-anchor="start">1</text>
+<text font-size="1.9" x="347.98" y="41.209999999999994" text-anchor="middle">1</text>
+<text class="net" x="343.17" y="42.709999999999994" text-anchor="end">GND_PC</text>
+<line x1="351.79" y1="44.449999999999996" x2="344.17" y2="44.449999999999996" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="352.79" y="45.24999999999999" text-anchor="start">2</text>
+<text font-size="1.9" x="347.98" y="43.74999999999999" text-anchor="middle">2</text>
+<text class="net" x="343.17" y="45.24999999999999" text-anchor="end">3V3_PC</text>
+<line x1="351.79" y1="46.99" x2="344.17" y2="46.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="352.79" y="47.79" text-anchor="start">3</text>
+<text font-size="1.9" x="347.98" y="46.29" text-anchor="middle">3</text>
+<text class="net" x="343.17" y="47.79" text-anchor="end">GPIO_PA4</text>
+<line x1="351.79" y1="49.53" x2="344.17" y2="49.53" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="352.79" y="50.33" text-anchor="start">4</text>
+<text font-size="1.9" x="347.98" y="48.83" text-anchor="middle">4</text>
+<text class="net" x="343.17" y="50.33" text-anchor="end">GPIO_PA5</text>
+<line x1="377.19" y1="41.91" x2="384.81" y2="41.91" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.19" y="42.709999999999994" text-anchor="end">5</text>
+<text font-size="1.9" x="381.0" y="41.209999999999994" text-anchor="middle">5</text>
+<text class="net" x="385.81" y="42.709999999999994" text-anchor="start">GPIO_PA6</text>
+<line x1="377.19" y1="44.449999999999996" x2="384.81" y2="44.449999999999996" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.19" y="45.24999999999999" text-anchor="end">6</text>
+<text font-size="1.9" x="381.0" y="43.74999999999999" text-anchor="middle">6</text>
+<text class="net" x="385.81" y="45.24999999999999" text-anchor="start">GPIO_PA7</text>
+<line x1="377.19" y1="46.99" x2="384.81" y2="46.99" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.19" y="47.79" text-anchor="end">7</text>
+<text font-size="1.9" x="381.0" y="46.29" text-anchor="middle">7</text>
+<text class="net" x="385.81" y="47.79" text-anchor="start">GPIO_PB10</text>
+<line x1="377.19" y1="49.53" x2="384.81" y2="49.53" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="376.19" y="50.33" text-anchor="end">8</text>
+<text font-size="1.9" x="381.0" y="48.83" text-anchor="middle">8</text>
+<text class="net" x="385.81" y="50.33" text-anchor="start">GPIO_PB11</text>
+<rect x="505.46000000000004" y="40.64" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510.54" y="34.64" text-anchor="middle">R21</text>
+<text class="value" x="510.54" y="38.14" text-anchor="middle">10k reset pull-up</text>
+<line x1="505.46000000000004" y1="45.72" x2="497.84000000000003" y2="45.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="506.46000000000004" y="46.519999999999996" text-anchor="start">1</text>
+<text font-size="1.9" x="501.65000000000003" y="45.019999999999996" text-anchor="middle">1</text>
+<text class="net" x="496.84000000000003" y="46.519999999999996" text-anchor="end">3V3_PC</text>
+<line x1="515.62" y1="45.72" x2="523.24" y2="45.72" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.62" y="46.519999999999996" text-anchor="end">2</text>
+<text font-size="1.9" x="519.4300000000001" y="45.019999999999996" text-anchor="middle">2</text>
+<text class="net" x="524.24" y="46.519999999999996" text-anchor="start">NRST_PC</text>
+<rect x="69.85000000000001" y="83.82000000000001" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="74.93" y="77.82000000000001" text-anchor="middle">C17</text>
+<text class="value" x="74.93" y="81.32000000000001" text-anchor="middle">100nF reset</text>
+<line x1="69.85000000000001" y1="88.9" x2="62.230000000000004" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.85000000000001" y="89.7" text-anchor="start">1</text>
+<text font-size="1.9" x="66.04" y="88.2" text-anchor="middle">1</text>
+<text class="net" x="61.230000000000004" y="89.7" text-anchor="end">NRST_PC</text>
+<line x1="80.01" y1="88.9" x2="87.63000000000001" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.01" y="89.7" text-anchor="end">2</text>
+<text font-size="1.9" x="83.82000000000001" y="88.2" text-anchor="middle">2</text>
+<text class="net" x="88.63000000000001" y="89.7" text-anchor="start">GND_PC</text>
+<rect x="214.63" y="83.82000000000001" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="219.71" y="77.82000000000001" text-anchor="middle">SW1</text>
+<text class="value" x="219.71" y="81.32000000000001" text-anchor="middle">RESET pushbutton</text>
+<line x1="214.63" y1="88.9" x2="207.01" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="215.63" y="89.7" text-anchor="start">1</text>
+<text font-size="1.9" x="210.82" y="88.2" text-anchor="middle">1</text>
+<text class="net" x="206.01" y="89.7" text-anchor="end">NRST_PC</text>
+<line x1="224.79000000000002" y1="88.9" x2="232.41000000000003" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="223.79000000000002" y="89.7" text-anchor="end">2</text>
+<text font-size="1.9" x="228.60000000000002" y="88.2" text-anchor="middle">2</text>
+<text class="net" x="233.41000000000003" y="89.7" text-anchor="start">GND_PC</text>
+<rect x="359.41" y="83.82000000000001" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="364.49" y="77.82000000000001" text-anchor="middle">R22</text>
+<text class="value" x="364.49" y="81.32000000000001" text-anchor="middle">10k boot pull-down</text>
+<line x1="359.41" y1="88.9" x2="351.79" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="360.41" y="89.7" text-anchor="start">1</text>
+<text font-size="1.9" x="355.6" y="88.2" text-anchor="middle">1</text>
+<text class="net" x="350.79" y="89.7" text-anchor="end">BOOT0_PC</text>
+<line x1="369.57" y1="88.9" x2="377.19" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="368.57" y="89.7" text-anchor="end">2</text>
+<text font-size="1.9" x="373.38" y="88.2" text-anchor="middle">2</text>
+<text class="net" x="378.19" y="89.7" text-anchor="start">GND_PC</text>
+<rect x="505.46000000000004" y="83.82000000000001" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510.54" y="77.82000000000001" text-anchor="middle">SW2</text>
+<text class="value" x="510.54" y="81.32000000000001" text-anchor="middle">BOOT pushbutton</text>
+<line x1="505.46000000000004" y1="88.9" x2="497.84000000000003" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="506.46000000000004" y="89.7" text-anchor="start">1</text>
+<text font-size="1.9" x="501.65000000000003" y="88.2" text-anchor="middle">1</text>
+<text class="net" x="496.84000000000003" y="89.7" text-anchor="end">BOOT0_PC</text>
+<line x1="515.62" y1="88.9" x2="523.24" y2="88.9" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.62" y="89.7" text-anchor="end">2</text>
+<text font-size="1.9" x="519.4300000000001" y="88.2" text-anchor="middle">2</text>
+<text class="net" x="524.24" y="89.7" text-anchor="start">3V3_PC</text>
+<rect x="69.85000000000001" y="121.92" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="74.93" y="115.92" text-anchor="middle">R23</text>
+<text class="value" x="74.93" y="119.42" text-anchor="middle">10k button pull-up</text>
+<line x1="69.85000000000001" y1="127.0" x2="62.230000000000004" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="70.85000000000001" y="127.8" text-anchor="start">1</text>
+<text font-size="1.9" x="66.04" y="126.3" text-anchor="middle">1</text>
+<text class="net" x="61.230000000000004" y="127.8" text-anchor="end">3V3_PC</text>
+<line x1="80.01" y1="127.0" x2="87.63000000000001" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="79.01" y="127.8" text-anchor="end">2</text>
+<text font-size="1.9" x="83.82000000000001" y="126.3" text-anchor="middle">2</text>
+<text class="net" x="88.63000000000001" y="127.8" text-anchor="start">BUTTON_PC</text>
+<rect x="214.63" y="121.92" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="219.71" y="115.92" text-anchor="middle">SW3</text>
+<text class="value" x="219.71" y="119.42" text-anchor="middle">USER pushbutton</text>
+<line x1="214.63" y1="127.0" x2="207.01" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="215.63" y="127.8" text-anchor="start">1</text>
+<text font-size="1.9" x="210.82" y="126.3" text-anchor="middle">1</text>
+<text class="net" x="206.01" y="127.8" text-anchor="end">BUTTON_PC</text>
+<line x1="224.79000000000002" y1="127.0" x2="232.41000000000003" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="223.79000000000002" y="127.8" text-anchor="end">2</text>
+<text font-size="1.9" x="228.60000000000002" y="126.3" text-anchor="middle">2</text>
+<text class="net" x="233.41000000000003" y="127.8" text-anchor="start">GND_PC</text>
+<rect x="359.41" y="121.92" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="364.49" y="115.92" text-anchor="middle">R24</text>
+<text class="value" x="364.49" y="119.42" text-anchor="middle">1k LED limiter</text>
+<line x1="359.41" y1="127.0" x2="351.79" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="360.41" y="127.8" text-anchor="start">1</text>
+<text font-size="1.9" x="355.6" y="126.3" text-anchor="middle">1</text>
+<text class="net" x="350.79" y="127.8" text-anchor="end">LED_PC</text>
+<line x1="369.57" y1="127.0" x2="377.19" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="368.57" y="127.8" text-anchor="end">2</text>
+<text font-size="1.9" x="373.38" y="126.3" text-anchor="middle">2</text>
+<text class="net" x="378.19" y="127.8" text-anchor="start">LED_ANODE_PC</text>
+<rect x="505.46000000000004" y="121.92" width="10.16" height="10.16" fill="#e7f0fc" stroke="#354b5d" stroke-width=".35"/>
+<text class="ref" x="510.54" y="115.92" text-anchor="middle">D1</text>
+<text class="value" x="510.54" y="119.42" text-anchor="middle">Activity LED</text>
+<line x1="505.46000000000004" y1="127.0" x2="497.84000000000003" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="506.46000000000004" y="127.8" text-anchor="start">K</text>
+<text font-size="1.9" x="501.65000000000003" y="126.3" text-anchor="middle">1</text>
+<text class="net" x="496.84000000000003" y="127.8" text-anchor="end">GND_PC</text>
+<line x1="515.62" y1="127.0" x2="523.24" y2="127.0" stroke="#354b5d" stroke-width=".25"/>
+<text class="pin" x="514.62" y="127.8" text-anchor="end">A</text>
+<text font-size="1.9" x="519.4300000000001" y="126.3" text-anchor="middle">2</text>
+<text class="net" x="524.24" y="127.8" text-anchor="start">LED_ANODE_PC</text>
 <text x="12" y="397" font-size="3">SWD VTref is a reference, not a power input. Headers use PC ground. Never jumper them to inline ground.</text>
 <text x="12" y="409" font-size="3">Same net names connect across sheets. INLINE = amber; PC = blue; isolation component = purple.</text>
 </svg>

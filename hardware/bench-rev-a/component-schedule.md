@@ -4,11 +4,11 @@
 
 | Reference | Value / candidate | Domain | Sheet |
 |---|---|---|---|
-| J1 | Inline USB-C receptacle; MPN open | INLINE | 01-inline |
-| P1 | Custom captive USB-C plug | INLINE | 01-inline |
+| J1 | USB4115-03-C / USB path 5A MAX | INLINE | 01-inline |
+| P1 | Captive harness solder termination | INLINE | 01-inline |
 | R1 | WSK25125L000DEA / 5mR 1W | INLINE | 01-inline |
-| J2 | Force A: source / input | INLINE | 01-inline |
-| J3 | Force B: load / output | INLINE | 01-inline |
+| J2 | 691137710002 / force terminal | INLINE | 01-inline |
+| J3 | 691137710002 / force terminal | INLINE | 01-inline |
 | J4 | Kelvin probe pads; NOT force pins | INLINE | 01-inline |
 | TP1 | VBUS_A | INLINE | 01-inline |
 | TP2 | VBUS_B | INLINE | 01-inline |
@@ -24,9 +24,9 @@
 | U2 | ISO1641BD | BARRIER | 02-sensing |
 | R3 | 10R 0.1% matched | INLINE | 02-sensing |
 | R4 | 10R 0.1% matched | INLINE | 02-sensing |
-| C1 | 100nF 50V differential | INLINE | 02-sensing |
+| C1 | 100nF 100V differential | INLINE | 02-sensing |
 | R5 | 100R | INLINE | 02-sensing |
-| C2 | 10nF 63V | INLINE | 02-sensing |
+| C2 | 10nF 100V X7R | INLINE | 02-sensing |
 | C3 | 100nF 10V at U1 | INLINE | 02-sensing |
 | C4 | 100nF 10V at U2.8 | INLINE | 02-sensing |
 | C5 | 100nF 10V at U2.1 | PC | 02-sensing |
@@ -37,13 +37,13 @@
 | J5 | PC I2C / external MCU | PC | 02-sensing |
 | J6 | INLINE I2C debug | INLINE | 02-sensing |
 | TP10 | ALERT: floating scope only | INLINE | 02-sensing |
-| U4 | TPS7A1601DGNR | INLINE | 03-supplies |
+| U4 | TPS7A4333DGQR | INLINE | 03-supplies |
 | JP3 | INLINE self-current link | INLINE | 03-supplies |
-| R10 | 47R 0.25W branch feed | INLINE | 03-supplies |
-| C6 | 1uF 63V effective >=0.1uF | INLINE | 03-supplies |
-| R11 | 178k 0.1% | INLINE | 03-supplies |
-| R12 | 100k 0.1% | INLINE | 03-supplies |
-| C7 | 4u7 10V effective >=2u2 | INLINE | 03-supplies |
+| R10 | 10R 0.25W branch feed | INLINE | 03-supplies |
+| C6 | 1uF 100V X7R | INLINE | 03-supplies |
+| C7 | 2u2 10V X7R | INLINE | 03-supplies |
+| C20 | 22uF 50V X7R MID | INLINE | 03-supplies |
+| C21 | 22uF 50V X7R MID | INLINE | 03-supplies |
 | JP1 | SENSOR SUPPLY: one shunt only | INLINE | 03-supplies |
 | J7 | Floating external 3.3V | INLINE | 03-supplies |
 | U5 | TLV75533PDBVR | PC | 03-supplies |
@@ -57,7 +57,7 @@
 | C19 | 1uF 10V at U7.6 | PC | 03-supplies |
 | JP4 | External-master enable; DNF | PC | 03-supplies |
 | R26 | 10k override limiter | PC | 03-supplies |
-| J8 | PC reporting USB-C; MPN open | PC | 04-usb-mcu |
+| J8 | USB4105-GF-A-120 / reporting | PC | 04-usb-mcu |
 | U3 | STM32F072CBT6 / 128K flash | PC | 04-usb-mcu |
 | U6 | USBLC6-2SC6 | PC | 04-usb-mcu |
 | R13 | 5k1 1% Rd | PC | 04-usb-mcu |
@@ -86,21 +86,27 @@
 | SW3 | USER pushbutton | PC | 05-debug |
 | R24 | 1k LED limiter | PC | 05-debug |
 | D1 | Activity LED | PC | 05-debug |
+| #FLG1 | PWR_FLAG | INLINE | 02-sensing |
+| #FLG2 | PWR_FLAG | INLINE | 02-sensing |
+| #FLG3 | PWR_FLAG | PC | 02-sensing |
+| #FLG4 | PWR_FLAG | INLINE | 03-supplies |
+| #FLG5 | PWR_FLAG | PC | 03-supplies |
+| #FLG6 | PWR_FLAG | PC | 04-usb-mcu |
 
 ## Assembly notes
 
-- **J1:** All 24 contacts exposed; current rating not established. Do not substitute a power-only connector.
-- **P1:** Two independent CC-contact conductors; no e-marker or Rp/Rd/Ra. Pin-to-pad drawing required.
-- **R1:** Symbol uses project numbering 1=I1, 2=I2, 3=E1, 4=E2. Footprint mapping MUST be checked against Vishay drawing.
-- **J2:** Select terminal/bolted connection rated for at least 10.8 A continuous; no breadboard wiring.
-- **J3:** Live in parallel with P1. Disconnect OEM devices before independent bench injection.
+- **J1:** 24 contacts, 48 V / 5 A manufacturer rating. This bench population is limited to 5 A via USB; a 9 A assembly remains a procurement gate.
+- **P1:** Board-side termination, not a USB mating footprint. Candidate USB4155-03-C plug is 48 V / 5 A only; custom harness drawing/qualification remains open.
+- **R1:** Project pad numbering 1=I1, 2=I2, 3=E1, 4=E2. 5 mOhm uses T=1.19 mm termination variant; current pads and Kelvin pads mapped from Vishay drawing.
+- **J2:** Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.
+- **J3:** Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.
 - **J4:** Use small pads near the defined B-plane. No main current through this header.
 - **U1:** Address 0x40. Wide ADC range. Footprint candidate still requires package drawing review.
 - **U2:** Side 1 PC, side 2 inline. SCL is unidirectional; INA228 does not require clock stretching.
 - **J5:** 3V3 is switched reference/output. Hold onboard MCU in reset and fit JP4 for another open-drain master; no external pull-ups to an always-on rail.
 - **J6:** Only a floating or isolated instrument here; never jumper to J5.
 - **TP10:** No pull-up fitted; open drain requires a local pull-up if probing logic. Firmware polls status.
-- **U4:** 60 V component rating is not a system overvoltage cutoff. EP numbering to be checked with footprint.
+- **U4:** 85 V fixed 3.3 V regulator. EN intentionally floating per internal pull-up; never tie EN to high VBUS. MID selected 15 V, with capacitors sized >=3x total OUT capacitance.
 - **JP3:** Fit shunt normally; insert a floating ammeter to characterize sensor-side self-consumption. Not a main-current connection.
 - **JP1:** Normal 1-2; floating external 3.3 V 2-3. Do not install two shunts.
 - **J7:** For zero-VBUS/low-voltage bench testing; not connected to PC supply.
@@ -112,3 +118,9 @@
 - **U6:** Route lines through paired pads with short ground return. PC port only.
 - **J9:** Key pin 7 absent. No SWO on Cortex-M0. Debug probe must not power this board.
 - **J10:** TX/RX named from board viewpoint; 3V3 reference only. Not RS-232 voltage levels.
+- **#FLG1:** ERC supply declaration at a passive feed; no physical component.
+- **#FLG2:** ERC supply declaration at a passive feed; no physical component.
+- **#FLG3:** ERC supply declaration at a passive feed; no physical component.
+- **#FLG4:** ERC supply declaration at a passive feed; no physical component.
+- **#FLG5:** ERC supply declaration at a passive feed; no physical component.
+- **#FLG6:** ERC supply declaration at a passive feed; no physical component.

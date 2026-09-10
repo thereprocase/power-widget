@@ -2,7 +2,7 @@
 
 An inline USB-C power monitor with isolated PC reporting. Preserve the original charger and cable negotiation while measuring voltage, current, watts and Wh.
 
-**Newest design: [bench revision A circuit draft](hardware/bench-rev-a/README.md).** Five circuit sheets cover the inline path, sensing, isolation, supplies, reporting USB and STM32 firmware/debug access. Native KiCad review/ERC, footprints and connector qualification remain open. No PCB or orderable hardware yet.
+**Newest design: [bench revision A native KiCad project](hardware/bench-rev-a/README.md).** It includes the sensing circuit, isolated USB reporting, STM32 firmware/debug access, assigned footprints and a bench PCB. Native ERC passes with zero violations. See the [layout review](docs/layout-review.md) for routing/DRC status. **The selected USB population is 5 A maximum; the project’s 9 A USB assembly is still a sourcing and qualification gate.**
 
 ## Design target
 

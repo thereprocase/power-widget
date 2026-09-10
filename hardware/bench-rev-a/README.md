@@ -1,8 +1,8 @@
-# Bench revision A — circuit draft
+# Bench revision A — native schematic and PCB
 
 **28 V / 9 A continuous design target, 10.8 A design margin. No physical assembly is qualified.** This is the accessible prototype for connector experiments, calibration and MCU firmware development. It contains the complete proposed sensing, reporting, supply and debug circuits rather than a separate continuity fixture.
 
-Open [power-widget-bench.kicad_sch](power-widget-bench.kicad_sch) as the root schematic. The five child sheets use embedded symbols. This is a generated pin-level draft: native KiCad loading, ERC, footprints and PCB layout still need review. KiCad is unavailable in the present workspace. Balanced syntax and connectivity checks are useful but do not establish that KiCad accepts or electrically approves the files. There are no Gerbers or assembly files.
+Open [power-widget-bench.kicad_pro](power-widget-bench.kicad_pro) in KiCad 9. The project includes the [native schematic](power-widget-bench.kicad_sch), [editable PCB](power-widget-bench.kicad_pcb), project symbols, and a snapshot of all 23 used footprint types. Native [ERC](erc.rpt) passes with zero violations. Read the [layout review](../../docs/layout-review.md) and [DRC report](drc.rpt) for board status and release gates. There are no fabrication-release Gerbers.
 
 | Circuit | Connection-sheet preview | KiCad source |
 |---|---|---|
@@ -12,13 +12,13 @@ Open [power-widget-bench.kicad_sch](power-widget-bench.kicad_sch) as the root sc
 | Reporting USB and STM32F072 | [04-usb-mcu.svg](04-usb-mcu.svg) | [04-usb-mcu.kicad_sch](04-usb-mcu.kicad_sch) |
 | SWD, UART, GPIO, reset and boot controls | [05-debug.svg](05-debug.svg) | [05-debug.kicad_sch](05-debug.kicad_sch) |
 
-The SVG files are readable connection sheets generated from the same circuit data, **not KiCad renders**. [circuit.json](circuit.json) records all 82 components and their numbered pins; [connections.json](connections.json) records the 65 named nets. The [component schedule](component-schedule.md) is a draft, not an orderable BOM.
+The SVG files are readable connection sheets generated from the same circuit data, **not KiCad renders**. [circuit.json](circuit.json) records 82 circuit footprints plus six nonphysical ERC supply flags and their numbered pins; [connections.json](connections.json) records the 65 named nets. The [component schedule](component-schedule.md) is a draft, not an orderable BOM.
 
 ## Bench arrangement
 
-Allocate approximately 100 × 80 mm initially, four layers with 2 oz outer copper as a layout candidate. Put the main VBUS/shunt/return path along one short, direct edge; the whole board need not carry high current across its length. Place the PC receptacle on a long edge, with the MCU and all grounded debug connections on its side of a 4 mm barrier allocation. Keep metal standoffs, shields and copper away from the barrier. This is a proposed floorplan, not a routed PCB or insulation qualification.
+The bench PCB is **125 × 107 mm**, four layers, with a candidate 2 oz outer / 1 oz inner stack. The force path runs across the upper portion. The PC receptacle sits on the bottom long edge, and a 3 mm copper keepout separates PC and inline domains across every layer. U2 bridges the gap; the ground plane is split by domain. This is functional isolation, not a certified insulation rating. Fabricator capability, thermal behavior and USB signal integrity require qualification.
 
-J1 is the inline receptacle and P1 is the custom captive plug. Its individual contact wiring is defined in [connector-routing.md](../../docs/connector-routing.md). All CC-contact, SBU and SuperSpeed contact paths are retained; only USB 2.0 data performance is in scope. No inline PD controller, new e-marker, or charger-identification termination is fitted. Select the actual J1/P1 assembly only after drawings, orientation and current tests. Final product topology remains open.
+J1 is the selected GCT inline receptacle; P1 is the board-side solder termination for a custom captive harness. Its individual contact wiring is defined in [connector-routing.md](../../docs/connector-routing.md). All CC-contact, SBU and SuperSpeed contact paths are retained; only USB 2.0 data performance is in scope. No inline PD controller, new e-marker, or charger-identification termination is fitted. The selected GCT USB population is limited to **5 A**. See [connector selection](../../docs/connector-selection.md); the 9 A USB assembly remains unsourced. Final product topology remains open.
 
 | Access | Connections / use |
 |---|---|
@@ -49,7 +49,7 @@ U7 switches U2 side 1 and its pull-ups using MCU PA1. The ISO1641 side-1 high-st
 
 ## Bring-up sequence on this board
 
-1. Review pin/footprint drawings and run KiCad ERC, then inspect assembly unpowered. Verify PC/inline isolation, both independent CC paths and no supply shorts. Leave OEM equipment disconnected.
+1. Close the documented PCB/connector/protection release gates, then inspect the assembly unpowered. Verify PC/inline isolation, both independent CC paths and no supply shorts. Leave OEM equipment disconnected.
 2. Power J8 only. Establish 3V3_PC, reset/boot/SWD and USB enumeration. Verify PA1 can switch the isolator rail and that suspend removes its load. Sensor absence is a valid diagnostic state.
 3. Use current-limited floating 3.3 V at J7 with JP1 on 2–3. Verify INA228 ID, raw readings, calibration commands and logging while VBUS is zero. This permits firmware work before an inline charger is attached.
 4. Apply current-limited 5 V through qualified J2/J3 force wiring and a small known load. Verify polarity, the B voltage reference, one-second statistics and energy. Return JP1 to 1–2 and repeat with normal sensor power. Compare the JP3 measurement with the supply budget.
@@ -61,3 +61,25 @@ U7 switches U2 side 1 and its pull-ups using MCU PA1. The ISO1641 side-1 high-st
 Select J1/P1, force terminals, strain relief, all footprints and passive voltage/power ratings. Verify the WSK2512's four terminals against its land drawing: the draft uses project numbering I1/I2/E1/E2, not an assumed vendor pad convention. Review USB port pad mapping, all IC exposed pads, unpowered pin behavior, USB timing/current and regulator thermals. Resolve inline ESD/overrange protection without compromising CC or low-power leakage. Route Kelvin senses and B-ground separately from force-current necks.
 
 Regenerate with `python tools/capture_bench.py`; use `--check` to detect stale files. Its assertions check independent CC nets, no shared PC/inline nets and the MCU supply pins. These checks do not replace ERC, impedance/thermal layout work or hardware tests.
+
+## Physical-design reproduction
+
+With KiCad 9 Python `pcbnew` available:
+
+```sh
+python tools/capture_bench.py
+python tools/footprint_bench.py
+python tools/layout_bench.py
+python tools/fanout_bench.py
+# Route the generated DSN with a compatible Specctra router; use one optimization thread.
+python tools/finish_bench.py --session hardware/bench-rev-a/power-widget-bench.ses
+# The retained session requires these reviewed manual repairs:
+python tools/review_route_bench.py
+python tools/finish_bench.py
+kicad-cli sch erc --exit-code-violations -o hardware/bench-rev-a/erc.rpt hardware/bench-rev-a/power-widget-bench.kicad_sch
+kicad-cli pcb drc --schematic-parity --exit-code-violations -o hardware/bench-rev-a/drc.rpt hardware/bench-rev-a/power-widget-bench.kicad_pcb
+```
+
+`layout_bench.py` rebuilds the initial placement and constrained power routes; it overwrites the PCB. Preserve hand edits before regenerating. The checked-in PCB is the review artifact. The routing session and reports record subsequent routing/review, not hardware test results. Set `KICAD_FOOTPRINT_DIR` when the KiCad library is outside `/usr/share/kicad/footprints`. See [footprint provenance](footprint-provenance.md), [connector selection](../../docs/connector-selection.md), and [protection review](../../docs/protection-review.md).
+
+Current native results: **ERC 0; DRC 0; unconnected items 0; schematic/PCB parity mismatches 0.** These are CAD results, not a current/voltage or charging-compatibility rating. [Top PCB view](pcb-top.svg) · [Bottom copper view](pcb-bottom.svg).

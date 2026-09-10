@@ -54,3 +54,15 @@ Added a firmware pin/register contract and raw signed decoding, plus time-weight
 Verification: all three generators reproduce their outputs; 19,635 DC budget points retain 0.874% / 4.539% worst allocations. Circuit domain/CC assertions pass, all five SVG previews were visually inspected, local document links resolve, and JSON parses. The C header compiles with strict host-GCC warnings and passes signed decoding endpoint vectors. These are design-file/software checks, not KiCad ERC or physical validation.
 
 Next physical-design work: review native schematic/footprints/ERC, source the captive and force assemblies, resolve inline overrange/ESD behavior and route the accessible PCB. Begin firmware on the documented interfaces, then validate DC/noise/energy through force connections before qualifying OEM cables and orientations.
+
+## 2026-09-10 — Native circuit review and routed firmware bench
+
+Selected GCT USB4115-03-C inline receptacle, USB4155-03-C captive plug candidate and USB4105-GF-A-120 reporting receptacle, with Würth 691137710002 force terminals. The GCT USB population is explicitly 5 A maximum; a qualified 9 A USB assembly is still a sourcing gate, not a downgraded project target.
+
+Replaced the inline supply with TPS7A4333DGQR (85 V), revised branch resistance/capacitors and documented the overrange/clamp decision and its limits. All 82 circuit footprints are assigned; project symbols and 23 footprint types are included with provenance. Native schematic parsing, label orientation, grid and supply declarations were corrected.
+
+Created and routed a 125 × 107 mm four-layer bench PCB with force connections, captive termination/strain relief, isolated long-edge PC USB, MCU, SWD/UART/GPIO, current links and buttons. Explicit power buses and connector fanouts, split ground pours and all-layer isolation keepout are included. Smaller signal vias and 0.1 mm signal-net clearance require fabricator approval for the proposed 2 oz copper.
+
+KiCad 9.0.9: **ERC 0 errors/0 warnings; PCB DRC 0 violations, 0 unconnected items, 0 schematic-parity mismatches**. Independent pad/net mapping agrees for 82 circuit footprints and 65 circuit nets. Replaying the retained routing session and manual clearance repairs reproduces a clean native DRC. Native schematic and PCB plots were inspected. Budget/orientation/circuit generation checks still pass.
+
+See [layout review](layout-review.md), [connector selection](connector-selection.md), and [protection review](protection-review.md) for remaining gates. No fabrication, firmware implementation, physical current rating or OEM interoperability result is claimed.

@@ -28,7 +28,7 @@ Checked 2026-09-10. Primary manufacturer and standards-body material only. Links
 | S22 | [ST USBLC6-2](https://www.st.com/resource/en/datasheet/usblc6-2.pdf) | SC6 paired USB data pins and reporting-port ESD topology. |
 | S23 | [TI TPS22919](https://www.ti.com/lit/ds/symlink/tps22919.pdf) | SC70-6 load switch, ON control, output discharge and low off current; switches PC isolator supply. |
 | S24 | [TI TPS25751](https://www.ti.com/product/TPS25751) | User-provided PD reference; this is a negotiating controller, not a selected transparent inline part. |
-| S25 | [KiCad schematic format](https://dev-docs.kicad.org/en/file-formats/sexpr-schematic/) | Native draft serialization reference; actual KiCad loading/ERC has not been run. |
+| S25 | [KiCad schematic format](https://dev-docs.kicad.org/en/file-formats/sexpr-schematic/) | Native draft serialization reference; native KiCad 9 loading and ERC now pass; see bench reports. |
 | S26 | [Apple 140 W adapter MW2M3AM/A](https://www.apple.com/shop/product/mw2m3am/a/140w-usb-c-power-adapter) | Adapter/cable recommendation; retrieved page did not expose an output-mode table. |
 
 ## Unresolved evidence
@@ -38,3 +38,11 @@ Checked 2026-09-10. Primary manufacturer and standards-body material only. Links
 - No connector or cable assembly has been qualified for the revised manufacturer-current rule and its margin. Generic 5 A parts remain unqualified for larger-current scenarios.
 - No supply-chain price, inventory, or assembly quote is presented as verified. Cost tables are explicit planning allowances.
 - No full current USB-C standard, OEM private schematic, physical-unit test, waveform capture, thermal image or calibration result is present. Manufacturer component datasheets were consulted for circuit capture. Model outputs and connection sheets are not bench evidence.
+
+## Bench physical-design source additions
+
+- [TI TPS7A43](https://www.ti.com/lit/ds/symlink/tps7a43.pdf): selected 85 V regulator, pin table, stability and DGQ land pattern. Supersedes S10 for U4.
+- [GCT USB4115](https://gct.co/connector/usb4115), [USB4155](https://gct.co/connector/usb4155), [USB4105](https://gct.co/connector/usb4105): 48 V / 5 A ratings; **not 9 A**. Individual plug drawing retrieval was unsuccessful, so no mating-plug footprint is claimed.
+- [Würth 691137710002](https://www.we-online.com/components/products/datasheet/691137710002.pdf): force-terminal ratings, pitch and drill.
+- [Vishay SMBJ](https://www.vishay.com/docs/88392/smbj.pdf): clamp-coordination review; no TVS selected as universally protective.
+- [Vishay WSK2512](https://www.vishay.com/docs/30108/wsk2512.pdf): 5 mΩ uses 1.19 mm termination variant; project pin mapping separates current and Kelvin pads.

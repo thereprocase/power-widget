@@ -1,0 +1,658 @@
+[
+  {
+    "reference": "J1",
+    "footprint": "PowerWidget:USB_C_Receptacle_GCT_USB4115-03-C",
+    "x_mm": 28,
+    "y_mm": 27,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "P1",
+    "footprint": "PowerWidget:Captive_Termination",
+    "x_mm": 108,
+    "y_mm": 15,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R1",
+    "footprint": "PowerWidget:WSK2512_5mR",
+    "x_mm": 65,
+    "y_mm": 25,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "J2",
+    "footprint": "PowerWidget:Force_5mm_2pin",
+    "x_mm": 45,
+    "y_mm": 14,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "J3",
+    "footprint": "PowerWidget:Force_5mm_2pin",
+    "x_mm": 85,
+    "y_mm": 14,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "J4",
+    "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+    "x_mm": 88,
+    "y_mm": 36,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP1",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 45,
+    "y_mm": 20,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP2",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 85,
+    "y_mm": 20,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP3",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 94,
+    "y_mm": 10,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP4",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 14,
+    "y_mm": 37,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP5",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 18,
+    "y_mm": 37,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP6",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 22,
+    "y_mm": 42,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP7",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 26,
+    "y_mm": 42,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP8",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 31,
+    "y_mm": 39,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP9",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 35,
+    "y_mm": 39,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R2",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 28,
+    "y_mm": 33,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "U1",
+    "footprint": "PowerWidget:VSSOP-10_3x3mm_P0.5mm",
+    "x_mm": 65,
+    "y_mm": 40,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "U2",
+    "footprint": "PowerWidget:SOIC-8_3.9x4.9mm_P1.27mm",
+    "x_mm": 75,
+    "y_mm": 60,
+    "rotation_deg": 90,
+    "domain": "BARRIER"
+  },
+  {
+    "reference": "R3",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 61,
+    "y_mm": 33,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R4",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 69,
+    "y_mm": 33,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C1",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 65,
+    "y_mm": 35,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R5",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 74,
+    "y_mm": 37,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C2",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 71,
+    "y_mm": 41,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C3",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 65,
+    "y_mm": 45,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C4",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 78,
+    "y_mm": 54.5,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C5",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 78,
+    "y_mm": 65.5,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R6",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 72,
+    "y_mm": 69,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R7",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 78,
+    "y_mm": 69,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R8",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 72,
+    "y_mm": 51,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R9",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 78,
+    "y_mm": 51,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "J5",
+    "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+    "x_mm": 110,
+    "y_mm": 70,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "J6",
+    "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+    "x_mm": 110,
+    "y_mm": 46,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "TP10",
+    "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+    "x_mm": 57,
+    "y_mm": 40,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "U4",
+    "footprint": "PowerWidget:HVSSOP10_DGQ",
+    "x_mm": 40,
+    "y_mm": 48,
+    "rotation_deg": 0,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "JP3",
+    "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+    "x_mm": 40,
+    "y_mm": 33,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "R10",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 40,
+    "y_mm": 38,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C6",
+    "footprint": "PowerWidget:C_1210_3225Metric",
+    "x_mm": 43,
+    "y_mm": 42,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C7",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 35,
+    "y_mm": 48,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C20",
+    "footprint": "PowerWidget:C_1210_3225Metric",
+    "x_mm": 45,
+    "y_mm": 47,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "C21",
+    "footprint": "PowerWidget:C_1210_3225Metric",
+    "x_mm": 51,
+    "y_mm": 47,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "JP1",
+    "footprint": "PowerWidget:PinHeader_1x03_P2.54mm_Vertical",
+    "x_mm": 32,
+    "y_mm": 53,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "J7",
+    "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+    "x_mm": 20,
+    "y_mm": 52,
+    "rotation_deg": 90,
+    "domain": "INLINE"
+  },
+  {
+    "reference": "U5",
+    "footprint": "PowerWidget:SOT-23-5",
+    "x_mm": 46,
+    "y_mm": 92,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "JP2",
+    "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+    "x_mm": 38,
+    "y_mm": 94,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C8",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 42,
+    "y_mm": 88,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C9",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 46,
+    "y_mm": 87,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C10",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 51,
+    "y_mm": 102,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "U7",
+    "footprint": "PowerWidget:SOT-363_SC-70-6",
+    "x_mm": 91,
+    "y_mm": 71,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R25",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 96,
+    "y_mm": 71,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C18",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 91,
+    "y_mm": 75,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C19",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 91,
+    "y_mm": 67,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "JP4",
+    "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+    "x_mm": 103,
+    "y_mm": 67,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R26",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 103,
+    "y_mm": 71,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "J8",
+    "footprint": "PowerWidget:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "x_mm": 60,
+    "y_mm": 107,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "U3",
+    "footprint": "PowerWidget:LQFP-48_7x7mm_P0.5mm",
+    "x_mm": 75,
+    "y_mm": 86,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "U6",
+    "footprint": "PowerWidget:SOT-23-6",
+    "x_mm": 60,
+    "y_mm": 99,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R13",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 53,
+    "y_mm": 106,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R14",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 67,
+    "y_mm": 106,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R15",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 66,
+    "y_mm": 99,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R16",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 70,
+    "y_mm": 99,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C11",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 75,
+    "y_mm": 94,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C12",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 75,
+    "y_mm": 78,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C13",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 83,
+    "y_mm": 87,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C14",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 66,
+    "y_mm": 82,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R17",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 65,
+    "y_mm": 87,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "C15",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 65,
+    "y_mm": 91,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C16",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 62,
+    "y_mm": 87,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R18",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 58,
+    "y_mm": 92,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R19",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 58,
+    "y_mm": 87,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "R20",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 53,
+    "y_mm": 99,
+    "rotation_deg": 90,
+    "domain": "PC"
+  },
+  {
+    "reference": "J9",
+    "footprint": "PowerWidget:PinHeader_2x05_P1.27mm_Vertical",
+    "x_mm": 90,
+    "y_mm": 88,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "J10",
+    "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+    "x_mm": 15,
+    "y_mm": 77,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "J11",
+    "footprint": "PowerWidget:PinHeader_1x08_P2.54mm_Vertical",
+    "x_mm": 119,
+    "y_mm": 77,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R21",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 58,
+    "y_mm": 76,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "C17",
+    "footprint": "PowerWidget:C_0805_2012Metric",
+    "x_mm": 58,
+    "y_mm": 80,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "SW1",
+    "footprint": "PowerWidget:SW_SPST_TL3342",
+    "x_mm": 40,
+    "y_mm": 74,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R22",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 83,
+    "y_mm": 78,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "SW2",
+    "footprint": "PowerWidget:SW_SPST_TL3342",
+    "x_mm": 28,
+    "y_mm": 74,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R23",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 95,
+    "y_mm": 81,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "SW3",
+    "footprint": "PowerWidget:SW_SPST_TL3342",
+    "x_mm": 104,
+    "y_mm": 92,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "R24",
+    "footprint": "PowerWidget:R_0805_2012Metric",
+    "x_mm": 103,
+    "y_mm": 101,
+    "rotation_deg": 0,
+    "domain": "PC"
+  },
+  {
+    "reference": "D1",
+    "footprint": "PowerWidget:LED_0805_2012Metric",
+    "x_mm": 110,
+    "y_mm": 101,
+    "rotation_deg": 0,
+    "domain": "PC"
+  }
+]
