@@ -1,3 +1,5 @@
+> Revision update, 2026-09-10: scope is Apple/Dell/Lenovo laptop charging, excluding extreme proprietary phone modes. Selected target: 28 V / 9 A continuous, 10.8 A design margin, based on the [documented laptop roster](manufacturer-modes.md). The first hardware is a full bench prototype with MCU firmware/debug access, replacing the small coupon. Captive male is its baseline; final connector topology remains open.
+
 # Design brief
 
 Revision 0.3 — 2026-09-10. Requirements baseline, including the revised manufacturer-current rule.
@@ -39,8 +41,8 @@ Select the topology after a signal-path proof and assembly sourcing review. A ge
 ## Engineering assumptions to validate
 
 - Initial accuracy qualification: 5–28 V, 0.5 W up to rated current × voltage, 15–35°C ambient, after warm-up. Operation elsewhere may be explored, but is not yet an accuracy promise.
-- The initial OEM survey focuses on Apple, Dell, Lenovo, and other laptop chargers identified for compatibility. The user's wording is broad; phone-specific modes remain an explicit scope/qualification question rather than being declared covered. The final ceiling cannot close until the applicable manufacturer roster is bounded and verified.
-- A 9 A / 10.8 A-margin scenario is used to continue circuit analysis; 7.5 A and 12.5 A scenarios expose sensitivity. None is represented as the verified required current.
+- The initial OEM survey focuses on Apple, Dell, Lenovo, and other laptop chargers identified for compatibility. The user's wording is broad; extreme proprietary phone modes are now excluded. The initial laptop roster is now bounded and documented; physical compatibility remains unqualified.
+- The 9 A / 10.8 A design target follows the documented 8.5 A laptop maximum. Earlier 7.5 A and 12.5 A cases remain sensitivity calculations only.
 - Accuracy applies to settled DC readings at the defined measurement plane. A faster trend stream has a separate noise/bandwidth characterization.
 - Initial measurement plane is the output-side PCB Kelvin points. A captive cable adds loss beyond that plane; laptop-terminal power requires additional sensing or a qualified correction.
 - Power pass-through should remain available during MCU reset or PC disconnection. This is a proposed transparency target, distinct from standalone measurement.

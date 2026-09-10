@@ -2,7 +2,7 @@
 
 2026-09-10. “Provisional” means a design candidate; “open” means the outcome is deliberately uncommitted.
 
-## D01 — Connector topology: OPEN, leaning captive male
+## D01 — Captive baseline selected for bench; final topology OPEN
 
 | Consideration | Captive male output | Two inline receptacles |
 |---|---|---|
@@ -11,19 +11,17 @@
 | Orientation | Carry both relevant CC/VCONN contact paths through the added assembly | Active CC contacts on the two cables may land on different receptacle contacts |
 | Resistance | One fewer mating interface than the two-cable arrangement | Additional contacts and cable contribute loss |
 | Service | Replace complete pigtail or its internal termination | Replace an external cable |
-| Present preference | First feasibility coupon | Retained if proven practical and economical |
+| Present preference | First bench prototype | Retained if proven practical and economical |
 
 TI describes the roles of CC orientation, Rp/Rd, Ra, and VCONN in its [Type-C primer](https://www.ti.com/lit/wp/slyy109b/slyy109b.pdf). **Engineering inference:** joining two standard C-to-C cables is more involved than extending the contacts of one plug. Fixed CC1-to-CC1 routing cannot be assumed to connect the active CC conductor through every two-cable orientation. Sharing a CC bus between two independent marked cables also needs a cable-discovery analysis; do not presume there is a transparent way to merge their responses.
 
 Close D01 only after producing an orientation truth table, checking actual pigtail wiring, comparing source/sink/cable PD traces with a direct baseline, and finding a buildable connector assembly. No shorting CC1 to CC2 as a workaround. No new inline Rp/Rd/Ra networks or e-marker impersonation. If option B needs a PD proxy that replaces the original negotiation, it fails the transparency requirement rather than quietly redefining it.
 
-## D02 — Manufacturer current ceiling: RULE SET; NUMBER OPEN
+## D02 — Laptop current ceiling: 9 A TARGET / 10.8 A DESIGN
 
-The user changed the rule during planning: **I_rated = I_manufacturer,max + 0.5 A; I_design = 1.20 × I_rated**. The 6 A requirement is obsolete. Record exact charger, device, cable, labels, and negotiated modes before determining the maximum or claiming brand compatibility.
+The user excluded extreme proprietary phone charging. The [dated laptop roster](manufacturer-modes.md) includes Lenovo's documented C170 20 V / 8.5 A mode. Apply the accepted rule: 8.5 + 0.5 = 9 A continuous; ×1.20 = 10.8 A design margin. Do not confuse Dell's separate fault current-limit figure with a charging mode.
 
-For example, a verified maximum of 7 A would yield 7.5 A rated and 9 A design; 8.5 A would yield 9 A rated and 10.8 A design. These are conditional calculations, not verified OEM maxima. The [survey and scenario table](manufacturer-modes.md) keep the distinction explicit.
-
-Continue circuit analysis at a provisional 9 A scenario and examine a 12.5 A scenario. This is allowed to inform component choices without silently freezing a numeric requirement. A generic 5 A cable does not acquire a higher rating because the monitor or an OEM protocol can carry more current. Qualification must include connector current sharing and the matched cable assembly.
+This closes the numeric target for this roster, not physical qualification or universal brand compatibility. The 5 mΩ / 1 W shunt remains the baseline; 12.5 A phone-derived sizing is excluded. No generic USB-C connector receives a 9 A rating through this decision.
 
 ## D03 — Overrange behavior: OPEN before final hardware
 
@@ -50,3 +48,7 @@ No built-in PD decoder or trigger. A separate suitably rated analyzer is a devel
 ## D08 — Minimum VBUS / low-voltage programmable modes: OPEN
 
 The 5–28 V accuracy study is an engineering assumption, not a user-imposed 5 V minimum. If the qualified charger roster includes operation below 5 V, extend the accuracy and supply-startup study. The present 3.3 V inline LDO output cannot be assumed to remain regulated down to an equally low VBUS. Evaluate a lower sensor-side rail within INA228/isolator limits, a different supply, or isolated PC-fed sensing. Passive communications may continue while sensing is unavailable; that does not satisfy a promised measurement range. Close this before releasing the operating-voltage specification.
+
+## D09 — Full bench prototype: SELECTED
+
+Replace the standalone continuity coupon with an accessible board containing the passive inline path, INA228, isolated I²C, PC reporting USB, an onboard USB MCU, SWD/UART/I²C access, force terminals, Kelvin probe points, and a selectable floating sensor supply. Firmware can start with a current-limited supply/load before high-current USB assemblies are qualified. Production size and enclosure constraints do not apply to this board. See the bench hardware package as it is captured.

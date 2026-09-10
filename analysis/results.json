@@ -1,7 +1,7 @@
 {
   "status": "provisional engineering model; not measured hardware",
   "evaluated_grid_points": 19635,
-  "verified_oem_max_current_a": null,
+  "verified_oem_max_current_a": 8.5,
   "analysis_current_scenario_a": 9.0,
   "analysis_is_final_current_rating": false,
   "current_scenarios": [

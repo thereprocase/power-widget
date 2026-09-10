@@ -2,25 +2,25 @@
 
 An inline USB-C power monitor with isolated PC reporting. Preserve the original charger's negotiation and cable identity while measuring voltage, current, power, and energy.
 
-**Current status: preliminary design and planning. No orderable hardware yet.** The manufacturer-current survey and connector qualification remain open.
+**Current status: preliminary design and planning. No orderable hardware yet.** The laptop current target and captive connector wiring are defined. Bench prototype design and connector qualification are in progress.
 
 ## Required envelope
 
 | Item | Requirement |
 |---|---|
 | Voltage | 28 V DC; at least 33.6 V electrical design margin |
-| Continuous current | **Highest applicable manufacturer charging current + 0.5 A** |
-| Current design margin | **1.20 × that continuous rating** |
+| Continuous current | **9 A target: documented laptop maximum 8.5 A + 0.5 A** |
+| Current design margin | **10.8 A: 1.20 × the 9 A target** |
 | Inline data | USB 2.0; preserve additional contacts needed for validated charging behavior |
 | Accuracy | ±1% of power reading at ≥5 W; ±5% from 0.5 W to below 5 W |
 | Reporting | Separate USB-C receptacle on a long edge; galvanically isolated |
 | Product | Cheap but good; no display, battery, or standalone logger required |
 
-The latest current rule supersedes the earlier 6 A / 168 W brief. **The numeric OEM maximum has not yet been verified.** A 9 A / 10.8 A-design scenario is used for provisional calculations; it is not a finalized rating. Voltage remains 28 V, not full EPR.
+The latest current rule supersedes the earlier 6 A / 168 W brief. The selected laptop roster now supports a **9 A / 10.8 A design target**. Extreme proprietary phone charging is excluded by the latest user instruction. No physical assembly is qualified yet. Voltage remains 28 V, not full EPR.
 
 ## First open question: captive male or two receptacles?
 
-**Open, leaning toward a short captive USB-C male pigtail. Both outcomes remain allowed.**
+**Captive male selected for bench revision A.** Final product topology remains open; a two-receptacle outcome needs a proven solution for orientation and cable discovery.
 
 | Candidate | Arrangement |
 |---|---|
@@ -52,6 +52,7 @@ These are calculations with stated allocations, not measured specifications. Cal
 |---|---|
 | [Design brief](docs/design-brief.md) | Current requirements and assumptions |
 | [Manufacturer modes and rating rule](docs/manufacturer-modes.md) | Survey gaps and conditional current scenarios |
+| [Connector wiring](docs/connector-routing.md) | Contact map and CC/VCONN orientation analysis |
 | [Open decisions](docs/decisions.md) | Topology, fault behavior, and architecture gates |
 | [Architecture](docs/architecture.md) | Block diagram, candidate parts, signal and isolation paths |
 | [Calculated budgets](analysis/results.md) | Accuracy, loss, range, and scenario results |
@@ -73,4 +74,4 @@ Python standard library only. Inputs: [assumptions.json](analysis/assumptions.js
 
 ## Next gate
 
-Verify the applicable OEM current ceiling, select a qualified connector/cable arrangement, and resolve overrange behavior. Then build a continuity/charging coupon and evaluate the sensing core before committing to a final schematic and PCB. The newest practical build will remain prominent here; earlier designs belong in commit history or tagged revisions.
+Build one accessible bench prototype with sensing, isolation, MCU, debug access, and connector experiments. It replaces the standalone continuity coupon. Qualify connector assemblies and resolve overrange behavior before a fabrication release. The newest practical build will remain prominent here; earlier designs belong in commit history or tagged revisions.

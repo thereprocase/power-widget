@@ -34,3 +34,9 @@ Architecture checkpoint: `3a62ac91781fd497afed0c893fcbd64117126e75`.
 2. Build the connector feasibility fixture and verify CC/VCONN/e-marker behavior across orientations. Prefer captive male if it passes; retain two receptacles as an allowed outcome.
 3. Resolve fault handling and measurement-plane choices.
 4. Evaluate the sensing core with a current-limited source/load, then capture a schematic after the gates close.
+
+## Checkpoint 4 — Laptop scope and contact routing
+
+2026-09-10: user requested a full firmware-capable bench prototype in place of the tiny test coupon, then explicitly excluded extreme proprietary phone charging. Verified Dell 165 W output modes, Lenovo 140 W embedded output specification, and Lenovo C170's official 8.5 A maximum. Selected 28 V / 9 A continuous target with 10.8 A design margin for the laptop roster. Apple still needs an actual unit label/trace; no universal compatibility is claimed.
+
+Added the captive contact map and reproducible four-case CC topology model. Fixed two-receptacle wiring fails two local orientations. Captive is the bench baseline; procurement, cable-discovery traces, current qualification, and final topology remain open. Next: capture the full bench sensing/MCU/debug circuit and bring-up plan.
