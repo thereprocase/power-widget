@@ -1,6 +1,6 @@
 # Bench architecture
 
-2026-09-10 — [bench A circuit draft](../hardware/bench-rev-a/README.md), not a fabrication release.
+2026-09-10 — [bench A schematic and routed PCB](../hardware/bench-rev-a/README.md), not a fabrication release.
 
 ## Two power domains and a passive main path
 
@@ -48,7 +48,7 @@ Favor a short custom pigtail with explicitly documented contact continuity. Do n
 | U5 | TI TLV75533PDBVR | MCU and isolator PC side |
 | U6 | ST USBLC6-2SC6 | Reporting USB ESD network |
 | U7 | TI TPS22919DCKR | Switch PC isolator supply and pull-ups for suspend |
-| J1 / P1 | Connector/pigtail assembly open | Primary procurement gate |
+| J1 / P1 | Selected 5 A bench receptacle / custom captive termination | Required 9 A USB assembly remains a procurement gate |
 
 INA228 input limits and resolution come from its [datasheet](https://www.ti.com/lit/ds/symlink/ina228.pdf). The [WSK2512 specification](https://www.vishay.com/docs/30108/wsk2512.pdf) supports the four-terminal 5 mΩ candidate; use the **35 ppm/°C finished-part TCR**, not the lower resistive-alloy headline. Calibrate after assembly because a 0.5% nominal shunt is not a 0.1% calibrated system.
 
@@ -81,13 +81,13 @@ In the normal A-to-B direction, the A-side supply tap is excluded from the shunt
 
 JP3 permits a floating ammeter to measure the inline supply branch; JP2 measures the main PC supply branch. Full PC-port consumption also includes the circuits ahead of JP2. JP1 selects normal inline power or a floating external 3.3 V input for zero-VBUS firmware work. Use measured consumption or a characterized model with uncertainty in the [energy comparison](energy-comparison.md).
 
-Place the PC receptacle on the long edge with a physically separate ground area. Start with a 4 mm PCB barrier keepout as a layout allocation, then verify package, board, pollution assumptions, and test voltage. Isolation here is for the low-voltage measurement application; a component's kV withstand rating is not an instrument mains rating. A system can also connect the two domains externally—for example when the same laptop is both load and reporting host.
+The routed bench board places the PC receptacle on the lower long edge with a physically separate ground area and a **3 mm all-layer copper keepout** between domains. This supersedes the initial 4 mm layout allocation; see the [layout review](layout-review.md). Verify package, board, pollution assumptions and test voltage. Isolation here is for the low-voltage measurement application; a component's kV withstand rating is not an instrument mains rating. A system can also connect the two domains externally—for example when the same laptop is both load and reporting host.
 
 ## Reference plane and mechanics
 
 The primary reported voltage is at the B-side PCB sense pads. After the current-rule change, the resistance study uses a 75 mm captive cable and approximately 18 AWG copper area per polarity; neither is a final cable specification. Its resistance lies beyond that plane. Do not silently estimate laptop-terminal power from those pads: either label the plane clearly, add remote Kelvin sense conductors, or qualify a correction and its uncertainty.
 
-Allocate approximately 100 × 80 mm for this accessible bench board, four layers with 2 oz outer copper as a layout starting point. Production miniaturization is deferred. Put power entry, shunt, and exit in a short direct path; place the sensor near the shunt and the MCU on the reporting edge. Keep hot contacts and the supply regulator away from Kelvin junctions. Final width, copper weights, necks, and vias must follow the resistance and temperature-rise budget. Mechanical strain relief must carry pigtail loads independently of solder pads.
+The routed bench board is **125 × 107 mm**, expanded from the initial 100 × 80 mm allocation for accessible headers and routing. Its candidate four-layer stack uses 2 oz outer and 1 oz inner copper. Production miniaturization is deferred. Power entry, shunt and exit occupy the upper portion, with the sensor near the shunt and the MCU near the reporting edge. Review thermal gradients at Kelvin junctions and validate widths, copper weights, necks and vias against the resistance and temperature-rise budget. Mechanical strain relief must carry pigtail loads independently of solder pads.
 
 ## Remaining circuit gates
 

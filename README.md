@@ -2,7 +2,20 @@
 
 An inline USB-C power monitor with isolated PC reporting. Preserve the original charger and cable negotiation while measuring voltage, current, watts and Wh.
 
-**Newest design: [bench revision A native KiCad project](hardware/bench-rev-a/README.md).** It includes the sensing circuit, isolated USB reporting, STM32 firmware/debug access, assigned footprints and a bench PCB. Native ERC passes with zero violations. See the [layout review](docs/layout-review.md) for routing/DRC status. **The selected USB population is 5 A maximum; the project’s 9 A USB assembly is still a sourcing and qualification gate.**
+**Newest design: [bench revision A native KiCad project](hardware/bench-rev-a/README.md).** It includes the sensing circuit, isolated USB reporting, STM32 firmware/debug access, assigned footprints and a routed bench PCB. Native KiCad checks report **zero ERC violations, DRC violations, unconnected items and schematic/PCB mismatches**. See the [layout review](docs/layout-review.md) for evidence and open gates. **The selected USB population is 5 A maximum; the project’s 9 A USB assembly is still a sourcing and qualification gate.**
+
+## Board preview and drawings
+
+![Bench revision A: top copper, front silkscreen and board outline](hardware/bench-rev-a/pcb-top.svg)
+
+Actual KiCad 2D plot of the **125 × 107 mm** bench PCB. The reporting USB-C port is on the lower long edge. This is an unbuilt prototype design; no 3D assembly render or hardware photographs are available yet.
+
+| View | Contents |
+|---|---|
+| [PCB views](hardware/bench-rev-a/README.md#pcb-views) | Top and bottom copper plots from the routed board |
+| [Circuit drawings](hardware/bench-rev-a/README.md#circuit-drawings) | Five connection-sheet previews and their native KiCad schematic sources |
+| [Architecture diagram](docs/architecture.md#two-power-domains-and-a-passive-main-path) | Transparent power path, sensing and isolated PC reporting |
+| [Editable KiCad project](hardware/bench-rev-a/power-widget-bench.kicad_pro) | Schematic, PCB and local symbol/footprint libraries in the same directory |
 
 ## Design target
 
@@ -66,4 +79,4 @@ Omit `--check` to regenerate. Python standard library only. The budget sweep cov
 
 ## Next gate
 
-Review the native schematic and footprint drawings, source the captive/connector and force assemblies, and turn this circuit into an accessible PCB. Firmware can start on the documented interfaces while physical gates close. Resolve overrange behavior and connector current capability before fabrication release. Earlier designs remain in commit history.
+Review the routed PCB against a fabricator's stack and capabilities, finalize the orderable BOM and captive strain relief, and resolve protection/overrange behavior before fabrication release. Source and qualify the required 9 A USB assembly; the selected USB parts support only the 5 A bench population. Firmware can start on the documented interfaces while these gates close. Physical validation must establish thermal capacity, measurement accuracy and OEM charging compatibility. Earlier designs remain in commit history.

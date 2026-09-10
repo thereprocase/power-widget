@@ -2,7 +2,26 @@
 
 **28 V / 9 A continuous design target, 10.8 A design margin. No physical assembly is qualified.** This is the accessible prototype for connector experiments, calibration and MCU firmware development. It contains the complete proposed sensing, reporting, supply and debug circuits rather than a separate continuity fixture.
 
-Open [power-widget-bench.kicad_pro](power-widget-bench.kicad_pro) in KiCad 9. The project includes the [native schematic](power-widget-bench.kicad_sch), [editable PCB](power-widget-bench.kicad_pcb), project symbols, and a snapshot of all 23 used footprint types. Native [ERC](erc.rpt) passes with zero violations. Read the [layout review](../../docs/layout-review.md) and [DRC report](drc.rpt) for board status and release gates. There are no fabrication-release Gerbers.
+Open [power-widget-bench.kicad_pro](power-widget-bench.kicad_pro) in KiCad 9. The project includes the [native schematic](power-widget-bench.kicad_sch), [editable PCB](power-widget-bench.kicad_pcb), project symbols, and a snapshot of all 23 used footprint types. Native checks report **zero [ERC violations](erc.rpt), [DRC violations, unconnected items and schematic/PCB mismatches](drc.rpt)**. Read the [layout review](../../docs/layout-review.md) for board status and release gates. There are no fabrication-release Gerbers.
+
+## PCB views
+
+These are actual 2D plots exported from the checked-in KiCad PCB. No 3D assembly render or physical prototype photograph is available yet.
+
+![Top copper, front silkscreen and board outline](pcb-top.svg)
+
+[Open top view](pcb-top.svg) — front copper with front silkscreen and outline.
+
+<details>
+<summary>Show bottom copper view</summary>
+
+![Bottom copper, front silkscreen and board outline, viewed from the top](pcb-bottom.svg)
+
+[Open bottom copper view](pcb-bottom.svg) — bottom copper with front silkscreen and outline, **viewed from the top**. This is not a mirrored bottom assembly drawing.
+
+</details>
+
+## Circuit drawings
 
 | Circuit | Connection-sheet preview | KiCad source |
 |---|---|---|
@@ -13,6 +32,21 @@ Open [power-widget-bench.kicad_pro](power-widget-bench.kicad_pro) in KiCad 9. Th
 | SWD, UART, GPIO, reset and boot controls | [05-debug.svg](05-debug.svg) | [05-debug.kicad_sch](05-debug.kicad_sch) |
 
 The SVG files are readable connection sheets generated from the same circuit data, **not KiCad renders**. [circuit.json](circuit.json) records 82 circuit footprints plus six nonphysical ERC supply flags and their numbered pins; [connections.json](connections.json) records the 65 named nets. The [component schedule](component-schedule.md) is a draft, not an orderable BOM.
+
+<details>
+<summary>Show all five connection sheets</summary>
+
+![Inline connectors, shunt and bench force points](01-inline.svg)
+
+![INA228, filters and isolated I²C](02-sensing.svg)
+
+![Local supplies and current-measurement links](03-supplies.svg)
+
+![Reporting USB and STM32F072](04-usb-mcu.svg)
+
+![SWD, UART, GPIO, reset and boot controls](05-debug.svg)
+
+</details>
 
 ## Bench arrangement
 
@@ -58,7 +92,9 @@ U7 switches U2 side 1 and its pull-ups using MCU PA1. The ISO1641 side-1 high-st
 
 ## Before PCB release
 
-Select J1/P1, force terminals, strain relief, all footprints and passive voltage/power ratings. Verify the WSK2512's four terminals against its land drawing: the draft uses project numbering I1/I2/E1/E2, not an assumed vendor pad convention. Review USB port pad mapping, all IC exposed pads, unpowered pin behavior, USB timing/current and regulator thermals. Resolve inline ESD/overrange protection without compromising CC or low-power leakage. Route Kelvin senses and B-ground separately from force-current necks.
+J1 and the force terminals now have selected parts and footprints; P1 has a board-side captive-harness termination. The shunt's four terminals and native pad/net mapping have been reviewed. Complete the orderable BOM, passive voltage/power and capacitor bias/stability review, actual captive assembly and strain relief. The selected USB parts remain limited to 5 A; sourcing a qualified 9 A USB assembly is a separate open gate.
+
+Review the routed board against the fabricator's stack, copper weight, fine clearances and USB impedance requirements. Resolve inline ESD/overrange protection without compromising CC or low-power leakage. Review unpowered behavior, USB timing/current and regulator thermals; physical tests must establish measurement accuracy, current capacity and charging compatibility. See the [layout](../../docs/layout-review.md), [connector](../../docs/connector-selection.md) and [protection](../../docs/protection-review.md) reviews for the remaining work.
 
 Regenerate with `python tools/capture_bench.py`; use `--check` to detect stale files. Its assertions check independent CC nets, no shared PC/inline nets and the MCU supply pins. These checks do not replace ERC, impedance/thermal layout work or hardware tests.
 
