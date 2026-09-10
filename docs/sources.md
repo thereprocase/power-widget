@@ -18,11 +18,14 @@ Checked 2026-09-10. Primary manufacturer and standards-body material only. Links
 | S12 | [TI SN6505B datasheet](https://www.ti.com/lit/ds/symlink/sn6505b.pdf) | Transformer-driver alternative if sensing is powered across an isolation barrier; not the baseline. |
 | S13 | [Infineon CY4500](https://www.infineon.com/evaluation-board/CY4500) | Historical passive PD-observer design precedent. Product page identifies end-of-life status; this is not an EPR/6 A qualification source. |
 | S14 | [TI USB PD power negotiations, SLVA842](https://www.ti.com/lit/an/slva842/slva842.pdf) | Source/sink negotiation and trace comparison methodology; predates EPR. |
+| S15 | [Lenovo Legion Slim 140W GX21M50625](https://www.lenovo.com/us/en/p/accessories-and-software/chargers-and-batteries/chargers/gx21m50625) | Product identified; the retrieved page did not expose its current-mode table. |
+| S16 | [Lenovo Legion 5 15IRX10 PSREF](https://psref.lenovo.com/syspool/Sys/PDF/Legion/Legion_5_15IRX10/Legion_5_15IRX10_Spec.pdf) | Separates USB-C input from higher-power slim-tip adapter offerings; do not infer USB-C current from bundled adapter wattage. |
+| S17 | [Bourns CSS4J-4026](https://www.bourns.com/docs/product-datasheets/css4j-4026.pdf) | Higher-power four-terminal shunt alternative; 5 mΩ is on-request and has a different TCR. Not a selected replacement. |
 
 ## Unresolved evidence
 
 - Searches did not produce usable primary OEM current-mode documentation in this session. Several Dell pages could not be retrieved. No Apple/Dell/Lenovo protocol, wiring, or compatibility has therefore been declared verified.
 - Obtain exact charger/device/cable identifiers and original connection baselines. Label photographs plus OEM documentation and analyzer captures should establish the current and voltage actually in use.
-- No connector or cable assembly with documented 6 A continuous service and the requested margin has been selected. Generic 5 A parts remain unqualified for that requirement.
+- No connector or cable assembly has been qualified for the revised manufacturer-current rule and its margin. Generic 5 A parts remain unqualified for larger-current scenarios.
 - No supply-chain price, inventory, or assembly quote is presented as verified. Cost tables are explicit planning allowances.
 - No downloaded standards text, reference schematic, physical unit, waveform capture, thermal image, or calibration result is present yet. A model output is not bench evidence.

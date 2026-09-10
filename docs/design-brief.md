@@ -1,6 +1,6 @@
 # Design brief
 
-Revision 0.2 — 2026-09-10. Requirements baseline for the first design phase.
+Revision 0.3 — 2026-09-10. Requirements baseline, including the revised manufacturer-current rule.
 
 ## Purpose
 
@@ -10,8 +10,8 @@ Measure power flowing between an original USB-C charger and device, and report i
 
 | ID | Requirement | Status |
 |---|---|---|
-| R01 | 28 V DC and 6 A continuous; 168 W maximum rated operating point | User requirement |
-| R02 | At least 20% electrical margin: 33.6 V and 7.2 A design targets | Brief interpretation; retained |
+| R01 | 28 V DC; rated continuous current = highest applicable manufacturer charging current + 0.5 A | Latest user requirement; numeric current awaits the OEM survey |
+| R02 | At least 20% electrical margin: 33.6 V and 1.20 × the R01 current | Retained; the 0.5 A allowance is added before the 20% multiplier |
 | R03 | Original source and load negotiate directly; no substitute PD contracts, charger identity, or cable-capability claims | User requirement |
 | R04 | Preserve standard and vendor-specific charging communications, including Apple, Dell, Lenovo, and other relevant combinations | User requirement; compatibility must be demonstrated |
 | R05 | USB 2.0 inline data; no requirement for higher-speed data or video | User requirement |
@@ -23,7 +23,7 @@ Measure power flowing between an original USB-C charger and device, and report i
 | R11 | Cheap but good; no display, battery, or standalone logging required | User requirement |
 | R12 | Checkpoint requirements, analysis, decisions, and progress to this repository | User requirement |
 
-The 10 A/full-EPR request was superseded by R01. A high-voltage sensor does not restore the earlier operating envelope. R02 does not turn the instrument into a 7.2 A product; an increased operating rating would need its own margin and qualification.
+The original 10 A/full-EPR request and subsequent 6 A/168 W requirement were superseded. Voltage remains 28 V. Maximum rated power will be 28 V × the finalized current rating. R02 is design reserve, not an operating rating. See the [manufacturer survey](manufacturer-modes.md) for evidence gaps and explicitly hypothetical sizing scenarios.
 
 ## Early open question: connector topology
 
@@ -38,7 +38,9 @@ Select the topology after a signal-path proof and assembly sourcing review. A ge
 
 ## Engineering assumptions to validate
 
-- Initial accuracy qualification: 5–28 V, 0.5 W up to the lesser of 168 W and 6 A × voltage, 15–35°C ambient, after warm-up. Operation elsewhere may be explored, but is not yet an accuracy promise.
+- Initial accuracy qualification: 5–28 V, 0.5 W up to rated current × voltage, 15–35°C ambient, after warm-up. Operation elsewhere may be explored, but is not yet an accuracy promise.
+- The initial OEM survey focuses on Apple, Dell, Lenovo, and other laptop chargers identified for compatibility. The user's wording is broad; phone-specific modes remain an explicit scope/qualification question rather than being declared covered. The final ceiling cannot close until the applicable manufacturer roster is bounded and verified.
+- A 9 A / 10.8 A-margin scenario is used to continue circuit analysis; 7.5 A and 12.5 A scenarios expose sensitivity. None is represented as the verified required current.
 - Accuracy applies to settled DC readings at the defined measurement plane. A faster trend stream has a separate noise/bandwidth characterization.
 - Initial measurement plane is the output-side PCB Kelvin points. A captive cable adds loss beyond that plane; laptop-terminal power requires additional sensing or a qualified correction.
 - Power pass-through should remain available during MCU reset or PC disconnection. This is a proposed transparency target, distinct from standalone measurement.

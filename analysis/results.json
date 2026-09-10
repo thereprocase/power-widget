@@ -1,0 +1,335 @@
+{
+  "status": "provisional engineering model; not measured hardware",
+  "evaluated_grid_points": 19635,
+  "verified_oem_max_current_a": null,
+  "analysis_current_scenario_a": 9.0,
+  "analysis_is_final_current_rating": false,
+  "current_scenarios": [
+    {
+      "hypothetical_oem_max_a": 6.5,
+      "hypothetical_rating_a": 7.0,
+      "design_current_a": 8.4,
+      "rating_power_at_28v_w": 196.0,
+      "high_resistance_shunt_heat_at_design_current_w": 0.35499834090000004,
+      "within_75_percent_of_1w_shunt_allocation": true,
+      "adc_range_covers_design_current": true,
+      "hot_passive_loss_at_rating_w": 0.72907696454435
+    },
+    {
+      "hypothetical_oem_max_a": 7.0,
+      "hypothetical_rating_a": 7.5,
+      "design_current_a": 9.0,
+      "rating_power_at_28v_w": 210.0,
+      "high_resistance_shunt_heat_at_design_current_w": 0.407523605625,
+      "within_75_percent_of_1w_shunt_allocation": true,
+      "adc_range_covers_design_current": true,
+      "hot_passive_loss_at_rating_w": 0.836950597053463
+    },
+    {
+      "hypothetical_oem_max_a": 8.5,
+      "hypothetical_rating_a": 9.0,
+      "design_current_a": 10.799999999999999,
+      "rating_power_at_28v_w": 252.0,
+      "high_resistance_shunt_heat_at_design_current_w": 0.5868339920999999,
+      "within_75_percent_of_1w_shunt_allocation": true,
+      "adc_range_covers_design_current": true,
+      "hot_passive_loss_at_rating_w": 1.2052088597569868
+    },
+    {
+      "hypothetical_oem_max_a": 12.0,
+      "hypothetical_rating_a": 12.5,
+      "design_current_a": 15.0,
+      "rating_power_at_28v_w": 350.0,
+      "high_resistance_shunt_heat_at_design_current_w": 1.1320100156250001,
+      "within_75_percent_of_1w_shunt_allocation": false,
+      "adc_range_covers_design_current": true,
+      "hot_passive_loss_at_rating_w": 2.324862769592953
+    }
+  ],
+  "worst_normal_precision": {
+    "mode": "precision",
+    "voltage_v": 28.0,
+    "power_w": 5,
+    "current_a": 0.17857142857142858,
+    "shunt_uv": 892.8571428571429,
+    "current_error_percent": 0.7038938758553028,
+    "voltage_error_percent": 0.1438309151785714,
+    "output_burden_w": 0.0012599999999999998,
+    "power_error_percent": 0.8739734534280228,
+    "target_percent": 1.0,
+    "within_allocation": true,
+    "current_terms_fraction": {
+      "current_calibration": 0.001,
+      "shunt_temperature": 0.001225,
+      "sensor_gain_temperature": 0.0005,
+      "layout_gain": 0.0005,
+      "offset": 0.00112,
+      "offset_temperature": 0.00028,
+      "common_mode": 0.00044693875855302884,
+      "supply": 5.599999999999999e-05,
+      "input_filter_bias": 5.599999999999999e-05,
+      "layout_thermal_emf": 0.00056,
+      "noise_allocation": 0.00112,
+      "quantization_half_lsb": 0.000175
+    },
+    "voltage_terms_fraction": {
+      "voltage_calibration": 0.0005,
+      "sensor_gain_temperature": 0.0005,
+      "layout_gain": 0.0002,
+      "offset": 8.928571428571429e-05,
+      "offset_temperature": 1.785714285714286e-05,
+      "supply": 8.928571428571429e-07,
+      "bus_filter_loading": 0.000125,
+      "noise_allocation": 1.7857142857142859e-06,
+      "quantization_half_lsb": 3.4877232142857146e-06
+    }
+  },
+  "worst_low_precision": {
+    "mode": "precision",
+    "voltage_v": 28.0,
+    "power_w": 0.5,
+    "current_a": 0.017857142857142856,
+    "shunt_uv": 89.28571428571429,
+    "current_error_percent": 4.1364387585530284,
+    "voltage_error_percent": 0.1438309151785714,
+    "output_burden_w": 0.0012599999999999998,
+    "power_error_percent": 4.538581605360091,
+    "target_percent": 5.0,
+    "within_allocation": true,
+    "current_terms_fraction": {
+      "current_calibration": 0.001,
+      "shunt_temperature": 0.001225,
+      "sensor_gain_temperature": 0.0005,
+      "layout_gain": 0.0005,
+      "offset": 0.0112,
+      "offset_temperature": 0.0028,
+      "common_mode": 0.004469387585530289,
+      "supply": 0.00056,
+      "input_filter_bias": 0.00056,
+      "layout_thermal_emf": 0.0056,
+      "noise_allocation": 0.0112,
+      "quantization_half_lsb": 0.00175
+    },
+    "voltage_terms_fraction": {
+      "voltage_calibration": 0.0005,
+      "sensor_gain_temperature": 0.0005,
+      "layout_gain": 0.0002,
+      "offset": 8.928571428571429e-05,
+      "offset_temperature": 1.785714285714286e-05,
+      "supply": 8.928571428571429e-07,
+      "bus_filter_loading": 0.000125,
+      "noise_allocation": 1.7857142857142859e-06,
+      "quantization_half_lsb": 3.4877232142857146e-06
+    }
+  },
+  "nominal_current_adc_limit_a": 32.768,
+  "high_resistance_current_adc_limit_a": 32.56508289782827,
+  "design_voltage_v": 33.6,
+  "scenario_design_current_a": 10.799999999999999,
+  "sense_filter_nominal_corner_hz": 79577.47154594767,
+  "modes": {
+    "precision": {
+      "nominal_window_s": 0.538624,
+      "nominal_fresh_updates_hz": 1.8565826996197718,
+      "typical_noise_free_step_uv": 0.7694652583405731,
+      "absolute_noise_allocation_uv": 1.0
+    },
+    "trend": {
+      "nominal_window_s": 0.01728,
+      "nominal_fresh_updates_hz": 57.87037037037037,
+      "typical_noise_free_step_uv": 4.0612619817811755,
+      "absolute_noise_allocation_uv": 3.0
+    }
+  },
+  "path_loss": [
+    {
+      "current_a": 5,
+      "cold_parts_ohm": {
+        "shunt": 0.005,
+        "pcb_loop": 0.0015,
+        "added_mating_interface_loop": 0.003,
+        "pigtail_loop": 0.003142345078979344
+      },
+      "hot_parts_ohm": {
+        "shunt": 0.005007,
+        "pcb_loop": 0.0017358,
+        "added_mating_interface_loop": 0.0045000000000000005,
+        "pigtail_loop": 0.0036363217253948966
+      },
+      "hot_loop_ohm": 0.014879121725394897,
+      "hot_drop_v": 0.07439560862697449,
+      "hot_passive_loss_w": 0.3719780431348724,
+      "shunt_nominal_drop_v": 0.025,
+      "shunt_nominal_loss_w": 0.125,
+      "meter_supply_power_at_28v_w": 0.224,
+      "regulator_heat_at_28v_w": 0.1976
+    },
+    {
+      "current_a": 9.0,
+      "cold_parts_ohm": {
+        "shunt": 0.005,
+        "pcb_loop": 0.0015,
+        "added_mating_interface_loop": 0.003,
+        "pigtail_loop": 0.003142345078979344
+      },
+      "hot_parts_ohm": {
+        "shunt": 0.005007,
+        "pcb_loop": 0.0017358,
+        "added_mating_interface_loop": 0.0045000000000000005,
+        "pigtail_loop": 0.0036363217253948966
+      },
+      "hot_loop_ohm": 0.014879121725394897,
+      "hot_drop_v": 0.13391209552855407,
+      "hot_passive_loss_w": 1.2052088597569868,
+      "shunt_nominal_drop_v": 0.045,
+      "shunt_nominal_loss_w": 0.405,
+      "meter_supply_power_at_28v_w": 0.224,
+      "regulator_heat_at_28v_w": 0.1976
+    },
+    {
+      "current_a": 10.799999999999999,
+      "cold_parts_ohm": {
+        "shunt": 0.005,
+        "pcb_loop": 0.0015,
+        "added_mating_interface_loop": 0.003,
+        "pigtail_loop": 0.003142345078979344
+      },
+      "hot_parts_ohm": {
+        "shunt": 0.005007,
+        "pcb_loop": 0.0017358,
+        "added_mating_interface_loop": 0.0045000000000000005,
+        "pigtail_loop": 0.0036363217253948966
+      },
+      "hot_loop_ohm": 0.014879121725394897,
+      "hot_drop_v": 0.16069451463426487,
+      "hot_passive_loss_w": 1.7355007580500603,
+      "shunt_nominal_drop_v": 0.05399999999999999,
+      "shunt_nominal_loss_w": 0.5831999999999998,
+      "meter_supply_power_at_28v_w": 0.224,
+      "regulator_heat_at_28v_w": 0.1976
+    },
+    {
+      "current_a": 12.5,
+      "cold_parts_ohm": {
+        "shunt": 0.005,
+        "pcb_loop": 0.0015,
+        "added_mating_interface_loop": 0.003,
+        "pigtail_loop": 0.003142345078979344
+      },
+      "hot_parts_ohm": {
+        "shunt": 0.005007,
+        "pcb_loop": 0.0017358,
+        "added_mating_interface_loop": 0.0045000000000000005,
+        "pigtail_loop": 0.0036363217253948966
+      },
+      "hot_loop_ohm": 0.014879121725394897,
+      "hot_drop_v": 0.1859890215674362,
+      "hot_passive_loss_w": 2.324862769592953,
+      "shunt_nominal_drop_v": 0.0625,
+      "shunt_nominal_loss_w": 0.78125,
+      "meter_supply_power_at_28v_w": 0.224,
+      "regulator_heat_at_28v_w": 0.1976
+    },
+    {
+      "current_a": 15,
+      "cold_parts_ohm": {
+        "shunt": 0.005,
+        "pcb_loop": 0.0015,
+        "added_mating_interface_loop": 0.003,
+        "pigtail_loop": 0.003142345078979344
+      },
+      "hot_parts_ohm": {
+        "shunt": 0.005007,
+        "pcb_loop": 0.0017358,
+        "added_mating_interface_loop": 0.0045000000000000005,
+        "pigtail_loop": 0.0036363217253948966
+      },
+      "hot_loop_ohm": 0.014879121725394897,
+      "hot_drop_v": 0.22318682588092345,
+      "hot_passive_loss_w": 3.347802388213852,
+      "shunt_nominal_drop_v": 0.075,
+      "shunt_nominal_loss_w": 1.125,
+      "meter_supply_power_at_28v_w": 0.224,
+      "regulator_heat_at_28v_w": 0.1976
+    }
+  ],
+  "sensitivity": {
+    "retain_shunt_tolerance_28v_5w": {
+      "mode": "precision",
+      "voltage_v": 28,
+      "power_w": 5,
+      "current_a": 0.17857142857142858,
+      "shunt_uv": 892.8571428571429,
+      "current_error_percent": 1.2038938758553028,
+      "voltage_error_percent": 0.1438309151785714,
+      "output_burden_w": 0.0012599999999999998,
+      "power_error_percent": 1.3746926080039243,
+      "target_percent": 1.0,
+      "within_allocation": false,
+      "current_terms_fraction": {
+        "current_calibration": 0.001,
+        "shunt_temperature": 0.001225,
+        "sensor_gain_temperature": 0.0005,
+        "layout_gain": 0.0005,
+        "offset": 0.00112,
+        "offset_temperature": 0.00028,
+        "common_mode": 0.00044693875855302884,
+        "supply": 5.599999999999999e-05,
+        "input_filter_bias": 5.599999999999999e-05,
+        "layout_thermal_emf": 0.00056,
+        "noise_allocation": 0.00112,
+        "quantization_half_lsb": 0.000175,
+        "additional_uncalibrated_shunt_tolerance": 0.005
+      },
+      "voltage_terms_fraction": {
+        "voltage_calibration": 0.0005,
+        "sensor_gain_temperature": 0.0005,
+        "layout_gain": 0.0002,
+        "offset": 8.928571428571429e-05,
+        "offset_temperature": 1.785714285714286e-05,
+        "supply": 8.928571428571429e-07,
+        "bus_filter_loading": 0.000125,
+        "noise_allocation": 1.7857142857142859e-06,
+        "quantization_half_lsb": 3.4877232142857146e-06
+      }
+    },
+    "trend_28v_half_watt": {
+      "mode": "trend",
+      "voltage_v": 28,
+      "power_w": 0.5,
+      "current_a": 0.017857142857142856,
+      "shunt_uv": 89.28571428571429,
+      "current_error_percent": 6.376438758553029,
+      "voltage_error_percent": 0.1438309151785714,
+      "output_burden_w": 0.0012599999999999998,
+      "power_error_percent": 6.7818034178600755,
+      "target_percent": 5.0,
+      "within_allocation": false,
+      "current_terms_fraction": {
+        "current_calibration": 0.001,
+        "shunt_temperature": 0.001225,
+        "sensor_gain_temperature": 0.0005,
+        "layout_gain": 0.0005,
+        "offset": 0.0112,
+        "offset_temperature": 0.0028,
+        "common_mode": 0.004469387585530289,
+        "supply": 0.00056,
+        "input_filter_bias": 0.00056,
+        "layout_thermal_emf": 0.0056,
+        "noise_allocation": 0.0336,
+        "quantization_half_lsb": 0.00175
+      },
+      "voltage_terms_fraction": {
+        "voltage_calibration": 0.0005,
+        "sensor_gain_temperature": 0.0005,
+        "layout_gain": 0.0002,
+        "offset": 8.928571428571429e-05,
+        "offset_temperature": 1.785714285714286e-05,
+        "supply": 8.928571428571429e-07,
+        "bus_filter_loading": 0.000125,
+        "noise_allocation": 1.7857142857142859e-06,
+        "quantization_half_lsb": 3.4877232142857146e-06
+      }
+    }
+  }
+}

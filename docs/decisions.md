@@ -17,21 +17,23 @@ TI describes the roles of CC orientation, Rp/Rd, Ra, and VCONN in its [Type-C pr
 
 Close D01 only after producing an orientation truth table, checking actual pigtail wiring, comparing source/sink/cable PD traces with a direct baseline, and finding a buildable connector assembly. No shorting CC1 to CC2 as a workaround. No new inline Rp/Rd/Ra networks or e-marker impersonation. If option B needs a PD proxy that replaces the original negotiation, it fails the transparency requirement rather than quietly redefining it.
 
-## D02 — Proprietary charging versus 6 A: OPEN
+## D02 — Manufacturer current ceiling: RULE SET; NUMBER OPEN
 
-Keep the 6 A operating rating. Record exact charger, device, cable, labels, and negotiated modes before claiming brand compatibility. A **130 W mode at 20 V requires 6.5 A**; a 140 W mode at 20 V requires 7 A. Either exceeds R01, even though the component margin reaches 7.2 A. These are arithmetic examples, not a claim that every Dell or Lenovo charger uses those modes; exact OEM models and primary documentation remain to be collected.
+The user changed the rule during planning: **I_rated = I_manufacturer,max + 0.5 A; I_design = 1.20 × I_rated**. The 6 A requirement is obsolete. Record exact charger, device, cable, labels, and negotiated modes before determining the maximum or claiming brand compatibility.
 
-If an essential OEM mode exceeds 6 A, explicitly choose between increasing the rating and excluding that mode. For example, 6.5 A plus 20% requires 7.8 A design capacity. Never force an OEM charger into such a mode with an arbitrary cable. A generic 5 A cable rating does not qualify 6 A operation.
+For example, a verified maximum of 7 A would yield 7.5 A rated and 9 A design; 8.5 A would yield 9 A rated and 10.8 A design. These are conditional calculations, not verified OEM maxima. The [survey and scenario table](manufacturer-modes.md) keep the distinction explicit.
+
+Continue circuit analysis at a provisional 9 A scenario and examine a 12.5 A scenario. This is allowed to inform component choices without silently freezing a numeric requirement. A generic 5 A cable does not acquire a higher rating because the monitor or an OEM protocol can carry more current. Qualification must include connector current sharing and the matched cable assembly.
 
 ## D03 — Overrange behavior: OPEN before final hardware
 
-A transparent device does not get to tell the endpoints that it is rated for only 28 V / 6 A. EPR includes higher voltages; see TI's [TPS26750 EPR support](https://www.ti.com/lit/ds/symlink/tps26750.pdf). The instrument may encounter a higher contract without having requested it.
+A transparent device does not get to tell the endpoints its 28 V/current limit. EPR includes higher voltages; see TI's [TPS26750 EPR support](https://www.ti.com/lit/ds/symlink/tps26750.pdf). The instrument may encounter a higher contract without having requested it.
 
 Evaluate an independent analog disconnect for overvoltage/overcurrent/overtemperature against the loss, cost, and power-role implications. Alternatively, qualify a wider survival envelope and document controlled bench use. A software alert is not protection; a shunt fuse rating is not a precise current ceiling. A low-voltage TVS must not become a sustained crowbar on a legitimate higher-voltage contract. No arbitrary protection component values are frozen yet. R01 remains unchanged in either case.
 
 ## D04 — Measurement: PROVISIONAL
 
-INA228 with one 5 mΩ four-terminal shunt on VBUS. Direct raw voltage/current conversion in firmware, with per-unit calibration. This offers useful low-current margin without autoranging or a second current path. INA238 remains a cost-down comparison, conditional on a new error budget and calibration evidence. No low-side shunt: keep inline ground continuous.
+INA228 with one 5 mΩ four-terminal shunt on VBUS. Use the **±163.84 mV ADC range** after the current-rule change; the narrower range clips at about 8.2 A and does not cover the larger design scenarios. Direct raw conversion and per-unit calibration retain useful low-current margin without autoranging. The shunt package must be requalified against the final current; the 1 W WSK2512 candidate is only retained for the 9 A study. INA238 remains a cost-down comparison conditional on a new error budget. No low-side shunt: keep inline ground continuous.
 
 ## D05 — Isolation and supply: PROVISIONAL
 
@@ -43,4 +45,8 @@ Qualify a settled precision mode first, with approximately 0.54 s acquisition wi
 
 ## D07 — Product scope: PROVISIONAL
 
-No built-in PD decoder or trigger. A separate suitably rated analyzer is a development instrument for compatibility validation. Preserve low-frequency/DC charging signatures as well as digital messages; do not attach the MCU to inline D+/D−. SBU and unused high-speed contacts remain part of the early routing investigation, not presumed unused vendor signals.
+No built-in PD decoder or trigger. A separate suitably rated analyzer is a development instrument for compatibility validation. Preserve low-frequency/DC charging signatures as well as digital messages; do not attach the MCU to inline D+/D−. SBU and unused high-speed contacts remain part of the early routing investigation, not presumed unused vendor signals. Include USB-C-to-other-connector OEM cables in the survey: a captive USB-C output cannot physically mate with a MagSafe end, so some assemblies may require placing the monitor at the charger side. Recheck reference-plane and self-consumption accounting in that placement.
+
+## D08 — Minimum VBUS / low-voltage programmable modes: OPEN
+
+The 5–28 V accuracy study is an engineering assumption, not a user-imposed 5 V minimum. If the qualified charger roster includes operation below 5 V, extend the accuracy and supply-startup study. The present 3.3 V inline LDO output cannot be assumed to remain regulated down to an equally low VBUS. Evaluate a lower sensor-side rail within INA228/isolator limits, a different supply, or isolated PC-fed sensing. Passive communications may continue while sensing is unavailable; that does not satisfy a promised measurement range. Close this before releasing the operating-voltage specification.

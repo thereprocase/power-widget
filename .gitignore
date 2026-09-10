@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.kicad_prl
+*.kicad_sch-bak
+*.kicad_pcb-bak

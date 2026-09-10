@@ -32,7 +32,7 @@ Inline ground and appropriate inline shielding continue between A and B. The PC 
 | SuperSpeed contacts | High-speed data/video outside required scope | Establish whether dropping these contacts affects target charging; reserve the option to retain continuity |
 | Shields | Inline shields stay in the inline domain | Enclosure, screws, test points, and PC receptacle shell must not bridge the isolation barrier |
 
-Manufacturer precedent exists for passive observation: Infineon's [CY4500](https://www.infineon.com/evaluation-board/CY4500) passes power and signal traffic while observing CC. It is an older, discontinued reference, not evidence that our topology supports EPR, 6 A, or every OEM.
+Manufacturer precedent exists for passive observation: Infineon's [CY4500](https://www.infineon.com/evaluation-board/CY4500) passes power and signal traffic while observing CC. It is an older, discontinued reference, not evidence that our topology supports EPR, the revised current envelope, or every OEM.
 
 Favor a short custom pigtail with explicitly documented contact continuity. Do not select a stock USB 2.0 cable solely because it is thick or advertised for high power. Its internal e-marker and VCONN wiring can change the circuit we are trying to observe. Keep both inline connector outcomes open through the first coupon.
 
@@ -41,7 +41,7 @@ Favor a short custom pigtail with explicitly documented contact continuity. Do n
 | Block | Candidate | Design purpose |
 |---|---|---|
 | U1 | TI INA228, DGS 10-pin | High-side shunt and bus-voltage conversion |
-| R1 | Vishay WSK2512, 5 mΩ, 0.5% grade; candidate code WSK25125L000DEA | Four-terminal sense resistor; actual orderable suffix/stock to verify |
+| R1 | Vishay WSK2512, 5 mΩ, 0.5% grade; candidate code WSK25125L000DEA | 9 A study only; recheck dissipation after OEM current ceiling closes |
 | U2 | TI ISO1641BD, SOIC-8 | Bidirectional SDA, PC-to-sensor SCL |
 | U3 | ST STM32F042K6T6, LQFP-32 candidate | USB device, I²C master, calibration, timing, reporting |
 | U4 | TI TPS7A1601, adjustable 3.3 V | Inline-side low-current supply |
@@ -65,6 +65,10 @@ Provisional U1 nets, subject to schematic review:
 
 Start input-filter evaluation at two matched 10 Ω sense resistors and 100 nF differential capacitance. This is about 79.6 kHz differential RC bandwidth before ADC filtering. Check transient behavior and any gain correction from loading; calibration and the layout residual budget include this network. Keep Kelvin traces away from power-current constrictions. Choose voltage-rated capacitors and protection from the eventual fault envelope, not normal differential voltage alone.
 
+The revised current rule requires the wider ±163.84 mV ADC range. At 5 mΩ it permits approximately ±32.8 A of conversion range; that is not the hardware current rating. The model recalculates quantization and noise for this range. At 9 A the shunt dissipates 0.405 W; at a 10.8 A design point it dissipates 0.583 W. A 15 A design point would exceed the 1 W shunt's rating, so the wider scenario requires a larger package or different resistor architecture.
+
+The [Bourns CSS4J-4026K-5L00 family](https://www.bourns.com/docs/product-datasheets/css4j-4026.pdf) is a higher-power research alternative, with a materially different TCR and an on-request 5 mΩ value. It is not an approved drop-in substitute. Recalculate temperature error and confirm availability before adopting it.
+
 Use raw shunt voltage and bus voltage for signed calculations: current = calibrated shunt voltage / calibrated resistance; power = current × calibrated bus voltage. This keeps the reference plane explicit and avoids mistaking an IC full-scale error specification for percent-of-reading accuracy. Treat the on-chip power/energy registers as optional cross-checks until signed behavior, scale, and timebase are reviewed.
 
 ## Isolation and self-consumption
@@ -79,7 +83,7 @@ Place the PC receptacle on the long edge with a physically separate ground area.
 
 ## Reference plane and mechanics
 
-The primary reported voltage is at the B-side PCB sense pads. A 100 mm captive cable is an initial mechanical allowance, not a required length. Its resistance lies beyond that plane. Do not silently estimate laptop-terminal power from those pads: either label the plane clearly, add remote Kelvin sense conductors, or qualify a correction and its uncertainty.
+The primary reported voltage is at the B-side PCB sense pads. After the current-rule change, the resistance study uses a 75 mm captive cable and approximately 18 AWG copper area per polarity; neither is a final cable specification. Its resistance lies beyond that plane. Do not silently estimate laptop-terminal power from those pads: either label the plane clearly, add remote Kelvin sense conductors, or qualify a correction and its uncertainty.
 
 Start the PCB floorplan around 55 × 28 mm, four layers with ample outer-layer copper, and revise after connector, isolation, and protection decisions. Put power entry, shunt, and exit in a short direct path; place the sensor near the shunt and the MCU on the reporting edge. Keep hot contacts and the supply regulator away from Kelvin junctions. Final width, copper weights, necks, and vias must follow the resistance and temperature-rise budget. Mechanical strain relief must carry pigtail loads independently of solder pads.
 
