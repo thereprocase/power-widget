@@ -1,34 +1,565 @@
 {
-  "revision": "A-DRAFT",
-  "status": "engineering draft; see review reports for native ERC/DRC and release gates",
-  "sheets": {
-    "01-inline": [
-      "Inline path",
-      "INLINE",
-      "9 A target / 10.8 A margin. Connector assemblies UNQUALIFIED. Force terminals parallel the USB ports."
-    ],
-    "02-sensing": [
-      "Sensing and isolation",
-      "MIXED",
-      "PC and INLINE grounds stay separate. U2 is the only signal crossing. Kelvin routing is a PCB requirement."
-    ],
-    "03-supplies": [
-      "Local supplies",
-      "MIXED",
-      "JP1: 1-2 normal; 2-3 floating external 3.3 V. Fit ONE shunt. No isolated power converter is fitted."
-    ],
-    "04-usb-mcu": [
-      "Reporting USB and MCU",
-      "PC",
-      "All circuits here are PC domain. No inline USB or CC signal reaches U3. Reporting connector is GCT USB4105."
-    ],
-    "05-debug": [
-      "Firmware debug access",
-      "PC",
-      "SWD VTref is a reference, not a power input. Headers use PC ground. Never jumper them to inline ground."
-    ]
+  "revision": "A",
+  "canonical_source": "power-widget-bench.kicad_sch",
+  "status": "native schematic export; engineering draft; see ERC/DRC and release gates",
+  "functional_groups": {
+    "02-sensing": "sensing",
+    "03-supplies": "supplies",
+    "04-usb-mcu": "usb-mcu",
+    "05-debug": "debug",
+    "01-inline": "inline"
   },
   "components": [
+    {
+      "ref": "C1",
+      "value": "100nF 100V differential",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SHUNT_PLUS",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "SHUNT_MINUS",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/589a3bba-95d4-5353-9f99-17eef67013eb"
+    },
+    {
+      "ref": "C2",
+      "value": "10nF 100V X7R",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_FILTER",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/04644c24-7b61-5bc9-8f74-eb159e2699cf"
+    },
+    {
+      "ref": "C3",
+      "value": "100nF 10V at U1",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/6d8a4fde-bb81-5916-8399-14976a3155c2"
+    },
+    {
+      "ref": "C4",
+      "value": "100nF 10V at U2.8",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/1a449033-5969-5bed-9d74-61c54034ebac"
+    },
+    {
+      "ref": "C5",
+      "value": "100nF 10V at U2.1",
+      "sheet": "02-sensing",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_ISO_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/cb1addc8-7f9d-5d21-98f9-b10eea7b2846"
+    },
+    {
+      "ref": "C6",
+      "value": "1uF 100V X7R",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_1210_3225Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_LDO_IN",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_1210_3225Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/562fd621-d69c-50ba-ae96-c92371bf07ae"
+    },
+    {
+      "ref": "C7",
+      "value": "2u2 10V X7R",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_INLINE_LDO",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/6d4e1a9e-1fad-587c-b460-8936a4167a58"
+    },
+    {
+      "ref": "C8",
+      "value": "1uF 10V",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_5V_LDO",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/9fe00583-8e7d-549f-bdec-f0d9eec8a9df"
+    },
+    {
+      "ref": "C9",
+      "value": "4u7 10V",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/26a1cd41-680c-5876-9baa-7d7c552228ac"
+    },
+    {
+      "ref": "C10",
+      "value": "1uF 10V at connector",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/e78a0d21-57b8-5a8a-8bd6-2d8e52cd4bae"
+    },
+    {
+      "ref": "C11",
+      "value": "100nF 10V at U3.24",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a1452fd0-c315-5fbc-82ea-49ab1f1f49ce"
+    },
+    {
+      "ref": "C12",
+      "value": "100nF 10V at U3.48",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a11581db-1027-507e-9be9-a69f56439af2"
+    },
+    {
+      "ref": "C13",
+      "value": "100nF 10V at U3.36",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/3907da2e-489c-5f6e-a295-44925b4c1fe3"
+    },
+    {
+      "ref": "C14",
+      "value": "100nF 10V at U3.1",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/f5dfcfc6-9fbc-5d1c-be6b-e626c399ac3c"
+    },
+    {
+      "ref": "C15",
+      "value": "100nF 10V at U3.9",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VDDA_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/591994e2-0088-5947-b903-da0350a4e010"
+    },
+    {
+      "ref": "C16",
+      "value": "1uF 10V",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VDDA_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/acb1e68f-37a7-5e67-951c-f4b0000ce4a3"
+    },
+    {
+      "ref": "C17",
+      "value": "100nF reset",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "NRST_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/2ccf00fd-6745-50f3-b737-475bb44cd163"
+    },
+    {
+      "ref": "C18",
+      "value": "100nF 10V at U7.1",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a0a28da7-d7cf-58d7-a9b4-0820ed111f3b"
+    },
+    {
+      "ref": "C19",
+      "value": "1uF 10V at U7.6",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "C",
+      "footprint": "PowerWidget:C_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_ISO_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/7591d04a-e1ca-57ad-bc3a-8bcde0b1dd24"
+    },
+    {
+      "ref": "C20",
+      "value": "22uF 50V X7R MID",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_1210_3225Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_MID",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_1210_3225Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/4381e64d-5594-5030-9d4a-c5f5ea0e0b7b"
+    },
+    {
+      "ref": "C21",
+      "value": "22uF 50V X7R MID",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "C",
+      "footprint": "PowerWidget:C_1210_3225Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_MID",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Capacitor_SMD:C_1210_3225Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/80c73e46-9ac0-5290-bbb4-6483c13fc1a8"
+    },
+    {
+      "ref": "D1",
+      "value": "Activity LED",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "LED",
+      "footprint": "PowerWidget:LED_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "K",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "A",
+          "net": "LED_ANODE_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "LED_SMD:LED_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/93e31b2e-b2a1-5858-a51d-7e625a9e8c49"
+    },
     {
       "ref": "J1",
       "value": "USB4115-03-C / USB path 5A MAX",
@@ -189,7 +720,586 @@
           "type": "passive"
         }
       ],
-      "source_footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4115-03-C"
+      "source_footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4115-03-C",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/d8660fed-a812-5a98-9eab-d33fb4eff008"
+    },
+    {
+      "ref": "J2",
+      "value": "691137710002 / force terminal",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:Force_5mm_2pin",
+      "note": "Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_A",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "PowerWidget:Force_5mm_2pin",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/71ddd8b7-6bd6-5c3b-a162-90e1cb9996a5"
+    },
+    {
+      "ref": "J3",
+      "value": "691137710002 / force terminal",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:Force_5mm_2pin",
+      "note": "Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_B",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "PowerWidget:Force_5mm_2pin",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/4c5986ed-dc7d-5a8e-b90a-dfc4f992e874"
+    },
+    {
+      "ref": "J4",
+      "value": "Kelvin probe pads; NOT force pins",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+      "note": "Use small pads near the defined B-plane. No main current through this header.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SHUNT_SA",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "SHUNT_SB",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "VBUS_B",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/ffff0b79-4b83-5506-bfac-da73e77e08b8"
+    },
+    {
+      "ref": "J5",
+      "value": "PC I2C / external MCU",
+      "sheet": "02-sensing",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+      "note": "3V3 is switched reference/output. Hold onboard MCU in reset and fit JP4 for another open-drain master; no external pull-ups to an always-on rail.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_ISO_PC",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "SCL_PC",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "",
+          "net": "SDA_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/be4d4479-e46d-5cff-89bc-74a50036f06b"
+    },
+    {
+      "ref": "J6",
+      "value": "INLINE I2C debug",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+      "note": "Only a floating or isolated instrument here; never jumper to J5.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "SCL_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "",
+          "net": "SDA_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/3a55c234-f8b6-5be4-ac81-2a602d0d672c"
+    },
+    {
+      "ref": "J7",
+      "value": "Floating external 3.3V",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+      "note": "For zero-VBUS/low-voltage bench testing; not connected to PC supply.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "EXT_3V3_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/e6ee3dd5-6858-52ac-9e80-a8c371d3f3eb"
+    },
+    {
+      "ref": "J8",
+      "value": "USB4105-GF-A-120 / reporting",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "block",
+      "footprint": "PowerWidget:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+      "note": "Long board edge. USB 2.0 receptacle may omit unused SS/SBU contacts after exact footprint selection.",
+      "pins": [
+        {
+          "number": "A1",
+          "name": "A1",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "A4",
+          "name": "A4",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "A5",
+          "name": "A5",
+          "net": "PC_CC1",
+          "type": "passive"
+        },
+        {
+          "number": "A6",
+          "name": "A6",
+          "net": "PC_DP_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "A7",
+          "name": "A7",
+          "net": "PC_DM_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "A8",
+          "name": "A8",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "A9",
+          "name": "A9",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "A12",
+          "name": "A12",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "B1",
+          "name": "B1",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "B4",
+          "name": "B4",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "B5",
+          "name": "B5",
+          "net": "PC_CC2",
+          "type": "passive"
+        },
+        {
+          "number": "B6",
+          "name": "B6",
+          "net": "PC_DP_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "B7",
+          "name": "B7",
+          "net": "PC_DM_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "B8",
+          "name": "B8",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "B9",
+          "name": "B9",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "B12",
+          "name": "B12",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "S",
+          "name": "SHIELD",
+          "net": "SHIELD_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/9ab000a0-4924-59b3-a6bf-e9e10da91244"
+    },
+    {
+      "ref": "J9",
+      "value": "Cortex SWD 2x5 1.27mm",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_2x05_P1.27mm_Vertical",
+      "note": "Key pin 7 absent. No SWO on Cortex-M0. Debug probe must not power this board.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "VTref",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "SWDIO",
+          "net": "SWDIO_PC",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "GND",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "SWCLK",
+          "net": "SWCLK_PC",
+          "type": "passive"
+        },
+        {
+          "number": "5",
+          "name": "GND",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "6",
+          "name": "SWO-NC",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "7",
+          "name": "KEY",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "8",
+          "name": "NC",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "9",
+          "name": "GNDDetect",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "10",
+          "name": "nRESET",
+          "net": "NRST_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a74976fc-a5a1-5c02-b61d-3af64697c129"
+    },
+    {
+      "ref": "J10",
+      "value": "UART 3.3V logic",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
+      "note": "TX/RX named from board viewpoint; 3V3 reference only. Not RS-232 voltage levels.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "UART_TX_PC",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "UART_RX_PC",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/ce4e0f6b-5187-5bf3-b009-afe42325374b"
+    },
+    {
+      "ref": "J11",
+      "value": "Spare GPIO / SPI",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x08_P2.54mm_Vertical",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "GPIO_PA4",
+          "type": "passive"
+        },
+        {
+          "number": "4",
+          "name": "",
+          "net": "GPIO_PA5",
+          "type": "passive"
+        },
+        {
+          "number": "5",
+          "name": "",
+          "net": "GPIO_PA6",
+          "type": "passive"
+        },
+        {
+          "number": "6",
+          "name": "",
+          "net": "GPIO_PA7",
+          "type": "passive"
+        },
+        {
+          "number": "7",
+          "name": "",
+          "net": "GPIO_PB10",
+          "type": "passive"
+        },
+        {
+          "number": "8",
+          "name": "",
+          "net": "GPIO_PB11",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/26066966-3363-5e6a-b0bd-4e23cee0ba03"
+    },
+    {
+      "ref": "JP1",
+      "value": "SENSOR SUPPLY: one shunt only",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x03_P2.54mm_Vertical",
+      "note": "Normal 1-2; floating external 3.3 V 2-3. Do not install two shunts.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_INLINE_LDO",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "",
+          "net": "EXT_3V3_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/0a634397-6197-5007-ae05-afdc4a3b78fa"
+    },
+    {
+      "ref": "JP2",
+      "value": "PC supply current link",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+      "note": "Fit shunt normally. Remove to measure reporting-domain supply current; no external power injection.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "PC_5V_LDO",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/69278a88-6cf8-5dd2-b762-ff8a6be05ee8"
+    },
+    {
+      "ref": "JP3",
+      "value": "INLINE self-current link",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+      "note": "Fit shunt normally; insert a floating ammeter to characterize sensor-side self-consumption. Not a main-current connection.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_A",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "INLINE_FEED",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/5e72e9aa-5404-556d-99f3-a3c525cc4825"
+    },
+    {
+      "ref": "JP4",
+      "value": "External-master enable; DNF",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "header",
+      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
+      "note": "Fit only for external-master bench use with U3 held reset; remove for USB suspend testing.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "ISO_FORCE_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/ab455fd0-9f24-5f0b-a51a-e2c927a498b0"
     },
     {
       "ref": "P1",
@@ -339,7 +1449,8 @@
           "type": "passive"
         }
       ],
-      "source_footprint": "PowerWidget:Captive_Termination"
+      "source_footprint": "PowerWidget:Captive_Termination",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/d2bdaaa0-cac0-5881-959a-eca4985843c8"
     },
     {
       "ref": "R1",
@@ -375,253 +1486,8 @@
           "type": "passive"
         }
       ],
-      "source_footprint": "PowerWidget:WSK2512_5mR"
-    },
-    {
-      "ref": "J2",
-      "value": "691137710002 / force terminal",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:Force_5mm_2pin",
-      "note": "Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_A",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "PowerWidget:Force_5mm_2pin"
-    },
-    {
-      "ref": "J3",
-      "value": "691137710002 / force terminal",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:Force_5mm_2pin",
-      "note": "Wurth 16 A UL / 24 A VDE, 5.00 mm pitch, 1.30 mm drills. Force path capacity still requires PCB thermal testing.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_B",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "PowerWidget:Force_5mm_2pin"
-    },
-    {
-      "ref": "J4",
-      "value": "Kelvin probe pads; NOT force pins",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
-      "note": "Use small pads near the defined B-plane. No main current through this header.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SHUNT_SA",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "SHUNT_SB",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "VBUS_B",
-          "type": "passive"
-        },
-        {
-          "number": "4",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-    },
-    {
-      "ref": "TP1",
-      "value": "VBUS_A",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_A",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP2",
-      "value": "VBUS_B",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_B",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP3",
-      "value": "GND_INLINE",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP4",
-      "value": "CONTACT_A5",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "CONTACT_A5",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP5",
-      "value": "CONTACT_B5",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "CONTACT_B5",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP6",
-      "value": "INLINE_DP",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_DP",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP7",
-      "value": "INLINE_DM",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_DM",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP8",
-      "value": "CONTACT_A8",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "CONTACT_A8",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "TP9",
-      "value": "CONTACT_B8",
-      "sheet": "01-inline",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "CONTACT_B8",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
+      "source_footprint": "PowerWidget:WSK2512_5mR",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/953db7b9-f393-55ee-9a9f-46f03ff7adb7"
     },
     {
       "ref": "R2",
@@ -645,7 +1511,823 @@
           "type": "passive"
         }
       ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/630496e3-42ba-52d9-8103-ba876a33fbd8"
+    },
+    {
+      "ref": "R3",
+      "value": "10R 0.1% matched",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SHUNT_SA",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "SHUNT_PLUS",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/b8584a36-9f48-5bbe-981c-1ad22bb59b04"
+    },
+    {
+      "ref": "R4",
+      "value": "10R 0.1% matched",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SHUNT_SB",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "SHUNT_MINUS",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/36345967-8237-5099-a1ac-2b13daf62b8c"
+    },
+    {
+      "ref": "R5",
+      "value": "100R",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_B",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "VBUS_FILTER",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/4d846ae8-51ed-5e2b-ad2d-85d5ca42bd9d"
+    },
+    {
+      "ref": "R6",
+      "value": "2k2 pull-up",
+      "sheet": "02-sensing",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SDA_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_ISO_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/16d25840-7a29-5100-b792-a4ce7fea6e37"
+    },
+    {
+      "ref": "R7",
+      "value": "2k2 pull-up",
+      "sheet": "02-sensing",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SCL_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_ISO_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/e2168575-e263-55d9-ac07-fc781cbd9e51"
+    },
+    {
+      "ref": "R8",
+      "value": "2k2 pull-up",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SDA_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/93693c51-42b7-513a-8c62-14dec57d7ac9"
+    },
+    {
+      "ref": "R9",
+      "value": "2k2 pull-up",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SCL_INLINE",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/15540b89-380f-5657-b7a4-4aca9845d25e"
+    },
+    {
+      "ref": "R10",
+      "value": "10R 0.25W branch feed",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_FEED",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "INLINE_LDO_IN",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/0b62bd4c-c4aa-5a16-92ec-2c96f49db63d"
+    },
+    {
+      "ref": "R13",
+      "value": "5k1 1% Rd",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_CC1",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/35d3912c-2da5-55fc-bb38-7734f0a89075"
+    },
+    {
+      "ref": "R14",
+      "value": "5k1 1% Rd",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_CC2",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/3b0814f2-d592-5275-92e6-ca0066f34537"
+    },
+    {
+      "ref": "R15",
+      "value": "0R tuning footprint",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_DP_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "USB_DP_MCU",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/d95f0402-330f-5afc-8e24-9e0968ce39f7"
+    },
+    {
+      "ref": "R16",
+      "value": "0R tuning footprint",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_DM_CONN",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "USB_DM_MCU",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/b903fc2f-9f06-5157-89b6-cf5a29334c5f"
+    },
+    {
+      "ref": "R17",
+      "value": "10R VDDA filter",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "VDDA_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/303f163d-85b2-5d27-b4f9-9d24ca024d5e"
+    },
+    {
+      "ref": "R18",
+      "value": "100k 1%",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "PC_VBUS_DETECT",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/6ef33628-6a14-5ad3-a9a9-4d3b2376b15d"
+    },
+    {
+      "ref": "R19",
+      "value": "100k 1%",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "PC_VBUS_DETECT",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/2a595aad-f836-5961-a6c2-1aaf78ccc1d2"
+    },
+    {
+      "ref": "R20",
+      "value": "0R PC shell bond",
+      "sheet": "04-usb-mcu",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "SHIELD_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/391e03fe-bbe3-5698-92e2-ac002a1dd132"
+    },
+    {
+      "ref": "R21",
+      "value": "10k reset pull-up",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "NRST_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a98d679f-581e-5862-a5d4-ce994b9c2455"
+    },
+    {
+      "ref": "R22",
+      "value": "10k boot pull-down",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "BOOT0_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/222cb0a6-498b-59be-bddd-5e5b16c981cc"
+    },
+    {
+      "ref": "R23",
+      "value": "10k button pull-up",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "BUTTON_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/570b1088-2448-5f3b-ad80-dd0558c7d8e5"
+    },
+    {
+      "ref": "R24",
+      "value": "1k LED limiter",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "LED_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "LED_ANODE_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/112b771e-c125-595f-8b93-a7156c130e8c"
+    },
+    {
+      "ref": "R25",
+      "value": "100k enable pull-down",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "ISO_EN_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/0425aec4-e894-5be5-a4f9-c5e0461c76d2"
+    },
+    {
+      "ref": "R26",
+      "value": "10k override limiter",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "R",
+      "footprint": "PowerWidget:R_0805_2012Metric",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "ISO_FORCE_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "ISO_EN_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Resistor_SMD:R_0805_2012Metric",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/734e84eb-260d-5fd5-bd8b-1a1b7170fa05"
+    },
+    {
+      "ref": "SW1",
+      "value": "RESET pushbutton",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "SW",
+      "footprint": "PowerWidget:SW_SPST_TL3342",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "NRST_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/0db85f12-7f59-57ca-b76f-587d040f5643"
+    },
+    {
+      "ref": "SW2",
+      "value": "BOOT pushbutton",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "SW",
+      "footprint": "PowerWidget:SW_SPST_TL3342",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "BOOT0_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "3V3_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/8a98034d-17ee-5178-8963-3a0d6f64f884"
+    },
+    {
+      "ref": "SW3",
+      "value": "USER pushbutton",
+      "sheet": "05-debug",
+      "domain": "PC",
+      "kind": "SW",
+      "footprint": "PowerWidget:SW_SPST_TL3342",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "BUTTON_PC",
+          "type": "passive"
+        },
+        {
+          "number": "2",
+          "name": "",
+          "net": "GND_PC",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/57b210cc-6be1-5ee9-9c0e-96686b810f62"
+    },
+    {
+      "ref": "TP1",
+      "value": "VBUS_A",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_A",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/4ffd31b3-d81f-5196-93fe-3ef972b19050"
+    },
+    {
+      "ref": "TP2",
+      "value": "VBUS_B",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "VBUS_B",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/fcd6cf46-7a5b-5b89-9927-4aa6b3cbb9f7"
+    },
+    {
+      "ref": "TP3",
+      "value": "GND_INLINE",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "GND_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/a1c5b4c0-53d6-58bc-bdac-0b9ad5d590da"
+    },
+    {
+      "ref": "TP4",
+      "value": "CONTACT_A5",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "CONTACT_A5",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/c79c2c60-ef06-5377-bd59-c07d3755a58e"
+    },
+    {
+      "ref": "TP5",
+      "value": "CONTACT_B5",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "CONTACT_B5",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/91d4213a-8d48-52f6-b997-f5fb74b559ed"
+    },
+    {
+      "ref": "TP6",
+      "value": "INLINE_DP",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_DP",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/17886aa1-31c3-50c3-90ad-2d3f684d24eb"
+    },
+    {
+      "ref": "TP7",
+      "value": "INLINE_DM",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "INLINE_DM",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/55e5f867-a18b-598a-9424-22b2e81c9b9c"
+    },
+    {
+      "ref": "TP8",
+      "value": "CONTACT_A8",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "CONTACT_A8",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/03f1e918-8fac-5f72-9a36-fdaf5f6ec26a"
+    },
+    {
+      "ref": "TP9",
+      "value": "CONTACT_B8",
+      "sheet": "01-inline",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "CONTACT_B8",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/b1e0ca35-c32a-5897-aac8-9f8f6fe5275e"
+    },
+    {
+      "ref": "TP10",
+      "value": "ALERT: floating scope only",
+      "sheet": "02-sensing",
+      "domain": "INLINE",
+      "kind": "tp",
+      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
+      "note": "No pull-up fitted; open drain requires a local pull-up if probing logic. Firmware polls status.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "",
+          "net": "ALERT_INLINE",
+          "type": "passive"
+        }
+      ],
+      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/e0ae4840-dc60-57d4-afc7-4ac7f31178c1"
     },
     {
       "ref": "U1",
@@ -717,7 +2399,8 @@
           "type": "input"
         }
       ],
-      "source_footprint": "Package_SO:VSSOP-10_3x3mm_P0.5mm"
+      "source_footprint": "Package_SO:VSSOP-10_3x3mm_P0.5mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/47ab8de5-3cb0-50fb-bae9-de5cccb07175"
     },
     {
       "ref": "U2",
@@ -777,1081 +2460,8 @@
           "type": "power_in"
         }
       ],
-      "source_footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-    },
-    {
-      "ref": "R3",
-      "value": "10R 0.1% matched",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SHUNT_SA",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "SHUNT_PLUS",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R4",
-      "value": "10R 0.1% matched",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SHUNT_SB",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "SHUNT_MINUS",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C1",
-      "value": "100nF 100V differential",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SHUNT_PLUS",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "SHUNT_MINUS",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "R5",
-      "value": "100R",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_B",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "VBUS_FILTER",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C2",
-      "value": "10nF 100V X7R",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_FILTER",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C3",
-      "value": "100nF 10V at U1",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C4",
-      "value": "100nF 10V at U2.8",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C5",
-      "value": "100nF 10V at U2.1",
-      "sheet": "02-sensing",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "R6",
-      "value": "2k2 pull-up",
-      "sheet": "02-sensing",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SDA_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R7",
-      "value": "2k2 pull-up",
-      "sheet": "02-sensing",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SCL_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R8",
-      "value": "2k2 pull-up",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SDA_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R9",
-      "value": "2k2 pull-up",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SCL_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "J5",
-      "value": "PC I2C / external MCU",
-      "sheet": "02-sensing",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
-      "note": "3V3 is switched reference/output. Hold onboard MCU in reset and fit JP4 for another open-drain master; no external pull-ups to an always-on rail.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "SCL_PC",
-          "type": "passive"
-        },
-        {
-          "number": "4",
-          "name": "",
-          "net": "SDA_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-    },
-    {
-      "ref": "J6",
-      "value": "INLINE I2C debug",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
-      "note": "Only a floating or isolated instrument here; never jumper to J5.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "SCL_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "4",
-          "name": "",
-          "net": "SDA_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-    },
-    {
-      "ref": "TP10",
-      "value": "ALERT: floating scope only",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "tp",
-      "footprint": "PowerWidget:TestPoint_Pad_D2.0mm",
-      "note": "No pull-up fitted; open drain requires a local pull-up if probing logic. Firmware polls status.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "ALERT_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "TestPoint:TestPoint_Pad_D2.0mm"
-    },
-    {
-      "ref": "U4",
-      "value": "TPS7A4333DGQR",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "block",
-      "footprint": "PowerWidget:HVSSOP10_DGQ",
-      "note": "85 V fixed 3.3 V regulator. EN intentionally floating per internal pull-up; never tie EN to high VBUS. MID selected 15 V, with capacitors sized >=3x total OUT capacitance.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "OUT",
-          "net": "3V3_INLINE_LDO",
-          "type": "power_out"
-        },
-        {
-          "number": "2",
-          "name": "NC",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "PG",
-          "net": null,
-          "type": "open_collector"
-        },
-        {
-          "number": "4",
-          "name": "MVSEL1",
-          "net": "GND_INLINE",
-          "type": "input"
-        },
-        {
-          "number": "5",
-          "name": "GND",
-          "net": "GND_INLINE",
-          "type": "power_in"
-        },
-        {
-          "number": "6",
-          "name": "EN",
-          "net": null,
-          "type": "input"
-        },
-        {
-          "number": "7",
-          "name": "MVSEL2",
-          "net": "GND_INLINE",
-          "type": "input"
-        },
-        {
-          "number": "8",
-          "name": "MID_OUT",
-          "net": "INLINE_MID",
-          "type": "power_out"
-        },
-        {
-          "number": "9",
-          "name": "NC",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "10",
-          "name": "IN",
-          "net": "INLINE_LDO_IN",
-          "type": "power_in"
-        },
-        {
-          "number": "11",
-          "name": "EP",
-          "net": "GND_INLINE",
-          "type": "power_in"
-        }
-      ],
-      "source_footprint": "PowerWidget:HVSSOP10_DGQ"
-    },
-    {
-      "ref": "JP3",
-      "value": "INLINE self-current link",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
-      "note": "Fit shunt normally; insert a floating ammeter to characterize sensor-side self-consumption. Not a main-current connection.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_A",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "INLINE_FEED",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-    },
-    {
-      "ref": "R10",
-      "value": "10R 0.25W branch feed",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_FEED",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "INLINE_LDO_IN",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C6",
-      "value": "1uF 100V X7R",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_1210_3225Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_LDO_IN",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_1210_3225Metric"
-    },
-    {
-      "ref": "C7",
-      "value": "2u2 10V X7R",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_INLINE_LDO",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C20",
-      "value": "22uF 50V X7R MID",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_1210_3225Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_MID",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_1210_3225Metric"
-    },
-    {
-      "ref": "C21",
-      "value": "22uF 50V X7R MID",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "C",
-      "footprint": "PowerWidget:C_1210_3225Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_MID",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_1210_3225Metric"
-    },
-    {
-      "ref": "JP1",
-      "value": "SENSOR SUPPLY: one shunt only",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x03_P2.54mm_Vertical",
-      "note": "Normal 1-2; floating external 3.3 V 2-3. Do not install two shunts.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_INLINE_LDO",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "EXT_3V3_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
-    },
-    {
-      "ref": "J7",
-      "value": "Floating external 3.3V",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
-      "note": "For zero-VBUS/low-voltage bench testing; not connected to PC supply.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "EXT_3V3_INLINE",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-    },
-    {
-      "ref": "U5",
-      "value": "TLV75533PDBVR",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "block",
-      "footprint": "PowerWidget:SOT-23-5",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "IN",
-          "net": "PC_5V_LDO",
-          "type": "power_in"
-        },
-        {
-          "number": "2",
-          "name": "GND",
-          "net": "GND_PC",
-          "type": "power_in"
-        },
-        {
-          "number": "3",
-          "name": "EN",
-          "net": "PC_5V_LDO",
-          "type": "input"
-        },
-        {
-          "number": "4",
-          "name": "NC",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "5",
-          "name": "OUT",
-          "net": "3V3_PC",
-          "type": "power_out"
-        }
-      ],
-      "source_footprint": "Package_TO_SOT_SMD:SOT-23-5"
-    },
-    {
-      "ref": "JP2",
-      "value": "PC supply current link",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
-      "note": "Fit shunt normally. Remove to measure reporting-domain supply current; no external power injection.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "PC_5V_LDO",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-    },
-    {
-      "ref": "C8",
-      "value": "1uF 10V",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_5V_LDO",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C9",
-      "value": "4u7 10V",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C10",
-      "value": "1uF 10V at connector",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "U7",
-      "value": "TPS22919DCKR",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "block",
-      "footprint": "PowerWidget:SOT-363_SC-70-6",
-      "note": "Switch U2 side 1 and its pull-ups off in USB suspend. Set PB6/PB7 high impedance first. QOD tied to output.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "IN",
-          "net": "3V3_PC",
-          "type": "power_in"
-        },
-        {
-          "number": "2",
-          "name": "GND",
-          "net": "GND_PC",
-          "type": "power_in"
-        },
-        {
-          "number": "3",
-          "name": "ON",
-          "net": "ISO_EN_PC",
-          "type": "input"
-        },
-        {
-          "number": "4",
-          "name": "NC",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "5",
-          "name": "QOD",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        },
-        {
-          "number": "6",
-          "name": "VOUT",
-          "net": "3V3_ISO_PC",
-          "type": "power_out"
-        }
-      ],
-      "source_footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6"
-    },
-    {
-      "ref": "R25",
-      "value": "100k enable pull-down",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "ISO_EN_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C18",
-      "value": "100nF 10V at U7.1",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C19",
-      "value": "1uF 10V at U7.6",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_ISO_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "JP4",
-      "value": "External-master enable; DNF",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x02_P2.54mm_Vertical",
-      "note": "Fit only for external-master bench use with U3 held reset; remove for USB suspend testing.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "ISO_FORCE_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-    },
-    {
-      "ref": "R26",
-      "value": "10k override limiter",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "ISO_FORCE_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "ISO_EN_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "J8",
-      "value": "USB4105-GF-A-120 / reporting",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "block",
-      "footprint": "PowerWidget:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
-      "note": "Long board edge. USB 2.0 receptacle may omit unused SS/SBU contacts after exact footprint selection.",
-      "pins": [
-        {
-          "number": "A1",
-          "name": "A1",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "A4",
-          "name": "A4",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "A5",
-          "name": "A5",
-          "net": "PC_CC1",
-          "type": "passive"
-        },
-        {
-          "number": "A6",
-          "name": "A6",
-          "net": "PC_DP_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "A7",
-          "name": "A7",
-          "net": "PC_DM_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "A8",
-          "name": "A8",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "A9",
-          "name": "A9",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "A12",
-          "name": "A12",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "B1",
-          "name": "B1",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "B4",
-          "name": "B4",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "B5",
-          "name": "B5",
-          "net": "PC_CC2",
-          "type": "passive"
-        },
-        {
-          "number": "B6",
-          "name": "B6",
-          "net": "PC_DP_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "B7",
-          "name": "B7",
-          "net": "PC_DM_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "B8",
-          "name": "B8",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "B9",
-          "name": "B9",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "B12",
-          "name": "B12",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "S",
-          "name": "SHIELD",
-          "net": "SHIELD_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+      "source_footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/654b07de-e6e7-5663-ad3c-551e13b70457"
     },
     {
       "ref": "U3",
@@ -2151,7 +2761,130 @@
           "type": "power_in"
         }
       ],
-      "source_footprint": "Package_QFP:LQFP-48_7x7mm_P0.5mm"
+      "source_footprint": "Package_QFP:LQFP-48_7x7mm_P0.5mm",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/8580b28b-2d23-5221-baf7-daa19a28b2c7"
+    },
+    {
+      "ref": "U4",
+      "value": "TPS7A4333DGQR",
+      "sheet": "03-supplies",
+      "domain": "INLINE",
+      "kind": "block",
+      "footprint": "PowerWidget:HVSSOP10_DGQ",
+      "note": "85 V fixed 3.3 V regulator. EN intentionally floating per internal pull-up; never tie EN to high VBUS. MID selected 15 V, with capacitors sized >=3x total OUT capacitance.",
+      "pins": [
+        {
+          "number": "1",
+          "name": "OUT",
+          "net": "3V3_INLINE_LDO",
+          "type": "power_out"
+        },
+        {
+          "number": "2",
+          "name": "NC",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "3",
+          "name": "PG",
+          "net": null,
+          "type": "open_collector"
+        },
+        {
+          "number": "4",
+          "name": "MVSEL1",
+          "net": "GND_INLINE",
+          "type": "input"
+        },
+        {
+          "number": "5",
+          "name": "GND",
+          "net": "GND_INLINE",
+          "type": "power_in"
+        },
+        {
+          "number": "6",
+          "name": "EN",
+          "net": null,
+          "type": "input"
+        },
+        {
+          "number": "7",
+          "name": "MVSEL2",
+          "net": "GND_INLINE",
+          "type": "input"
+        },
+        {
+          "number": "8",
+          "name": "MID_OUT",
+          "net": "INLINE_MID",
+          "type": "power_out"
+        },
+        {
+          "number": "9",
+          "name": "NC",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "10",
+          "name": "IN",
+          "net": "INLINE_LDO_IN",
+          "type": "power_in"
+        },
+        {
+          "number": "11",
+          "name": "EP",
+          "net": "GND_INLINE",
+          "type": "power_in"
+        }
+      ],
+      "source_footprint": "PowerWidget:HVSSOP10_DGQ",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/5fbacc07-c77d-56ca-b608-fe01ec2a96fe"
+    },
+    {
+      "ref": "U5",
+      "value": "TLV75533PDBVR",
+      "sheet": "03-supplies",
+      "domain": "PC",
+      "kind": "block",
+      "footprint": "PowerWidget:SOT-23-5",
+      "note": "",
+      "pins": [
+        {
+          "number": "1",
+          "name": "IN",
+          "net": "PC_5V_LDO",
+          "type": "power_in"
+        },
+        {
+          "number": "2",
+          "name": "GND",
+          "net": "GND_PC",
+          "type": "power_in"
+        },
+        {
+          "number": "3",
+          "name": "EN",
+          "net": "PC_5V_LDO",
+          "type": "input"
+        },
+        {
+          "number": "4",
+          "name": "NC",
+          "net": null,
+          "type": "passive"
+        },
+        {
+          "number": "5",
+          "name": "OUT",
+          "net": "3V3_PC",
+          "type": "power_out"
+        }
+      ],
+      "source_footprint": "Package_TO_SOT_SMD:SOT-23-5",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/48ef40c9-7736-5e4c-b12f-68e81995ae86"
     },
     {
       "ref": "U6",
@@ -2199,829 +2932,57 @@
           "type": "passive"
         }
       ],
-      "source_footprint": "Package_TO_SOT_SMD:SOT-23-6"
+      "source_footprint": "Package_TO_SOT_SMD:SOT-23-6",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/415bd978-1847-5a40-9410-0891ddc10846"
     },
     {
-      "ref": "R13",
-      "value": "5k1 1% Rd",
-      "sheet": "04-usb-mcu",
+      "ref": "U7",
+      "value": "TPS22919DCKR",
+      "sheet": "03-supplies",
       "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
+      "kind": "block",
+      "footprint": "PowerWidget:SOT-363_SC-70-6",
+      "note": "Switch U2 side 1 and its pull-ups off in USB suspend. Set PB6/PB7 high impedance first. QOD tied to output.",
       "pins": [
         {
           "number": "1",
-          "name": "",
-          "net": "PC_CC1",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R14",
-      "value": "5k1 1% Rd",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_CC2",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R15",
-      "value": "0R tuning footprint",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_DP_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "USB_DP_MCU",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R16",
-      "value": "0R tuning footprint",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_DM_CONN",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "USB_DM_MCU",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C11",
-      "value": "100nF 10V at U3.24",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
+          "name": "IN",
           "net": "3V3_PC",
-          "type": "passive"
+          "type": "power_in"
         },
         {
           "number": "2",
-          "name": "",
+          "name": "GND",
           "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C12",
-      "value": "100nF 10V at U3.48",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C13",
-      "value": "100nF 10V at U3.36",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C14",
-      "value": "100nF 10V at U3.1",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "R17",
-      "value": "10R VDDA filter",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "VDDA_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C15",
-      "value": "100nF 10V at U3.9",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VDDA_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "C16",
-      "value": "1uF 10V",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VDDA_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "R18",
-      "value": "100k 1%",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VBUS_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "PC_VBUS_DETECT",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R19",
-      "value": "100k 1%",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_VBUS_DETECT",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "R20",
-      "value": "0R PC shell bond",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "SHIELD_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "J9",
-      "value": "Cortex SWD 2x5 1.27mm",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_2x05_P1.27mm_Vertical",
-      "note": "Key pin 7 absent. No SWO on Cortex-M0. Debug probe must not power this board.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "VTref",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "SWDIO",
-          "net": "SWDIO_PC",
-          "type": "passive"
+          "type": "power_in"
         },
         {
           "number": "3",
-          "name": "GND",
-          "net": "GND_PC",
-          "type": "passive"
+          "name": "ON",
+          "net": "ISO_EN_PC",
+          "type": "input"
         },
         {
           "number": "4",
-          "name": "SWCLK",
-          "net": "SWCLK_PC",
-          "type": "passive"
-        },
-        {
-          "number": "5",
-          "name": "GND",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "6",
-          "name": "SWO-NC",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "7",
-          "name": "KEY",
-          "net": null,
-          "type": "passive"
-        },
-        {
-          "number": "8",
           "name": "NC",
           "net": null,
           "type": "passive"
         },
         {
-          "number": "9",
-          "name": "GNDDetect",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "10",
-          "name": "nRESET",
-          "net": "NRST_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical"
-    },
-    {
-      "ref": "J10",
-      "value": "UART 3.3V logic",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x04_P2.54mm_Vertical",
-      "note": "TX/RX named from board viewpoint; 3V3 reference only. Not RS-232 voltage levels.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "UART_TX_PC",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "UART_RX_PC",
-          "type": "passive"
-        },
-        {
-          "number": "4",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
-    },
-    {
-      "ref": "J11",
-      "value": "Spare GPIO / SPI",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "header",
-      "footprint": "PowerWidget:PinHeader_1x08_P2.54mm_Vertical",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "3",
-          "name": "",
-          "net": "GPIO_PA4",
-          "type": "passive"
-        },
-        {
-          "number": "4",
-          "name": "",
-          "net": "GPIO_PA5",
-          "type": "passive"
-        },
-        {
           "number": "5",
-          "name": "",
-          "net": "GPIO_PA6",
+          "name": "QOD",
+          "net": "3V3_ISO_PC",
           "type": "passive"
         },
         {
           "number": "6",
-          "name": "",
-          "net": "GPIO_PA7",
-          "type": "passive"
-        },
-        {
-          "number": "7",
-          "name": "",
-          "net": "GPIO_PB10",
-          "type": "passive"
-        },
-        {
-          "number": "8",
-          "name": "",
-          "net": "GPIO_PB11",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
-    },
-    {
-      "ref": "R21",
-      "value": "10k reset pull-up",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "NRST_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "C17",
-      "value": "100nF reset",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "C",
-      "footprint": "PowerWidget:C_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "NRST_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Capacitor_SMD:C_0805_2012Metric"
-    },
-    {
-      "ref": "SW1",
-      "value": "RESET pushbutton",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "SW",
-      "footprint": "PowerWidget:SW_SPST_TL3342",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "NRST_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342"
-    },
-    {
-      "ref": "R22",
-      "value": "10k boot pull-down",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "BOOT0_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "SW2",
-      "value": "BOOT pushbutton",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "SW",
-      "footprint": "PowerWidget:SW_SPST_TL3342",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "BOOT0_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342"
-    },
-    {
-      "ref": "R23",
-      "value": "10k button pull-up",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "BUTTON_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "SW3",
-      "value": "USER pushbutton",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "SW",
-      "footprint": "PowerWidget:SW_SPST_TL3342",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "BUTTON_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "GND_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Button_Switch_SMD:SW_SPST_TL3342"
-    },
-    {
-      "ref": "R24",
-      "value": "1k LED limiter",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "R",
-      "footprint": "PowerWidget:R_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "LED_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "",
-          "net": "LED_ANODE_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "Resistor_SMD:R_0805_2012Metric"
-    },
-    {
-      "ref": "D1",
-      "value": "Activity LED",
-      "sheet": "05-debug",
-      "domain": "PC",
-      "kind": "LED",
-      "footprint": "PowerWidget:LED_0805_2012Metric",
-      "note": "",
-      "pins": [
-        {
-          "number": "1",
-          "name": "K",
-          "net": "GND_PC",
-          "type": "passive"
-        },
-        {
-          "number": "2",
-          "name": "A",
-          "net": "LED_ANODE_PC",
-          "type": "passive"
-        }
-      ],
-      "source_footprint": "LED_SMD:LED_0805_2012Metric"
-    },
-    {
-      "ref": "#FLG1",
-      "value": "PWR_FLAG",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "3V3_INLINE",
+          "name": "VOUT",
+          "net": "3V3_ISO_PC",
           "type": "power_out"
         }
-      ]
-    },
-    {
-      "ref": "#FLG2",
-      "value": "PWR_FLAG",
-      "sheet": "02-sensing",
-      "domain": "INLINE",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_INLINE",
-          "type": "power_out"
-        }
-      ]
-    },
-    {
-      "ref": "#FLG3",
-      "value": "PWR_FLAG",
-      "sheet": "02-sensing",
-      "domain": "PC",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "GND_PC",
-          "type": "power_out"
-        }
-      ]
-    },
-    {
-      "ref": "#FLG4",
-      "value": "PWR_FLAG",
-      "sheet": "03-supplies",
-      "domain": "INLINE",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "INLINE_LDO_IN",
-          "type": "power_out"
-        }
-      ]
-    },
-    {
-      "ref": "#FLG5",
-      "value": "PWR_FLAG",
-      "sheet": "03-supplies",
-      "domain": "PC",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "PC_5V_LDO",
-          "type": "power_out"
-        }
-      ]
-    },
-    {
-      "ref": "#FLG6",
-      "value": "PWR_FLAG",
-      "sheet": "04-usb-mcu",
-      "domain": "PC",
-      "kind": "flag",
-      "footprint": "",
-      "note": "ERC supply declaration at a passive feed; no physical component.",
-      "pins": [
-        {
-          "number": "1",
-          "name": "",
-          "net": "VDDA_PC",
-          "type": "power_out"
-        }
-      ]
+      ],
+      "source_footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+      "schematic_path": "/053fe491-f810-5db4-9f60-f0f5a50719e1/144f8cc6-f469-5435-8a7b-de7e12e969ff"
     }
   ]
 }

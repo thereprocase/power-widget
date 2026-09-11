@@ -25,55 +25,30 @@ These are actual 2D plots exported from the checked-in KiCad PCB. No 3D assembly
 
 ### Single-sheet schematic
 
-[![Complete bench revision A circuit on one sheet](single-sheet.svg)](single-sheet.svg)
+[![Canonical single-sheet KiCad schematic](single-sheet.png)](single-sheet.svg)
 
-[Open the vector drawing](single-sheet.svg) · [Download the A1 landscape PDF](single-sheet.pdf) · [Connectivity check](single-sheet-check.json)
+[Native SVG export](single-sheet.svg) · [A2 PDF](single-sheet.pdf) · [Editable schematic](power-widget-bench.kicad_sch) · [Native checks](single-sheet-check.json)
 
-The sheet follows the circuit's electrical purpose: the force path runs left to right through a four-terminal shunt, its Kelvin measurement branch sits directly beneath it, and isolated I²C crosses a visible boundary into the PC-powered reporting circuit. The inline regulator takes its supply upstream of the shunt. The lower-left contact bundle shows every retained USB signal and shield connection individually. Supplies, decoupling and service controls complete the same page.
+**This is the canonical KiCad schematic, not a separately drawn diagram.** The SVG and PDF are direct `kicad-cli` exports. The README PNG is only a white-background rasterization of that SVG so it remains readable in light and dark themes. The [earlier layout mockup](layout-mockup.svg) is retained as a reference, explicitly not the design authority. The former five-sheet schematic is superseded and remains available in Git history.
 
-All **82 physical components, 65 nets, 288 connected numbered pins and 30 unconnected numbered pins** are accounted for against `circuit.json`. Every net has continuous wiring, including both separate grounds and the supply rails. A solid dot means a junction; a wire hop means a crossing without connection. Rail names annotate wires rather than replacing them. Comma-separated pin numbers indicate pins on the same net. Unconnected pins are listed inside their package; six nonphysical KiCad ERC flags are omitted.
+The force path runs left to right through R1, with its Kelvin measurement branch directly beneath it. Every J1 and P1 contact is visible in its **one complete connector symbol**. Isolated I²C crosses the marked boundary into the PC-powered reporting circuit. Cloud callouts explain the through path and the shunt's separate force and sense terminals. Every connection is wired continuously; net labels annotate those wires once per net. Dots mean junctions; undotted crossings are not connected. Unconnected pin numbers and their no-connect crosses appear inside the relevant packages. There are no off-sheet connections or split component units in this version.
 
-J1 and P1 each appear in two functional sections, **power** and **contacts**, with each physical pin represented once. These are sections of the same connectors, not additional connectors. The split keeps charging-contact wiring out of the Kelvin measurement branch. The drawing is a generated documentation schematic, not a KiCad plot or a replacement for the native editable project. Hover over a component in the SVG to read its full source value and notes.
+KiCad reports **82 physical components, 65 named nets, 288 connected numbered pins and 30 unconnected numbered pins**. Six additional nonphysical power flags stay in the native schematic for ERC. The [migration comparison](native-migration-check.json) verifies unchanged pin/net connectivity, values, footprints and component UUIDs against the previous native design. PCB edits only flatten the 82 schematic association paths; copper, placement and all other PCB content are unchanged. Native [ERC](erc.rpt), [DRC and schematic/PCB parity](drc.rpt) pass with zero violations or unconnected items.
 
-The [generator](../../tools/draw_flat_schematic.py) uses the Python standard library. It checks source pin coverage, follows every routed wire tree to verify continuity, and rejects shared wire edges or ambiguous crossings between different nets. These checks concern drawing fidelity; they do not rerun native ERC or qualify the hardware.
+**Edit `power-widget-bench.kicad_sch` in KiCad.** The local `Bench.kicad_sym` library contains editable native symbol geometry; symbols are also embedded in the schematic. Reference, Value and Footprint are native fields. The auxiliary Domain, Section, CircuitKind, SourceFootprint and Notes fields supply metadata for the JSON and component-schedule exports. The historical JSON `sheet` field now identifies a functional placement group, not a separate schematic sheet.
+
+The normal workflow flows in one direction: **native schematic → native netlist / JSON / schedule / SVG / PDF / PNG**. Neither export script writes a schematic, library or PCB. There is no separate Python circuit definition that can overwrite edits made in KiCad.
 
 ```sh
-python tools/draw_flat_schematic.py
+python tools/capture_bench.py             # export JSON and component schedule from KiCad
+python tools/draw_flat_schematic.py       # run ERC/DRC/parity and export drawings
+python tools/capture_bench.py --check     # verify native data exports are current
 python tools/draw_flat_schematic.py --check
-# Optional PDF export, using librsvg's rsvg-convert:
-rsvg-convert --format pdf --width 831mm --height 584mm --keep-aspect-ratio \
-  --page-width 841mm --page-height 594mm --left 5mm --top 5mm \
-  -o hardware/bench-rev-a/single-sheet.pdf hardware/bench-rev-a/single-sheet.svg
 ```
 
-Print at A1 for the intended lettering size, or zoom the vector files on screen. Regenerate this drawing after regenerating the source circuit with `capture_bench.py`.
+Use KiCad 9.0.9 and librsvg (`rsvg-convert`) to reproduce the checked-in exports. `KICAD_CLI` can name a local CLI executable. If no local KiCad CLI is found, the tools use Docker and the pinned [official KiCad container](https://gitlab.com/kicad/packaging/kicad-docker) for 9.0.9 in [kicad_native.py](../../tools/kicad_native.py); only the project directory is mounted, and the container runs as the invoking user without network access. `KICAD_DOCKER_IMAGE` can select another installed image. The SVG check ignores only KiCad's export timestamp; the PDF, PNG and native reports have recorded hashes. Print the PDF at A2 or enlarge it, or zoom the vector files on screen.
 
-### Original connection sheets
-
-| Circuit | Connection-sheet preview | KiCad source |
-|---|---|---|
-| Inline connectors, shunt and bench force points | [01-inline.svg](01-inline.svg) | [01-inline.kicad_sch](01-inline.kicad_sch) |
-| INA228, filters and isolated I²C | [02-sensing.svg](02-sensing.svg) | [02-sensing.kicad_sch](02-sensing.kicad_sch) |
-| Local supplies and current-measurement links | [03-supplies.svg](03-supplies.svg) | [03-supplies.kicad_sch](03-supplies.kicad_sch) |
-| Reporting USB and STM32F072 | [04-usb-mcu.svg](04-usb-mcu.svg) | [04-usb-mcu.kicad_sch](04-usb-mcu.kicad_sch) |
-| SWD, UART, GPIO, reset and boot controls | [05-debug.svg](05-debug.svg) | [05-debug.kicad_sch](05-debug.kicad_sch) |
-
-The SVG files are readable connection sheets generated from the same circuit data, **not KiCad renders**. [circuit.json](circuit.json) records 82 circuit footprints plus six nonphysical ERC supply flags and their numbered pins; [connections.json](connections.json) records the 65 named nets. The [component schedule](component-schedule.md) is a draft, not an orderable BOM.
-
-<details>
-<summary>Show all five connection sheets</summary>
-
-![Inline connectors, shunt and bench force points](01-inline.svg)
-
-![INA228, filters and isolated I²C](02-sensing.svg)
-
-![Local supplies and current-measurement links](03-supplies.svg)
-
-![Reporting USB and STM32F072](04-usb-mcu.svg)
-
-![SWD, UART, GPIO, reset and boot controls](05-debug.svg)
-
-</details>
+These are CAD consistency results, not hardware qualification. The existing component, connector and fabrication gates still apply.
 
 ## Bench arrangement
 
@@ -123,7 +98,7 @@ J1 and the force terminals now have selected parts and footprints; P1 has a boar
 
 Review the routed board against the fabricator's stack, copper weight, fine clearances and USB impedance requirements. Resolve inline ESD/overrange protection without compromising CC or low-power leakage. Review unpowered behavior, USB timing/current and regulator thermals; physical tests must establish measurement accuracy, current capacity and charging compatibility. See the [layout](../../docs/layout-review.md), [connector](../../docs/connector-selection.md) and [protection](../../docs/protection-review.md) reviews for the remaining work.
 
-Regenerate with `python tools/capture_bench.py`; use `--check` to detect stale files. Its assertions check independent CC nets, no shared PC/inline nets and the MCU supply pins. These checks do not replace ERC, impedance/thermal layout work or hardware tests.
+Export circuit data from the native schematic with `python tools/capture_bench.py`; use `--check` to detect stale exports. Its assertions check independent CC nets, no shared PC/inline nets and the MCU supply pins. These checks do not replace ERC, impedance/thermal layout work or hardware tests.
 
 ## Physical-design reproduction
 

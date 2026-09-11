@@ -1,5 +1,7 @@
 # Bench A physical-design review
 
+**2026-09-11 schematic presentation update:** the [canonical schematic](../hardware/bench-rev-a/power-widget-bench.kicad_sch) is now one continuously wired native KiCad sheet. The [migration comparison](../hardware/bench-rev-a/native-migration-check.json) verifies identical pin/net sets, values, footprints and component UUIDs. Only the 82 schematic association paths changed in the PCB; all other PCB bytes are identical. Fresh native ERC, DRC and schematic/PCB parity checks pass with zero issues. See the [native export report](../hardware/bench-rev-a/single-sheet-check.json).
+
 The repository now contains an editable, routed **125 × 107 mm, four-layer bench PCB**, the native KiCad project, project symbol/footprint libraries, and reproduction scripts. It is an engineering prototype design, **not a fabrication release or a qualified 9 A USB product**.
 
 ## Native check results

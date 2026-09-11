@@ -3,7 +3,7 @@
 fill planes and save the native PCB. Run native ERC/DRC separately afterwards.
 Requires KiCad 9 pcbnew Python. Does not run or silently change autorouting.
 """
-import argparse,json,re,uuid
+import argparse,json,re
 from pathlib import Path
 import pcbnew as k
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'hardware/bench-rev-a'
@@ -11,8 +11,6 @@ ap=argparse.ArgumentParser();ap.add_argument('--session',type=Path);args=ap.pars
 p=OUT/'power-widget-bench.kicad_pcb';b=k.LoadBoard(str(p))
 if args.session:
     assert k.ImportSpecctraSES(b,str(args.session.resolve())), 'Native session import failed'
-ns=uuid.UUID('de3b4f8f-ed23-4c82-9816-4470ab137d7a')
-def uid(s):return str(uuid.uuid5(ns,s))
 cs={c['ref']:c for c in json.loads((OUT/'circuit.json').read_text())['components'] if c['kind']!='flag'}
 def vec(x,y):return k.VECTOR2I(k.FromMM(x),k.FromMM(y))
 existing={f.GetReference() for f in b.GetFootprints()}
@@ -39,7 +37,7 @@ for f in b.GetFootprints():
         assert ref.startswith('H'), ('Unexpected extra footprint',ref)
         f.SetAttributes(f.GetAttributes() | k.FP_BOARD_ONLY)
         continue
-    c=cs[ref];seen.add(ref);f.SetPath(k.KIID_PATH('/'+uid('root')+'/'+uid('sheet:'+c['sheet'])+'/'+uid(ref)))
+    c=cs[ref];seen.add(ref);f.SetPath(k.KIID_PATH(c['schematic_path']))
     f.SetValue(c['value'])
     # Pin-level capture currently includes test points in its circuit schedule.
     f.SetAttributes(f.GetAttributes() & ~k.FP_EXCLUDE_FROM_BOM)

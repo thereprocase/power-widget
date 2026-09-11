@@ -1,20 +1,22 @@
 # Power Widget
 
-[![Complete single-sheet schematic: continuous wiring, four-terminal shunt, isolated sensing and USB reporting](hardware/bench-rev-a/single-sheet.svg)](hardware/bench-rev-a/single-sheet.svg)
+[![Canonical single-sheet KiCad schematic: complete connectors, continuous wiring, Kelvin shunt and isolated USB reporting](hardware/bench-rev-a/single-sheet.png)](hardware/bench-rev-a/single-sheet.svg)
 
-**Current image: schematic layout mockup.** It is generated from `circuit.json`, not exported from KiCad, and is not the canonical editable schematic. Conversion of this layout into the [native KiCad project](hardware/bench-rev-a/power-widget-bench.kicad_pro) is in progress.
+**Canonical KiCad schematic.** This image is exported from the [native editable schematic](hardware/bench-rev-a/power-widget-bench.kicad_sch). The [earlier drawing was a layout mockup](hardware/bench-rev-a/layout-mockup.svg), not a KiCad export or the design authority.
 
 **Reusable agent prompt, including the original inspiration:**
 
 > think through the layout and topology from the perspective of a brilliant 1980s electrical engineer who stayed current on everything straight through to 2026. use his brain to architect the sheet and make it gorgeous
 >
-> Create a complete, flat, single-sheet schematic from this project's authoritative circuit data. Make the page explain the circuit: power and signal flow, measurement branches, isolation boundaries, supplies and service controls. Use traditional electrical symbols, continuous wires, explicit junction dots and bridged crossings. Keep every component and numbered pin accounted for; annotate wires with net names instead of replacing connections with labels. Preserve the circuit exactly. Use deliberate placement, readable typography and restrained color, with the clarity of a classic service-manual foldout. Verify connectivity against the source, export a zoomable SVG and printable PDF, put the image at the top of the README, and commit and push the result.
+> Create a complete, flat, single-sheet schematic from this project's authoritative circuit data. Make the page explain the circuit: power and signal flow, measurement branches, isolation boundaries, supplies and service controls. Use traditional electrical symbols, continuous wires, explicit junction dots and unambiguous crossings: wire hops where supported, otherwise the native tool’s undotted-crossing convention. Keep every component and numbered pin accounted for; annotate wires with net names instead of replacing connections with labels. Preserve the circuit exactly. Use deliberate placement, readable typography and restrained color, with the clarity of a classic service-manual foldout. Verify connectivity against the source, export a zoomable SVG and printable PDF, put the image at the top of the README, and commit and push the result.
 >
 > Use conventional schematic symbols that engineers recognize on sight: ANSI-style zigzag resistors; parallel-plate nonpolarized capacitors and explicitly marked polarized capacitors; coil inductors; diode anode/cathode symbols with the cathode bar; LEDs with outward light arrows and photodiodes with inward light arrows; normally open or normally closed switch contacts shown in their unactuated state; connector pins, jumper links and test points; four-terminal Kelvin shunts with separate force and sense terminals; and, where present, BJT base/collector/emitter and emitter arrows, MOSFET gate/drain/source and body diodes, and op-amp triangles with +/− inputs. Use functional IC rectangles with named and numbered pins. Distinguish signal common, chassis ground and protective earth; preserve separate isolated returns. Use these symbols only for the devices and functions actually present. Verify each symbol's device type, terminal mapping, polarity, arrow direction and default state against the circuit data and the manufacturer's pinout. Rotate or mirror symbols only while preserving their electrical meaning. A wire crossing is not a junction unless explicitly dotted; a graphic must never imply an unintended connection. Check the rendered drawing as well as its underlying netlist.
 >
 > Implement the layout in the canonical, editable source of the design system this project actually uses: for KiCad, the native schematic in the existing KiCad project. Preserve component identities, footprints, pin mappings and PCB associations. Export the README image and PDF directly from that native source, and run the design system's electrical checks plus schematic-to-PCB consistency checks. Ensure the normal regeneration workflow cannot overwrite the native design with a competing source of truth. A separately drawn SVG or diagram is only a mockup, even if its netlist matches; label any intermediate mockup explicitly and do not present it as the canonical schematic.
+>
+> Make component identity and wire continuity obvious. Prefer one physical component in one location. If splitting a component improves the page, use the convention of a civil-engineering matchline: ghost the omitted portion at each location, mark the matchline, and add explicit reciprocal notes naming the other section and exactly where to look. Never leave the reader to infer that two symbols are one part or guess where a connection went. Use small cloud callouts to explain potentially confusing features; keep annotations visually distinct from electrical symbols and wires.
 
-**The whole circuit on one sheet:** [zoomable SVG](hardware/bench-rev-a/single-sheet.svg) · [printable A1 PDF](hardware/bench-rev-a/single-sheet.pdf) · [drawing notes and reproduction](hardware/bench-rev-a/README.md#single-sheet-schematic). All 82 components and 65 nets, with continuous wires, junction dots and bridged crossings. Green is the inline domain; blue is the isolated PC domain. J1 and P1 each have power and signal-contact sections on this same page.
+**The whole circuit on one sheet:** [native SVG export](hardware/bench-rev-a/single-sheet.svg) · [printable A2 PDF](hardware/bench-rev-a/single-sheet.pdf) · [drawing notes and reproduction](hardware/bench-rev-a/README.md#single-sheet-schematic). All 82 physical components and 65 named nets. Each component appears once, including the complete J1 and P1 connectors. Dots identify connections; undotted crossings do not connect. Cloud notes explain the through path and Kelvin sensing.
 
 An inline USB-C power monitor with isolated PC reporting. Preserve the original charger and cable negotiation while measuring voltage, current, watts and Wh.
 
@@ -29,7 +31,7 @@ Actual KiCad 2D plot of the **125 × 107 mm** bench PCB. The reporting USB-C por
 | View | Contents |
 |---|---|
 | [PCB views](hardware/bench-rev-a/README.md#pcb-views) | Top and bottom copper plots from the routed board |
-| [Circuit drawings](hardware/bench-rev-a/README.md#circuit-drawings) | Complete single-sheet schematic, five connection-sheet previews and native KiCad sources |
+| [Circuit drawings](hardware/bench-rev-a/README.md#circuit-drawings) | Canonical single-sheet KiCad schematic, native exports and layout notes |
 | [Architecture diagram](docs/architecture.md#two-power-domains-and-a-passive-main-path) | Transparent power path, sensing and isolated PC reporting |
 | [Editable KiCad project](hardware/bench-rev-a/power-widget-bench.kicad_pro) | Schematic, PCB and local symbol/footprint libraries in the same directory |
 
@@ -92,7 +94,7 @@ python tools/capture_bench.py --check
 python tools/draw_flat_schematic.py --check
 ```
 
-Omit `--check` to regenerate. Python standard library only. The budget sweep covers 19,635 settled operating points at the 9 A target. Circuit checks validate named connections and reproducibility; they do not run KiCad ERC.
+Omit `--check` to regenerate. The budget and orientation tools use the Python standard library. Native schematic export/check commands require KiCad 9+ and librsvg; see [CAD reproduction](hardware/bench-rev-a/README.md#single-sheet-schematic). The budget sweep covers 19,635 settled operating points at the 9 A target. `capture_bench.py` exports and validates native pin/net data; `draw_flat_schematic.py` also runs KiCad ERC and PCB DRC with schematic parity.
 
 ## Next gate
 

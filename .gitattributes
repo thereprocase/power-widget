@@ -1,0 +1,2 @@
+# Preserve KiCad's native SVG export byte-for-byte, including its whitespace.
+hardware/bench-rev-a/single-sheet.svg -whitespace linguist-generated=true

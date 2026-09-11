@@ -1,0 +1,16 @@
+{
+  "baseline_commit": "7701f54c948164ef165934f8dba56fe5bddf1aa4",
+  "kicad_version": "9.0.9",
+  "migrated_schematic_sha256": "dba83521e1be7e3e8fb8051f0717cce47c49141f36502ad9f9e2e06433070347",
+  "migrated_pcb_sha256": "6372282bb007309ec9ad06a3a72b81fbcaa5c6b6c8a228e615d378fd85ec8162",
+  "physical_components_compared": 82,
+  "named_nets_compared": 65,
+  "unconnected_pin_nets_compared": 30,
+  "all_pin_net_sets_identical": true,
+  "all_values_identical": true,
+  "all_footprint_ids_identical": true,
+  "all_component_uuids_identical": true,
+  "flattened_pcb_association_paths": 82,
+  "all_other_pcb_bytes_identical": true,
+  "scope": "One-time comparison against the previous native hierarchy; later checks are in single-sheet-check.json"
+}

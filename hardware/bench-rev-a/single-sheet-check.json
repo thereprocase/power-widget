@@ -1,15 +1,31 @@
 {
-  "source": "circuit.json",
-  "source_sha256": "78f2d8028c65ae2c1c8b0e21340fcdf501e184a666290c127b866bd78e12f62c",
-  "components": 82,
-  "nets": 65,
+  "source": "power-widget-bench.kicad_sch",
+  "kicad_version": "9.0.9",
+  "source_sha256": {
+    "power-widget-bench.kicad_sch": "dba83521e1be7e3e8fb8051f0717cce47c49141f36502ad9f9e2e06433070347",
+    "Bench.kicad_sym": "24183c0006f9a593135eb6bfa2fa4b41b81b3cfd6f1730b2af28cabbe43cc877",
+    "power-widget-bench.kicad_pro": "1b43c160b5963df177fda4ab7c9bb28a346ea335be9aba8a79565eff1c871a89",
+    "power-widget-bench.kicad_pcb": "6372282bb007309ec9ad06a3a72b81fbcaa5c6b6c8a228e615d378fd85ec8162"
+  },
+  "artifact_sha256": {
+    "single-sheet.svg": "710eb8fcde062857b8b10c6c66c188243b60e051088f545e72b0946b89bb8013",
+    "single-sheet.pdf": "25703b85c39939f2381aca643293545494752b11bffef0314a8dd85c78884da0",
+    "single-sheet.png": "432c525b53393154e0a03c2a39d81ff5a02a1a13ac26a26cebe2b6b2db2a99ff",
+    "erc.rpt": "4d15ca21de40dbffed4b4f038174d12991126299dbbf75da8f4290c0628974dd",
+    "drc.rpt": "419f472b9a49b1dd8f497bf7272774b091399fb5ed15839a805887147f9787c7"
+  },
+  "sheets": 1,
+  "physical_components": 82,
+  "named_nets": 65,
   "connected_numbered_pins": 288,
   "unconnected_numbered_pins": 30,
-  "nonphysical_erc_flags_omitted": 6,
-  "all_source_pins_accounted_for": true,
-  "all_nets_continuously_connected": true,
-  "foreign_shared_wire_edges": 0,
-  "ambiguous_crossings": 0,
-  "bridged_crossings": 206,
-  "scope": "Documentation drawing connectivity, not KiCad ERC or hardware validation."
+  "each_component_appears_once": true,
+  "each_net_label_appears_once": true,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_pcb_items": 0,
+  "schematic_pcb_parity_issues": 0,
+  "svg_and_pdf": "Direct kicad-cli exports; no redrawing or graphical postprocessing",
+  "png": "White-background rasterization of the native SVG with librsvg",
+  "scope": "Native CAD checks and export fidelity, not hardware qualification"
 }
