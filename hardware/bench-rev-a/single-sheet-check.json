@@ -2,17 +2,17 @@
   "source": "power-widget-bench.kicad_sch",
   "kicad_version": "9.0.9",
   "source_sha256": {
-    "power-widget-bench.kicad_sch": "dba83521e1be7e3e8fb8051f0717cce47c49141f36502ad9f9e2e06433070347",
-    "Bench.kicad_sym": "24183c0006f9a593135eb6bfa2fa4b41b81b3cfd6f1730b2af28cabbe43cc877",
+    "power-widget-bench.kicad_sch": "13b90f23bc418de64f840791e1a9ae376df8a5dea00acd4c59ff97d818b06708",
+    "Bench.kicad_sym": "bc2492d7d8abe4a0df34048c42491741cd1aef2c685c82669062a8be568977e0",
     "power-widget-bench.kicad_pro": "1b43c160b5963df177fda4ab7c9bb28a346ea335be9aba8a79565eff1c871a89",
     "power-widget-bench.kicad_pcb": "6372282bb007309ec9ad06a3a72b81fbcaa5c6b6c8a228e615d378fd85ec8162"
   },
   "artifact_sha256": {
-    "single-sheet.svg": "710eb8fcde062857b8b10c6c66c188243b60e051088f545e72b0946b89bb8013",
-    "single-sheet.pdf": "25703b85c39939f2381aca643293545494752b11bffef0314a8dd85c78884da0",
-    "single-sheet.png": "432c525b53393154e0a03c2a39d81ff5a02a1a13ac26a26cebe2b6b2db2a99ff",
-    "erc.rpt": "4d15ca21de40dbffed4b4f038174d12991126299dbbf75da8f4290c0628974dd",
-    "drc.rpt": "419f472b9a49b1dd8f497bf7272774b091399fb5ed15839a805887147f9787c7"
+    "single-sheet.svg": "56269f0a14f062b590c970e26715aa25e1a46c1157d10763de3fcb1b9bb89c53",
+    "single-sheet.pdf": "0bb0d65b5bfd88bb0819eefb7d993005693a430294eff226c4d333d520e3c041",
+    "single-sheet.png": "cc64c0c173f72b4f9e25e44a32f9369189776de7c1cbb05f50c177e689176c17",
+    "erc.rpt": "18d7d632a73b0b0820c8e50e6d5bc7b841db94f72fdd996737ab345bfe7b3424",
+    "drc.rpt": "06a58568154603abd2034b552a4f58b4c0f18d3d8fff145b75be07b6768b0557"
   },
   "sheets": 1,
   "physical_components": 82,
@@ -21,6 +21,11 @@
   "unconnected_numbered_pins": 30,
   "each_component_appears_once": true,
   "each_net_label_appears_once": true,
+  "rendered_net_labels_checked": 65,
+  "net_label_wire_overlaps": 0,
+  "all_rendered_text_checked": true,
+  "rendered_text_wire_overlaps": 0,
+  "rendered_text_text_overlaps": 0,
   "erc_violations": 0,
   "drc_violations": 0,
   "unconnected_pcb_items": 0,
