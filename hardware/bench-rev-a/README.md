@@ -23,6 +23,33 @@ These are actual 2D plots exported from the checked-in KiCad PCB. No 3D assembly
 
 ## Circuit drawings
 
+### Single-sheet schematic
+
+[![Complete bench revision A circuit on one sheet](single-sheet.svg)](single-sheet.svg)
+
+[Open the vector drawing](single-sheet.svg) · [Download the A1 landscape PDF](single-sheet.pdf) · [Connectivity check](single-sheet-check.json)
+
+The sheet follows the circuit's electrical purpose: the force path runs left to right through a four-terminal shunt, its Kelvin measurement branch sits directly beneath it, and isolated I²C crosses a visible boundary into the PC-powered reporting circuit. The inline regulator takes its supply upstream of the shunt. The lower-left contact bundle shows every retained USB signal and shield connection individually. Supplies, decoupling and service controls complete the same page.
+
+All **82 physical components, 65 nets, 288 connected numbered pins and 30 unconnected numbered pins** are accounted for against `circuit.json`. Every net has continuous wiring, including both separate grounds and the supply rails. A solid dot means a junction; a wire hop means a crossing without connection. Rail names annotate wires rather than replacing them. Comma-separated pin numbers indicate pins on the same net. Unconnected pins are listed inside their package; six nonphysical KiCad ERC flags are omitted.
+
+J1 and P1 each appear in two functional sections, **power** and **contacts**, with each physical pin represented once. These are sections of the same connectors, not additional connectors. The split keeps charging-contact wiring out of the Kelvin measurement branch. The drawing is a generated documentation schematic, not a KiCad plot or a replacement for the native editable project. Hover over a component in the SVG to read its full source value and notes.
+
+The [generator](../../tools/draw_flat_schematic.py) uses the Python standard library. It checks source pin coverage, follows every routed wire tree to verify continuity, and rejects shared wire edges or ambiguous crossings between different nets. These checks concern drawing fidelity; they do not rerun native ERC or qualify the hardware.
+
+```sh
+python tools/draw_flat_schematic.py
+python tools/draw_flat_schematic.py --check
+# Optional PDF export, using librsvg's rsvg-convert:
+rsvg-convert --format pdf --width 831mm --height 584mm --keep-aspect-ratio \
+  --page-width 841mm --page-height 594mm --left 5mm --top 5mm \
+  -o hardware/bench-rev-a/single-sheet.pdf hardware/bench-rev-a/single-sheet.svg
+```
+
+Print at A1 for the intended lettering size, or zoom the vector files on screen. Regenerate this drawing after regenerating the source circuit with `capture_bench.py`.
+
+### Original connection sheets
+
 | Circuit | Connection-sheet preview | KiCad source |
 |---|---|---|
 | Inline connectors, shunt and bench force points | [01-inline.svg](01-inline.svg) | [01-inline.kicad_sch](01-inline.kicad_sch) |

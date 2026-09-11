@@ -1,5 +1,9 @@
 # Power Widget
 
+[![Complete single-sheet schematic: continuous wiring, four-terminal shunt, isolated sensing and USB reporting](hardware/bench-rev-a/single-sheet.svg)](hardware/bench-rev-a/single-sheet.svg)
+
+**The whole circuit on one sheet:** [zoomable SVG](hardware/bench-rev-a/single-sheet.svg) · [printable A1 PDF](hardware/bench-rev-a/single-sheet.pdf) · [drawing notes and reproduction](hardware/bench-rev-a/README.md#single-sheet-schematic). All 82 components and 65 nets, with continuous wires, junction dots and bridged crossings. Green is the inline domain; blue is the isolated PC domain. J1 and P1 each have power and signal-contact sections on this same page.
+
 An inline USB-C power monitor with isolated PC reporting. Preserve the original charger and cable negotiation while measuring voltage, current, watts and Wh.
 
 **Newest design: [bench revision A native KiCad project](hardware/bench-rev-a/README.md).** It includes the sensing circuit, isolated USB reporting, STM32 firmware/debug access, assigned footprints and a routed bench PCB. Native KiCad checks report **zero ERC violations, DRC violations, unconnected items and schematic/PCB mismatches**. See the [layout review](docs/layout-review.md) for evidence and open gates. **The selected USB population is 5 A maximum; the project’s 9 A USB assembly is still a sourcing and qualification gate.**
@@ -13,7 +17,7 @@ Actual KiCad 2D plot of the **125 × 107 mm** bench PCB. The reporting USB-C por
 | View | Contents |
 |---|---|
 | [PCB views](hardware/bench-rev-a/README.md#pcb-views) | Top and bottom copper plots from the routed board |
-| [Circuit drawings](hardware/bench-rev-a/README.md#circuit-drawings) | Five connection-sheet previews and their native KiCad schematic sources |
+| [Circuit drawings](hardware/bench-rev-a/README.md#circuit-drawings) | Complete single-sheet schematic, five connection-sheet previews and native KiCad sources |
 | [Architecture diagram](docs/architecture.md#two-power-domains-and-a-passive-main-path) | Transparent power path, sensing and isolated PC reporting |
 | [Editable KiCad project](hardware/bench-rev-a/power-widget-bench.kicad_pro) | Schematic, PCB and local symbol/footprint libraries in the same directory |
 
@@ -73,6 +77,7 @@ These are engineering allocations, not measured specifications. One-second noise
 python tools/budgets.py --check
 python tools/orientations.py --check
 python tools/capture_bench.py --check
+python tools/draw_flat_schematic.py --check
 ```
 
 Omit `--check` to regenerate. Python standard library only. The budget sweep covers 19,635 settled operating points at the 9 A target. Circuit checks validate named connections and reproducibility; they do not run KiCad ERC.

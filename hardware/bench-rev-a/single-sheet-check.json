@@ -1,0 +1,15 @@
+{
+  "source": "circuit.json",
+  "source_sha256": "78f2d8028c65ae2c1c8b0e21340fcdf501e184a666290c127b866bd78e12f62c",
+  "components": 82,
+  "nets": 65,
+  "connected_numbered_pins": 288,
+  "unconnected_numbered_pins": 30,
+  "nonphysical_erc_flags_omitted": 6,
+  "all_source_pins_accounted_for": true,
+  "all_nets_continuously_connected": true,
+  "foreign_shared_wire_edges": 0,
+  "ambiguous_crossings": 0,
+  "bridged_crossings": 206,
+  "scope": "Documentation drawing connectivity, not KiCad ERC or hardware validation."
+}
